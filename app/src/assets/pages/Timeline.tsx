@@ -1,4 +1,4 @@
-import { Example_TimelineItems } from "../Components/TimelineItemShape";
+import { Example_TimelineItems } from "../Components/ExampleData";
 import { TimelineRuler } from "../Components/TimelineRuler";
 import type { PageShape } from "../object-shapes/Page";
 
