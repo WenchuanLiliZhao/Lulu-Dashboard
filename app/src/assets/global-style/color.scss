@@ -25,6 +25,13 @@
   --color-border-main-trans: rgba(0, 0, 0, 0.08);
 
   --color-border-darken-trans: rgba(0, 0, 0, 0.16);
+
+  // Text colors
+  --color-text-main: var(--color-main);
+  --color-text-sec: var(--color-sec);
+  
+  // Accent color
+  --color-accent: var(--brand-color);
 }
 
 @mixin dark-theme {
@@ -47,6 +54,13 @@
   --color-border-main-trans: rgba(255, 255, 255, 0.08);
 
   --color-border-darken-trans: rgba(255, 255, 255, 0.16);
+
+  // Text colors
+  --color-text-main: var(--color-main);
+  --color-text-sec: var(--color-sec);
+  
+  // Accent color
+  --color-accent: var(--brand-color);
 }
 
 // 其次，通过 SCSS 的 `@include` 将它们分别引用到 light mode 以及 dark mode 中：

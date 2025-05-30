@@ -2,7 +2,7 @@ import React from "react";
 import { calculateDurationInDays, calculateMaxOverlapCardinality, type PlacementResult } from "./TimelineUtils";
 import { type IssueType } from "./TimelineItemShape";
 import { TimelineItem } from "./TimelineItem";
-import styles from "./TimelineRuler.module.scss";
+import styles from "./Timeline.module.scss";
 
 interface TimelineGroupProps {
   groupData: {

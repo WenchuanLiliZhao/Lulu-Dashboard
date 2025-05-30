@@ -1,6 +1,6 @@
 import React from "react";
 import { type IssueType } from "./TimelineItemShape";
-import styles from "./TimelineRuler.module.scss";
+import styles from "./Timeline.module.scss";
 
 interface TimelineItemProps {
   item: IssueType;

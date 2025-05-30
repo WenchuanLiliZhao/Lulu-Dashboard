@@ -1,13 +1,13 @@
-import { Example_TimelineItems } from "../Components/ExampleData";
-import { TimelineRuler } from "../Components/TimelineRuler";
+import { Example_TimelineItems } from "../Components/Timeline/ExampleData";
+import { Timeline } from "../Components/Timeline/Timeline";
 import type { PageShape } from "../object-shapes/Page";
 
-const Timeline: PageShape = {
+const TimelinePage: PageShape = {
   info: {
     title: "Timeline",
     slug: "timeline",
   },
-  content: <TimelineRuler inputData={Example_TimelineItems} />,
+  content: <Timeline inputData={Example_TimelineItems} />,
 };
 
-export default Timeline;
+export default TimelinePage;

@@ -11,7 +11,7 @@ function App() {
 
         {Object.values(Pages).map((page: PageShape, i: number) => {
           return (
-            <Route key={i} path={page.info.slug} element={page.content} />
+            <Route key={i} path={`/${page.info.slug}`} element={page.content} />
           )
         })}
       </Routes>
