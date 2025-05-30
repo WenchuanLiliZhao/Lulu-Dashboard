@@ -86,3 +86,13 @@
   line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+
+.timeline-groups {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-group {
+  position: relative;
+}

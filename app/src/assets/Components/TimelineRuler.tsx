@@ -6,11 +6,10 @@ import {
 import {
   monthNames,
   getDaysInMonth,
-  calculateDurationInDays,
   findPlacement,
   type PlacementResult,
-  calculateMaxOverlapCardinality,
 } from "./TimelineUtils";
+import { TimelineGroup } from "./TimelineGroup";
 import styles from "./TimelineRuler.module.scss";
 
 interface TimelineProps {
@@ -108,62 +107,18 @@ export const TimelineRuler: React.FC<TimelineProps> = ({ inputData }) => {
                             {dayIndex + 1}
                           </div>
 
-                          <div className={styles["itemline-groups"]}>
+                          <div className={styles["timeline-groups"]}>
                             {groupPlacements.map((groupData, groupIndex) => (
-                              <div
+                              <TimelineGroup
                                 key={groupIndex}
-                                className={styles["timeline-ruler-day-items"]}
-                                style={{
-                                  height: `${
-                                    calculateMaxOverlapCardinality(groupData.groupItems) *
-                                    cellHeight + groupGapForTesting
-                                  }px`,
-                                }}
-                              >
-                                {groupData.placements.map((placement) => {
-                                  const itemStartDate = placement.startDate;
-                                  const itemStartYear = itemStartDate.getFullYear();
-                                  const itemStartMonth = itemStartDate.getMonth();
-                                  const itemStartDay = itemStartDate.getDate();
-
-                                  // Only render item if it starts on this exact day
-                                  if (
-                                    itemStartYear === year &&
-                                    itemStartMonth === monthIndex &&
-                                    itemStartDay === dayIndex + 1
-                                  ) {
-                                    const durationInDays =
-                                      calculateDurationInDays(
-                                        itemStartDate,
-                                        placement.endDate
-                                      );
-
-                                    return (
-                                      <div
-                                        key={placement.item.id}
-                                        className={styles["timeline-item"]}
-                                        style={{
-                                          height: cellHeight,
-                                          width: `${
-                                            durationInDays * dayWidth - 1
-                                          }px`,
-                                          position: "absolute",
-                                          top: `${
-                                            placement.column * cellHeight
-                                          }px`,
-                                        }}
-                                      >
-                                        <div
-                                          className={styles["timeline-item-name"]}
-                                        >
-                                          {placement.item.name}
-                                        </div>
-                                      </div>
-                                    );
-                                  }
-                                  return null;
-                                })}
-                              </div>
+                                groupData={groupData}
+                                year={year}
+                                monthIndex={monthIndex}
+                                dayIndex={dayIndex}
+                                dayWidth={dayWidth}
+                                cellHeight={cellHeight}
+                                groupGapForTesting={groupGapForTesting}
+                              />
                             ))}
                           </div>
                         </div>
