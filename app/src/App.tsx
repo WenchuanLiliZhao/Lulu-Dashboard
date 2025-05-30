@@ -1,15 +1,15 @@
 import { BrowserRouter, Route, Routes } from "react-router"
-import { pages } from "./assets/pages/_pages"
-import type { PageShape } from "./assets/object-shapes/page"
+import type { PageShape } from "./assets/object-shapes/Page"
+import { Pages } from "./assets/pages/_Pages"
 
 function App() {
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={pages.Home.content} />
+        <Route index element={Pages.Home.content} />
 
-        {Object.values(pages).map((page: PageShape, i: number) => {
+        {Object.values(Pages).map((page: PageShape, i: number) => {
           return (
             <Route key={i} path={page.info.slug} element={page.content} />
           )

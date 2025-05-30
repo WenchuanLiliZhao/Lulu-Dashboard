@@ -1,4 +1,4 @@
-import type { PageShape } from "../object-shapes/page";
+import type { PageShape } from "../object-shapes/Page";
 
 const Home: PageShape = {
   info: {
