@@ -1,6 +1,7 @@
 import React from "react";
 import { calculateDurationInDays, calculateMaxOverlapCardinality, type PlacementResult } from "./TimelineUtils";
 import { type IssueType } from "./TimelineItemShape";
+import { TimelineItem } from "./TimelineItem";
 import styles from "./TimelineRuler.module.scss";
 
 interface TimelineGroupProps {
@@ -54,20 +55,14 @@ export const TimelineGroup: React.FC<TimelineGroupProps> = ({
           );
 
           return (
-            <div
+            <TimelineItem
               key={placement.item.id}
-              className={styles["timeline-item"]}
-              style={{
-                height: cellHeight,
-                width: `${durationInDays * dayWidth - 1}px`,
-                position: "absolute",
-                top: `${placement.column * cellHeight}px`,
-              }}
-            >
-              <div className={styles["timeline-item-name"]}>
-                {placement.item.name}
-              </div>
-            </div>
+              item={placement.item}
+              durationInDays={durationInDays}
+              dayWidth={dayWidth}
+              cellHeight={cellHeight}
+              column={placement.column}
+            />
           );
         }
         return null;
