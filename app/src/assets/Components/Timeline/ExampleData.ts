@@ -79,7 +79,7 @@ export const Example_Math: IssueType[] = [
     status: "Active",
     description: "Create a certification program for mathematics educators focusing on modern teaching methodologies",
     startDate: new Date("2023-12-30"),
-    endDate: new Date("2024-01-01"),
+    endDate: new Date("2024-07-01"),
     progress: 55
   },
   {

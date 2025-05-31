@@ -6,6 +6,7 @@ interface DayWidthSliderProps {
   onDayWidthChange: (newWidth: number) => void;
   minWidth?: number;
   maxWidth?: number;
+  step?: number;
 }
 
 export const DayWidthSlider: React.FC<DayWidthSliderProps> = ({
@@ -13,9 +14,10 @@ export const DayWidthSlider: React.FC<DayWidthSliderProps> = ({
   onDayWidthChange,
   minWidth = 12,
   maxWidth = 60,
+  step = 0.5,
 }) => {
   const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newWidth = parseInt(event.target.value, 10);
+    const newWidth = parseFloat(event.target.value);
     onDayWidthChange(newWidth);
   };
 
@@ -30,6 +32,7 @@ export const DayWidthSlider: React.FC<DayWidthSliderProps> = ({
           type="range"
           min={minWidth}
           max={maxWidth}
+          step={step}
           value={dayWidth}
           onChange={handleSliderChange}
           className={styles["slider"]}

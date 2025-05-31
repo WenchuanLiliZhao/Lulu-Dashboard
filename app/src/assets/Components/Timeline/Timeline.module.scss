@@ -1,66 +1,62 @@
 .timeline-container {
   display: flex;
   flex-direction: column;
-}
 
-.cell {
-  border-bottom: 1px solid var(--color-border-main);
+  .timeline-ruler-container {
+    overflow-x: auto;
 
-  &:hover {
-    background-color: var(--color-bg-sec-trans);
+    .timeline-ruler-year {
+      display: flex;
+      flex-direction: column;
+
+      .timeline-ruler-month {
+        box-shadow: 1px 0 0 0 var(--color-border-main-trans);
+
+        .timeline-ruler-month-label {
+          display: flex;
+          align-items: center;
+          padding: 4px 8px;
+          background: var(--color-bg-sec);
+          border-bottom: 1px solid var(--color-border-main);
+
+          .timeline-ruler-month-label-month {
+            font-weight: bold;
+            margin-right: 8px;
+          }
+
+          .timeline-ruler-month-label-year {
+            color: #666;
+          }
+        }
+
+        .timeline-ruler-day {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+
+          &.zoomed {
+            box-shadow: 1px 0 0 0 var(--color-border-main-trans);
+          }
+
+          .timeline-ruler-day-label {
+            padding: 4px;
+            text-align: center;
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0);
+            border-bottom: 1px solid var(--color-border-main);
+            
+            &.zoomed {
+              color: var(--color-sec);
+            }
+          }
+        }
+      }
+    }
   }
-}
-
-.timeline-ruler-container {
-  overflow-x: auto;
-  height: 100vh;
 }
 
 .timeline-ruler-column {
   display: flex;
-}
-
-.timeline-ruler-year {
-  display: flex;
-  flex-direction: column;
-}
-
-.timeline-ruler-month {
-  display: flex;
-  flex-direction: column;
-  border-bottom: 1px solid var(--color-border-main);
-}
-
-.timeline-ruler-month-label {
-  display: flex;
-  align-items: center;
-  padding: 4px 8px;
-  background: var(--color-bg-sec);
-  border-bottom: 1px solid var(--color-border-main);
-}
-
-.timeline-ruler-month-label-month {
-  font-weight: bold;
-  margin-right: 8px;
-}
-
-.timeline-ruler-month-label-year {
-  color: #666;
-}
-
-.timeline-ruler-day {
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid var(--color-border-main);
-  position: relative;
-}
-
-.timeline-ruler-day-label {
-  padding: 4px;
-  text-align: center;
-  font-size: 12px;
-  color: #666;
-  border-bottom: 1px solid var(--color-border-main);
 }
 
 .timeline-ruler-day-items {
@@ -83,7 +79,7 @@
 
 .timeline-item-name {
   font-size: 12px;
-  
+
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;

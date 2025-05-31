@@ -44,6 +44,7 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
   // Constants for layout calculations
   const cellHeight = 48; // Height of each item row in pixels
   const groupGapForTesting = 8;
+  const dayWidthAsZoomMonth = 4.5;
 
   // Handler for day width changes
   const handleDayWidthChange = (newWidth: number) => {
@@ -51,8 +52,8 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
   };
 
   // Reusable column component for consistent styling
-  const Column = ({ children }: { children: React.ReactNode }) => {
-    return <div className={styles["timeline-ruler-column"]}>{children}</div>;
+  const Column = ({ className, children }: { className?: string, children: React.ReactNode }) => {
+    return <div className={`${styles["timeline-ruler-column"]} ${className}`}>{children}</div>;
   };
 
   // Pre-calculate placements for each group separately
@@ -106,20 +107,22 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
                       <div className={styles["timeline-ruler-month-label-month"]}>
                         {monthNames[monthIndex]}
                       </div>
-                      <div className={styles["timeline-ruler-month-label-year"]}>
-                        {year}
-                      </div>
+                      {dayWidth > dayWidthAsZoomMonth && (
+                        <div className={styles["timeline-ruler-month-label-year"]}>
+                          {year}
+                        </div>
+                      )}
                     </div>
-                    <Column>
+                    <Column className={styles["timeline-ruler-month-grid"]}>
                       {Array.from(
                         { length: getDaysInMonth(year, monthIndex) },
                         (_, dayIndex) => (
                           <div
                             key={dayIndex}
-                            className={styles["timeline-ruler-day"]}
+                            className={`${styles["timeline-ruler-day"]} ${dayWidth > dayWidthAsZoomMonth ? styles["zoomed"] : ""}`}
                             style={{ width: `${dayWidth}px` }}
                           >
-                            <div className={styles["timeline-ruler-day-label"]}>
+                            <div className={`${styles["timeline-ruler-day-label"]} ${dayWidth >= 24 ? styles["zoomed"] : ""}`}>
                               {dayIndex + 1}
                             </div>
 
