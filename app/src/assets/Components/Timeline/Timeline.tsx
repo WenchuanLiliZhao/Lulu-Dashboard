@@ -12,6 +12,7 @@ import {
 } from "./TimelineUtils";
 import { TimelineGroup } from "./TimelineGroup";
 import { DayWidthSlider } from "./DayWidthSlider";
+import { useCenterBasedZoom } from "./useCenterBasedZoom";
 import styles from "./Timeline.module.scss";
 
 interface TimelineProps {
@@ -19,12 +20,20 @@ interface TimelineProps {
 }
 
 export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
-  // State for day width with initial value
-  const [dayWidth, setDayWidth] = useState(24);
+  // Constants for layout calculations
+  const cellHeight = 48; // Height of each item row in pixels
+  const groupGapForTesting = 8;
+  const [yearZoom, monthZoom] = [4.5, 24];
+
+  // State for zoom level with initial value
+  const [dayWidth, setDayWidth] = useState(yearZoom);
+
+  // 使用自定义hook实现居中缩放功能
+  const { containerRef } = useCenterBasedZoom(dayWidth);
 
   // Flatten all items from all groups for timeline calculations
-  const allItems = inputData.flatMap(group => group.groupItems);
-  
+  const allItems = inputData.flatMap((group) => group.groupItems);
+
   // Early return if no items to display
   if (allItems.length === 0) {
     return (
@@ -33,7 +42,7 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
       </div>
     );
   }
-  
+
   // Sort items by start date to ensure consistent placement
   const sortedItems = sortTimelineItemsByStartDate(allItems);
   // Get list of years and start month that need to be displayed
@@ -41,26 +50,31 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
     inputData: sortedItems,
   });
 
-  // Constants for layout calculations
-  const cellHeight = 48; // Height of each item row in pixels
-  const groupGapForTesting = 8;
-  const dayWidthAsZoomMonth = 4.5;
-
   // Handler for day width changes
   const handleDayWidthChange = (newWidth: number) => {
     setDayWidth(newWidth);
   };
 
   // Reusable column component for consistent styling
-  const Column = ({ className, children }: { className?: string, children: React.ReactNode }) => {
-    return <div className={`${styles["timeline-ruler-column"]} ${className}`}>{children}</div>;
+  const Column = ({
+    className,
+    children,
+  }: {
+    className?: string;
+    children: React.ReactNode;
+  }) => {
+    return (
+      <div className={`${styles["timeline-ruler-column"]} ${className}`}>
+        {children}
+      </div>
+    );
   };
 
   // Pre-calculate placements for each group separately
-  const groupPlacements = inputData.map(group => {
+  const groupPlacements = inputData.map((group) => {
     const sortedGroupItems = sortTimelineItemsByStartDate(group.groupItems);
     const placements: PlacementResult[] = [];
-    
+
     sortedGroupItems.forEach((item) => {
       const startDate = new Date(item.startDate);
       const endDate = new Date(item.endDate);
@@ -74,23 +88,23 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
         endDate,
       });
     });
-    
+
     return {
       groupTitle: group.groupTitle,
       groupItems: group.groupItems,
-      placements
+      placements,
     };
   });
 
   return (
     <div className={styles["timeline-container"]}>
-      <DayWidthSlider 
-        dayWidth={dayWidth} 
+      <DayWidthSlider
+        dayWidth={dayWidth}
         onDayWidthChange={handleDayWidthChange}
         minWidth={1}
         maxWidth={60}
       />
-      <div className={styles["timeline-ruler-container"]}>
+      <div ref={containerRef} className={styles["timeline-ruler-container"]}>
         <Column>
           {yearList.map((year, yearIndex) => (
             <div key={year} className={styles["timeline-ruler-year"]}>
@@ -104,14 +118,7 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
                     className={styles["timeline-ruler-month"]}
                   >
                     <div className={styles["timeline-ruler-month-label"]}>
-                      <div className={styles["timeline-ruler-month-label-month"]}>
-                        {monthNames[monthIndex]}
-                      </div>
-                      {dayWidth > dayWidthAsZoomMonth && (
-                        <div className={styles["timeline-ruler-month-label-year"]}>
-                          {year}
-                        </div>
-                      )}
+                      {monthNames[monthIndex]}
                     </div>
                     <Column className={styles["timeline-ruler-month-grid"]}>
                       {Array.from(
@@ -119,10 +126,18 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
                         (_, dayIndex) => (
                           <div
                             key={dayIndex}
-                            className={`${styles["timeline-ruler-day"]} ${dayWidth > dayWidthAsZoomMonth ? styles["zoomed"] : ""}`}
+                            className={`${styles["timeline-ruler-day"]} ${
+                              dayWidth > yearZoom ? styles["zoomed"] : ""
+                            }`}
                             style={{ width: `${dayWidth}px` }}
                           >
-                            <div className={`${styles["timeline-ruler-day-label"]} ${dayWidth >= 24 ? styles["zoomed"] : ""}`}>
+                            <div
+                              className={`${
+                                styles["timeline-ruler-day-label"]
+                              } ${
+                                dayWidth >= monthZoom ? styles["zoomed"] : ""
+                              }`}
+                            >
                               {dayIndex + 1}
                             </div>
 

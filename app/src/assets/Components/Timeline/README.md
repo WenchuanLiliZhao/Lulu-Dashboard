@@ -35,3 +35,131 @@ DayWidthSlider 已经集成到 Timeline 组件中，位于时间轴上方。可�
 - `--color-text-main` - 主文本色
 - `--color-text-sec` - 次文本色
 - `--color-accent` - 强调色（滑块颜色） 
+
+# Timeline 居中缩放功能
+
+## 概述
+
+这个模块实现了类似 GarageBand 的居中缩放体验。当用户调整缩放级别时，视图会以当前可见区域的中心点为基准进行缩放，而不是传统的从左侧开始缩放。
+
+## 核心文件
+
+### `useCenterBasedZoom.tsx`
+自定义 React Hook，封装了居中缩放的核心逻辑。
+
+### `Timeline.tsx`
+使用了 `useCenterBasedZoom` hook 的时间轴组件。
+
+## 使用方法
+
+### 基本用法
+
+```tsx
+import { useCenterBasedZoom } from './useCenterBasedZoom';
+
+const MyComponent = () => {
+  const [zoomLevel, setZoomLevel] = useState(24);
+  const { containerRef } = useCenterBasedZoom(zoomLevel);
+
+  return (
+    <div>
+      <input 
+        type="range" 
+        value={zoomLevel} 
+        onChange={(e) => setZoomLevel(Number(e.target.value))}
+      />
+      <div ref={containerRef} className="scrollable-container">
+        {/* 可缩放的内容 */}
+      </div>
+    </div>
+  );
+};
+```
+
+### 在 Timeline 中的应用
+
+```tsx
+export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
+  const [dayWidth, setDayWidth] = useState(24);
+  
+  // 使用自定义hook实现居中缩放功能
+  const { containerRef } = useCenterBasedZoom(dayWidth);
+
+  return (
+    <div className={styles["timeline-container"]}>
+      <DayWidthSlider 
+        dayWidth={dayWidth} 
+        onDayWidthChange={setDayWidth}
+      />
+      <div 
+        ref={containerRef}
+        className={styles["timeline-ruler-container"]}
+      >
+        {/* 时间轴内容 */}
+      </div>
+    </div>
+  );
+};
+```
+
+## 工作原理
+
+### 1. 缩放因子计算
+```
+缩放因子 = 新缩放级别 / 旧缩放级别
+```
+
+### 2. 中心点定位
+```
+视图中心点 = 当前滚动位置 + 容器宽度 / 2
+```
+
+### 3. 新位置计算
+```
+新中心点位置 = 原中心点位置 × 缩放因子
+新滚动位置 = 新中心点位置 - 容器宽度 / 2
+```
+
+### 4. 边界处理
+确保新的滚动位置在有效范围内：
+```
+最终滚动位置 = Math.max(0, Math.min(新滚动位置, 最大滚动距离))
+```
+
+## 优势
+
+1. **直观的用户体验**：缩放时保持用户当前关注的内容在视图中心
+2. **代码复用性**：封装为独立的 hook，可在其他组件中使用
+3. **性能优化**：使用 `useRef` 避免不必要的重新渲染
+4. **边界安全**：自动处理滚动边界，防止异常情况
+
+## 参数说明
+
+### `useCenterBasedZoom(zoomLevel: number)`
+
+**参数：**
+- `zoomLevel`: 当前的缩放级别（数字类型）
+
+**返回值：**
+- `containerRef`: 需要绑定到可滚动容器的 React ref
+
+## 注意事项
+
+1. **容器要求**：使用此 hook 的容器必须是可水平滚动的
+2. **CSS 设置**：确保容器有 `overflow-x: auto` 或 `overflow-x: scroll`
+3. **内容缩放**：内容的实际缩放需要通过 CSS 或内联样式实现，hook 只处理滚动位置
+
+## 扩展性
+
+这个 hook 可以轻松扩展以支持：
+- 垂直缩放
+- 双向缩放
+- 自定义缩放中心点
+- 缩放动画效果
+
+## 示例场景
+
+- 时间轴视图缩放
+- 图表缩放
+- 代码编辑器缩放
+- 任何需要保持用户关注焦点的缩放场景 
