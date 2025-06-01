@@ -1,6 +1,6 @@
 import type { PageShape } from "../object-shapes/Page";
 
-const NotFound: PageShape = {
+const Page_NotFound: PageShape = {
   info: {
     title: "Not Found",
     slug: "*",
@@ -8,4 +8,4 @@ const NotFound: PageShape = {
   content: <div>404 Not Found</div>,
 };
 
-export default NotFound;
+export default Page_NotFound;

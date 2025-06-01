@@ -1,6 +1,6 @@
 import type { PageShape } from "../object-shapes/Page";
 
-const Home: PageShape = {
+const Page_Home: PageShape = {
   info: {
     title: "Home",
     slug: "",
@@ -8,4 +8,4 @@ const Home: PageShape = {
   content: <div>Home</div>,
 };
 
-export default Home;
+export default Page_Home;

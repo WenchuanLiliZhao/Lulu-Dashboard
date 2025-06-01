@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router"
 import type { PageShape } from "./assets/object-shapes/Page"
-import { Pages } from "./assets/pages/_Pages"
+import { Pages } from "./assets/pages/_pages"
 
 function App() {
 
