@@ -1,22 +1,22 @@
 import React, { useState } from "react";
-import { TimelineItemInterval } from "./TimelineFunctions";
+import { TimelineItemInterval } from "./functions";
 import {
   sortTimelineItemsByStartDate,
-  type IssueGroup,
-} from "./TimelineItemShape";
+  type IssueSortShape,
+} from "./Shapes";
 import {
   monthNames,
   getDaysInMonth,
   findPlacement,
   type PlacementResult,
-} from "./TimelineUtils";
-import { TimelineGroup } from "./TimelineGroup";
+} from "./Utils";
+import { TimelineGroup } from "./Group";
 import { DayWidthSlider } from "./DayWidthSlider";
 import { useCenterBasedZoom } from "./useCenterBasedZoom";
 import styles from "./Timeline.module.scss";
 
 interface TimelineProps {
-  inputData: IssueGroup[];
+  inputData: IssueSortShape;
 }
 
 export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
@@ -32,7 +32,7 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
   const { containerRef } = useCenterBasedZoom(dayWidth);
 
   // Flatten all items from all groups for timeline calculations
-  const allItems = inputData.flatMap((group) => group.groupItems);
+  const allItems = inputData.data.flatMap((group) => group.groupItems);
 
   // Early return if no items to display
   if (allItems.length === 0) {
@@ -71,7 +71,7 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
   };
 
   // Pre-calculate placements for each group separately
-  const groupPlacements = inputData.map((group) => {
+  const groupPlacements = inputData.data.map((group) => {
     const sortedGroupItems = sortTimelineItemsByStartDate(group.groupItems);
     const placements: PlacementResult[] = [];
 

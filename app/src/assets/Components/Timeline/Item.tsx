@@ -1,9 +1,9 @@
 import React from "react";
-import { type IssueType } from "./TimelineItemShape";
+import { type IssueShape } from "./Shapes";
 import styles from "./Timeline.module.scss";
 
 interface TimelineItemProps {
-  item: IssueType;
+  item: IssueShape;
   durationInDays: number;
   dayWidth: number;
   cellHeight: number;

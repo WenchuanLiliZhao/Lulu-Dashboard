@@ -1,6 +1,6 @@
-import type { IssueGroup, IssueType } from "./TimelineItemShape";
+import type { IssueShape, IssueSortShape } from "./Shapes";
 
-export const Example_Math: IssueType[] = [
+export const Example_Math: IssueShape[] = [
   {
     id: "MATH001",
     name: "Interactive Calculus Workshop",
@@ -93,7 +93,7 @@ export const Example_Math: IssueType[] = [
   }
 ];
 
-export const Example_Physics: IssueType[] = [
+export const Example_Physics: IssueShape[] = [
   {
     id: "PHYS001",
     name: "Quantum Mechanics Laboratory",
@@ -186,13 +186,18 @@ export const Example_Physics: IssueType[] = [
   }
 ];
 
-export const Example_TimelineItems: IssueGroup[] = [
-  {
-    groupTitle: "Math",
-    groupItems: Example_Math
+export const Example_TimelineItems: IssueSortShape = {
+  meta: {
+    sortBy: "startDate"
   },
-  {
-    groupTitle: "Physics",
-    groupItems: Example_Physics
-  }
-]
+  data: [
+    {
+      groupTitle: "Math",
+      groupItems: Example_Math
+    },
+    {
+      groupTitle: "Physics",
+      groupItems: Example_Physics
+    }
+  ]
+}

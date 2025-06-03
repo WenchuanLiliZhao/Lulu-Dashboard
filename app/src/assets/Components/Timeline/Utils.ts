@@ -2,7 +2,7 @@
  * Timeline utility functions for time formatting and calculations
  */
 
-import { type IssueType } from "./TimelineItemShape";
+import { type IssueShape } from "./Shapes";
 
 /**
  * Represents the result of placing a timeline item in a specific column
@@ -13,7 +13,7 @@ import { type IssueType } from "./TimelineItemShape";
  */
 export interface PlacementResult {
   column: number;
-  item: IssueType;
+  item: IssueShape;
   startDate: Date;
   endDate: Date;
 }
@@ -98,7 +98,7 @@ export const doDateRangesOverlap = (
  */
 export const findPlacement = (
   placements: PlacementResult[],
-  _currentItem: IssueType,
+  _currentItem: IssueShape,
   currentStartDate: Date,
   currentEndDate: Date
 ): number => {
@@ -158,7 +158,7 @@ interface TimelineEvent {
  * const maxOverlap = calculateMaxOverlapCardinality(items);
  * // Returns 3 (all three items overlap on 2024-01-03)
  */
-export const calculateMaxOverlapCardinality = (items: IssueType[]): number => {
+export const calculateMaxOverlapCardinality = (items: IssueShape[]): number => {
   if (items.length === 0) return 0;
   if (items.length === 1) return 1;
 

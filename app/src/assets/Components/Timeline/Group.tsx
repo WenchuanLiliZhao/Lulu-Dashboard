@@ -1,13 +1,13 @@
 import React from "react";
-import { calculateDurationInDays, calculateMaxOverlapCardinality, type PlacementResult } from "./TimelineUtils";
-import { type IssueType } from "./TimelineItemShape";
-import { TimelineItem } from "./TimelineItem";
+import { calculateDurationInDays, calculateMaxOverlapCardinality, type PlacementResult } from "./Utils";
+import { type IssueShape } from "./Shapes";
+import { TimelineItem } from "./Item";
 import styles from "./Timeline.module.scss";
 
 interface TimelineGroupProps {
   groupData: {
     groupTitle: string;
-    groupItems: IssueType[];
+    groupItems: IssueShape[];
     placements: PlacementResult[];
   };
   year: number;
