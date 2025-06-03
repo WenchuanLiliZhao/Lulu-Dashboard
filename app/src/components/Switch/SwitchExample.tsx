@@ -19,12 +19,12 @@ const SwitchExample: React.FC = () => {
     { value: 'dark', label: '暗色' }
   ];
 
-  // 尺寸选项
+  // 尺寸选项 - 不同长度文字
   const sizeOptions: SwitchOption[] = [
     { value: 'small', label: 'S' },
-    { value: 'medium', label: 'M' },
-    { value: 'large', label: 'L' },
-    { value: 'xlarge', label: 'XL' }
+    { value: 'medium', label: 'Medium' },
+    { value: 'large', label: 'Large' },
+    { value: 'xlarge', label: 'Extra Large' }
   ];
 
   // 语言选项
@@ -36,9 +36,25 @@ const SwitchExample: React.FC = () => {
     { value: 'fr', label: 'Français' }
   ];
 
+  // 不同长度文字的示例
+  const mixedLengthOptions: SwitchOption[] = [
+    { value: 'short', label: 'Go' },
+    { value: 'medium', label: 'JavaScript' },
+    { value: 'long', label: 'TypeScript Framework' },
+    { value: 'verylong', label: 'React with Next.js and TypeScript' }
+  ];
+
+  // 状态选项 - 不同长度
+  const statusOptions: SwitchOption[] = [
+    { value: 'draft', label: '草稿' },
+    { value: 'review', label: '待审核' },
+    { value: 'published', label: '已发布' },
+    { value: 'archived', label: '已归档备份' }
+  ];
+
   return (
     <div style={{ padding: '40px', fontFamily: 'Arial, sans-serif' }}>
-      <h1>Switch 组件示例</h1>
+      <h1>Switch 组件示例 - 自适应宽度</h1>
       
       <div style={{ marginBottom: '40px' }}>
         <h3>基础用法 - 视图切换</h3>
@@ -72,7 +88,7 @@ const SwitchExample: React.FC = () => {
       </div>
 
       <div style={{ marginBottom: '40px' }}>
-        <h3>大尺寸 - 尺寸选择</h3>
+        <h3>大尺寸 - 不同长度文字</h3>
         <Switch
           options={sizeOptions}
           size="large"
@@ -84,6 +100,30 @@ const SwitchExample: React.FC = () => {
         />
         <p style={{ marginTop: '10px', color: '#666' }}>
           当前尺寸: {selectedSize}
+        </p>
+      </div>
+
+      <div style={{ marginBottom: '40px' }}>
+        <h3>自适应宽度演示 - 混合长度文字</h3>
+        <Switch
+          options={mixedLengthOptions}
+          defaultValue="medium"
+          onChange={(value) => console.log('选择的技术:', value)}
+        />
+        <p style={{ marginTop: '10px', color: '#666', fontSize: '14px' }}>
+          ✨ 注意每个选项的宽度会根据文字长度自动调整
+        </p>
+      </div>
+
+      <div style={{ marginBottom: '40px' }}>
+        <h3>状态切换 - 中文不同长度</h3>
+        <Switch
+          options={statusOptions}
+          defaultValue="draft"
+          onChange={(value) => console.log('选择的状态:', value)}
+        />
+        <p style={{ marginTop: '10px', color: '#666', fontSize: '14px' }}>
+          每个选项宽度适应中文文字长度
         </p>
       </div>
 

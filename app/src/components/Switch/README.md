@@ -5,12 +5,14 @@
 ## 特性
 
 - 🎯 **多选项支持**: 支持 2-n 个选项之间的切换
+- 📏 **自适应宽度**: 每个选项的宽度自动适应文字内容长度
 - 🎨 **现代化设计**: 美观的渐变背景和平滑动画
 - 📱 **响应式**: 支持不同尺寸和移动端适配
 - 🌙 **深色模式**: 自动适配系统主题
 - ♿ **无障碍**: 支持键盘导航和焦点管理
 - 🎛️ **高度可定制**: 支持自定义样式和尺寸
 - ⚡ **性能优化**: 使用 CSS 变量和硬件加速
+- 🎪 **智能指示器**: 指示器自动调整宽度和位置匹配活跃选项
 
 ## 使用方法
 
@@ -34,6 +36,22 @@ function MyComponent() {
     />
   );
 }
+```
+
+### 自适应宽度示例
+
+组件会自动根据文字长度调整每个选项的宽度：
+
+```tsx
+// 不同长度的选项
+const mixedOptions: SwitchOption[] = [
+  { value: 'go', label: 'Go' },
+  { value: 'js', label: 'JavaScript' },
+  { value: 'ts', label: 'TypeScript Framework' },
+  { value: 'react', label: 'React with Next.js and TypeScript' }
+];
+
+<Switch options={mixedOptions} defaultValue="js" />
 ```
 
 ### 不同尺寸
@@ -89,6 +107,13 @@ function MyComponent() {
 | `value` | `string` | 选项的值 (必需) |
 | `label` | `string` | 选项的显示文本 (必需) |
 
+## 自适应宽度特性
+
+- **智能调整**: 每个选项的宽度根据文字内容自动调整
+- **平滑动画**: 指示器在切换时会平滑过渡到新的位置和宽度
+- **响应式**: 窗口大小变化时自动重新计算位置
+- **性能优化**: 使用 `getBoundingClientRect()` 精确计算位置
+
 ## 样式定制
 
 组件使用 CSS 变量，可以轻松定制样式：
@@ -119,6 +144,34 @@ function MyComponent() {
 - Safari >= 14
 - Edge >= 88
 
+## 示例场景
+
+### 适合使用的场景
+- **视图模式**: 列表、网格、卡片视图切换
+- **主题选择**: 亮色、暗色主题
+- **语言切换**: 不同语言选项
+- **状态切换**: 草稿、审核、发布等状态
+- **尺寸选择**: 小、中、大、超大等选项
+- **技术栈选择**: Go、JavaScript、TypeScript等
+
+### 文字长度适配示例
+```tsx
+// 中文不同长度
+const statusOptions = [
+  { value: 'draft', label: '草稿' },
+  { value: 'review', label: '待审核' },
+  { value: 'published', label: '已发布' },
+  { value: 'archived', label: '已归档备份' }
+];
+
+// 英文不同长度
+const techOptions = [
+  { value: 'go', label: 'Go' },
+  { value: 'js', label: 'JavaScript' },
+  { value: 'framework', label: 'Full Stack Framework' }
+];
+```
+
 ## 示例
 
-查看 `SwitchExample.tsx` 文件获取更多使用示例。 
+查看 `SwitchExample.tsx` 文件获取更多使用示例，包括各种不同长度文字的演示。 

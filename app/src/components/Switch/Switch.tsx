@@ -32,26 +32,11 @@ const Switch: React.FC<SwitchProps> = ({
     onChange?.(value);
   };
 
-  const getActiveIndex = () => {
-    return options.findIndex(option => option.value === activeValue);
-  };
-
-  const activeIndex = getActiveIndex();
-
   return (
     <div 
       className={`${styles.switch} ${styles[size]} ${className} ${disabled ? styles.disabled : ''}`}
     >
       <div className={styles.switchTrack}>
-        {/* 滑动背景指示器 */}
-        <div 
-          className={styles.switchIndicator}
-          style={{
-            width: `${100 / options.length}%`,
-            transform: `translateX(${activeIndex * 100}%)`
-          }}
-        />
-        
         {/* 选项按钮 */}
         {options.map((option) => (
           <button
