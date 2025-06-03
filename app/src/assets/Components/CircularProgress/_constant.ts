@@ -4,6 +4,6 @@ export const CircularProgressConst = {
   strokeWidth: 4,
   
   animationDuration: 1000,
-  animationDelay: 100,
+  animationDelay: 0,
   animationEnable: true,
 };

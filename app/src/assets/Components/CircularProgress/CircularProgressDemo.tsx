@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CircularProgress from './CircularProgress';
-import { CircularProgressConst } from './constant';
+import { CircularProgressConst } from './_constant';
 
 const CircularProgressDemo: React.FC = () => {
   const [progress, setProgress] = useState(50);

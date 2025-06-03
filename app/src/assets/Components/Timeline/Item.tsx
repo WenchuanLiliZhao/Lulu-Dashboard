@@ -1,6 +1,7 @@
 import React from "react";
 import { type IssueShape } from "./Shapes";
 import styles from "./Timeline.module.scss";
+import CircularProgress from "../CircularProgress/CircularProgress";
 
 interface TimelineItemProps {
   item: IssueShape;
@@ -28,6 +29,9 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
       }}
     >
       <div className={styles["timeline-item-name"]}>
+        <CircularProgress
+          progress={item.progress}
+        />
         {item.name}
       </div>
     </div>

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { CircularProgressConst } from './_constant';
+import styles from './CircularProgress.module.scss';
 
 // 进度动画 Hook
 const useProgressAnimation = (
@@ -70,14 +72,12 @@ interface CircularProgressProps {
 
 const CircularProgress: React.FC<CircularProgressProps> = ({
   progress,
-  size = 24,
-  strokeWidth = 4,
-  backgroundColor = '#e5e7eb',
-  progressColor = '#3b82f6',
+  size = CircularProgressConst.size,
+  strokeWidth = CircularProgressConst.strokeWidth,
   className = '',
-  animationDuration = 1000,
-  animationDelay = 1000,
-  enableAnimation = true
+  animationDuration = CircularProgressConst.animationDuration,
+  animationDelay = CircularProgressConst.animationDelay,
+  enableAnimation = CircularProgressConst.animationEnable,
 }) => {
   // 使用动画Hook
   const animatedProgress = useProgressAnimation(progress, animationDuration, enableAnimation, animationDelay);
@@ -107,20 +107,20 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
       >
         {/* 背景圆环 */}
         <circle
+          className={styles.background}
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke={backgroundColor}
           strokeWidth={strokeWidth}
           fill="none"
         />
         
         {/* 进度圆环 */}
         <circle
+          className={styles.progress}
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke={progressColor}
           strokeWidth={strokeWidth}
           fill="none"
           strokeLinecap="round"
