@@ -13,13 +13,11 @@ interface GroupData {
 interface GroupLabelsProps {
   groupPlacements: GroupData[];
   cellHeight: number;
-  groupGap: number;
 }
 
 export const GroupLabels: React.FC<GroupLabelsProps> = ({
   groupPlacements,
   cellHeight,
-  groupGap
 }) => {
   return (
     <div className={styles["timeline-group-labels"]}>
@@ -32,7 +30,7 @@ export const GroupLabels: React.FC<GroupLabelsProps> = ({
         {groupPlacements.map((groupData, groupIndex) => {
           const groupHeight = 
             calculateMaxOverlapCardinality(groupData.groupItems) * cellHeight + 
-            groupGap;
+            TimelineConst.groupGapForTesting;
           return (
             <div
               key={groupIndex}

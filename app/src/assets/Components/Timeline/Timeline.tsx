@@ -111,7 +111,6 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
         <GroupLabels
           groupPlacements={groupPlacements}
           cellHeight={cellHeight}
-          groupGap={groupGapForTesting}
         />
 
         {/* 时间线内容 */}
