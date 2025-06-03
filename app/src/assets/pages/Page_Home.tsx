@@ -11,6 +11,17 @@ const Page_Home: PageShape = {
       <h1>Lulu Dashboard</h1>
       
       <div style={{ margin: '40px 0' }}>
+        <h2>Switch 切换组件</h2>
+        <p style={{ color: '#666', marginBottom: '20px' }}>✨ 现代化的多选项切换组件，支持 2-n 个选项之间平滑切换！</p>
+        
+        <p style={{ marginTop: '20px' }}>
+          <a href="/switch" style={{ color: '#007bff', textDecoration: 'underline' }}>
+            查看完整的 Switch 组件演示 →
+          </a>
+        </p>
+      </div>
+      
+      <div style={{ margin: '40px 0' }}>
         <h2>圆形进度条组件示例</h2>
         <p style={{ color: '#666', marginBottom: '20px' }}>✨ 支持加载动画效果和延迟控制！刷新页面查看瀑布流动画</p>
         
