@@ -1,5 +1,5 @@
 import type { PageShape } from "../object-shapes/Page";
-import SwitchExample from "../../components/Switch/SwitchExample";
+import SwitchExample from "../Components/Switch/SwitchExample";
 
 const Page_Switch: PageShape = {
   info: {

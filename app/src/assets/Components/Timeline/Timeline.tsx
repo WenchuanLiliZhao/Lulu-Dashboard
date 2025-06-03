@@ -12,7 +12,8 @@ import {
 } from "./Utils/Utils";
 import { TimelineGroup } from "./Elements/Group";
 import { GroupLabels } from "./Elements/GroupLabels";
-import Switch, { type SwitchOption } from "../../../components/Switch/Switch";
+import Switch, { type SwitchOption } from "../Switch/Switch";
+import BackToTodayButton from "./Elements/BackToTodayButton";
 import { useLeftBasedZoom } from "./Utils/useLeftBasedZoom";
 import styles from "./Timeline.module.scss";
 import { TimelineConst } from "./Elements/_constants";
@@ -76,6 +77,13 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
   // Flatten all items from all groups for timeline calculations
   const allItems = inputData.data.flatMap((group) => group.groupItems);
 
+  // Sort items by start date to ensure consistent placement
+  const sortedItems = sortTimelineItemsByStartDate(allItems);
+  // Get list of years and start month that need to be displayed
+  const { years: yearList, startMonth } = TimelineItemInterval({
+    inputData: sortedItems,
+  });
+
   // Early return if no items to display
   if (allItems.length === 0) {
     return (
@@ -84,13 +92,6 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
       </div>
     );
   }
-
-  // Sort items by start date to ensure consistent placement
-  const sortedItems = sortTimelineItemsByStartDate(allItems);
-  // Get list of years and start month that need to be displayed
-  const { years: yearList, startMonth } = TimelineItemInterval({
-    inputData: sortedItems,
-  });
 
   // Handler for time view changes
   const handleTimeViewChange = (value: string) => {
@@ -140,7 +141,7 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
 
   return (
     <div className={styles["timeline-container"]}>
-      {/* 时间视图切换器 */}
+      {/* 时间视图切换器和回到今天按钮 */}
       <div
         style={{
           marginBottom: "16px",
@@ -152,19 +153,37 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
       >
         <div
           style={{
-            marginBottom: "8px",
-            fontSize: "14px",
-            fontWeight: "500",
-            color: "var(--color-text-main)",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            marginBottom: "12px",
           }}
         >
-          时间视图: 当前 dayWidth = {dayWidth}px
+          <div>
+            <div
+              style={{
+                marginBottom: "8px",
+                fontSize: "14px",
+                fontWeight: "500",
+                color: "var(--color-text-main)",
+              }}
+            >
+              时间视图: 当前 dayWidth = {dayWidth}px
+            </div>
+            <Switch
+              options={switchOptions}
+              defaultValue={currentTimeView}
+              onChange={handleTimeViewChange}
+            />
+          </div>
+          
+          <BackToTodayButton
+            containerRef={containerRef}
+            dayWidth={dayWidth}
+            yearList={yearList}
+            startMonth={startMonth}
+          />
         </div>
-        <Switch
-          options={switchOptions}
-          defaultValue={currentTimeView}
-          onChange={handleTimeViewChange}
-        />
       </div>
 
       <div className={styles["timeline-content-wrapper"]}>
