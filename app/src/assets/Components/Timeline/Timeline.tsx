@@ -63,7 +63,7 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
 
   // Constants for layout calculations
   const cellHeight = TimelineConst.cellHeight; // Height of each item row in pixels
-  const groupGapForTesting = TimelineConst.groupGapForTesting;
+  const groupGapForTesting = TimelineConst.groupGap;
 
   // State for time view mode and corresponding dayWidth
   const [currentTimeView, setCurrentTimeView] = useState<TimeViewType>("year");
@@ -172,6 +172,7 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
         <GroupLabels
           groupPlacements={groupPlacements}
           cellHeight={cellHeight}
+          sortedBy={inputData.meta.sortBy}
         />
 
         {/* 时间线内容 */}
@@ -248,7 +249,7 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
                                       dayIndex={dayIndex}
                                       dayWidth={dayWidth}
                                       cellHeight={cellHeight}
-                                      groupGapForTesting={groupGapForTesting}
+                                      groupGap={groupGapForTesting}
                                     />
                                   )
                                 )}

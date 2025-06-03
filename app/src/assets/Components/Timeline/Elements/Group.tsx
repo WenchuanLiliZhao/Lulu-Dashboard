@@ -15,7 +15,7 @@ interface TimelineGroupProps {
   dayIndex: number;
   dayWidth: number;
   cellHeight: number;
-  groupGapForTesting: number;
+  groupGap: number;
 }
 
 export const TimelineGroup: React.FC<TimelineGroupProps> = ({
@@ -25,7 +25,7 @@ export const TimelineGroup: React.FC<TimelineGroupProps> = ({
   dayIndex,
   dayWidth,
   cellHeight,
-  groupGapForTesting,
+  groupGap,
 }) => {
   return (
     <div
@@ -33,7 +33,7 @@ export const TimelineGroup: React.FC<TimelineGroupProps> = ({
       style={{
         height: `${
           calculateMaxOverlapCardinality(groupData.groupItems) *
-          cellHeight + groupGapForTesting
+          cellHeight + groupGap
         }px`,
       }}
     >
