@@ -11,6 +11,7 @@ import {
   type PlacementResult,
 } from "./Utils";
 import { TimelineGroup } from "./Group";
+import { GroupLabels } from "./GroupLabels";
 import { DayWidthSlider } from "./DayWidthSlider";
 import { useCenterBasedZoom } from "./useCenterBasedZoom";
 import styles from "./Timeline.module.scss";
@@ -104,67 +105,77 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
         minWidth={1}
         maxWidth={60}
       />
-      <div ref={containerRef} className={styles["timeline-ruler-container"]}>
-        <Column>
-          {yearList.map((year, yearIndex) => (
-            <div key={year} className={styles["timeline-ruler-year"]}>
-              <Column>
-                {Array.from(
-                  { length: yearIndex === 0 ? 12 - startMonth : 12 },
-                  (_, i) => (yearIndex === 0 ? i + startMonth : i)
-                ).map((monthIndex) => (
-                  <div
-                    key={monthIndex}
-                    className={styles["timeline-ruler-month"]}
-                  >
-                    <div className={styles["timeline-ruler-month-label"]}>
-                      {monthNames[monthIndex]}
-                    </div>
-                    <Column className={styles["timeline-ruler-month-grid"]}>
-                      {Array.from(
-                        { length: getDaysInMonth(year, monthIndex) },
-                        (_, dayIndex) => (
-                          <div
-                            key={dayIndex}
-                            className={`${styles["timeline-ruler-day"]} ${
-                              dayWidth > yearZoom ? styles["zoomed"] : ""
-                            }`}
-                            style={{ width: `${dayWidth}px` }}
-                          >
-                            <div
-                              className={`${
-                                styles["timeline-ruler-day-label"]
-                              } ${
-                                dayWidth >= monthZoom ? styles["zoomed"] : ""
-                              }`}
-                            >
-                              {dayIndex + 1}
-                            </div>
+      <div className={styles["timeline-content-wrapper"]}>
+        {/* 分组标题列组件 */}
+        <GroupLabels
+          groupPlacements={groupPlacements}
+          cellHeight={cellHeight}
+          groupGapForTesting={groupGapForTesting}
+        />
 
-                            <div className={styles["timeline-groups"]}>
-                              {groupPlacements.map((groupData, groupIndex) => (
-                                <TimelineGroup
-                                  key={groupIndex}
-                                  groupData={groupData}
-                                  year={year}
-                                  monthIndex={monthIndex}
-                                  dayIndex={dayIndex}
-                                  dayWidth={dayWidth}
-                                  cellHeight={cellHeight}
-                                  groupGapForTesting={groupGapForTesting}
-                                />
-                              ))}
+        {/* 时间线内容 */}
+        <div ref={containerRef} className={styles["timeline-ruler-container"]}>
+          <Column>
+            {yearList.map((year, yearIndex) => (
+              <div key={year} className={styles["timeline-ruler-year"]}>
+                <Column>
+                  {Array.from(
+                    { length: yearIndex === 0 ? 12 - startMonth : 12 },
+                    (_, i) => (yearIndex === 0 ? i + startMonth : i)
+                  ).map((monthIndex) => (
+                    <div
+                      key={monthIndex}
+                      className={styles["timeline-ruler-month"]}
+                    >
+                      <div className={styles["timeline-ruler-month-label"]}>
+                        {monthNames[monthIndex]}
+                      </div>
+                      <Column className={styles["timeline-ruler-month-grid"]}>
+                        {Array.from(
+                          { length: getDaysInMonth(year, monthIndex) },
+                          (_, dayIndex) => (
+                            <div
+                              key={dayIndex}
+                              className={`${styles["timeline-ruler-day"]} ${
+                                dayWidth > yearZoom ? styles["zoomed"] : ""
+                              }`}
+                              style={{ width: `${dayWidth}px` }}
+                            >
+                              <div
+                                className={`${
+                                  styles["timeline-ruler-day-label"]
+                                } ${
+                                  dayWidth >= monthZoom ? styles["zoomed"] : ""
+                                }`}
+                              >
+                                {dayIndex + 1}
+                              </div>
+
+                              <div className={styles["timeline-groups"]}>
+                                {groupPlacements.map((groupData, groupIndex) => (
+                                  <TimelineGroup
+                                    key={groupIndex}
+                                    groupData={groupData}
+                                    year={year}
+                                    monthIndex={monthIndex}
+                                    dayIndex={dayIndex}
+                                    dayWidth={dayWidth}
+                                    cellHeight={cellHeight}
+                                    groupGapForTesting={groupGapForTesting}
+                                  />
+                                ))}
+                              </div>
                             </div>
-                          </div>
-                        )
-                      )}
-                    </Column>
-                  </div>
-                ))}
-              </Column>
-            </div>
-          ))}
-        </Column>
+                          )
+                        )}
+                      </Column>
+                    </div>
+                  ))}
+                </Column>
+              </div>
+            ))}
+          </Column>
+        </div>
       </div>
     </div>
   );
