@@ -22,7 +22,7 @@ export const GroupLabels: React.FC<GroupLabelsProps> = ({
   return (
     <div className={styles["timeline-group-labels"]}>
       <div className={styles["timeline-group-labels-header"]}>
-        <div className={styles["timeline-group-labels-year-placeholder"]}></div>
+        <div className={styles["timeline-group-labels-year-placeholder"]} style={{ height: `${TimelineConst.yearLabelHight}px` }}></div>
         <div className={styles["timeline-group-labels-month-placeholder"]} style={{ height: `${TimelineConst.monthLabelHight}px` }}></div>
         <div className={styles["timeline-group-labels-day-placeholder"]} style={{ height: `${TimelineConst.dayLabelHight}px` }}></div>
       </div>

@@ -4,6 +4,7 @@
   z-index: 10;
   background: var(--color-bg-main);
   border-right: 1px solid var(--color-border-main);
+  border-top: 1px solid var(--color-border-main-trans);
   min-width: 200px;
   max-width: 200px;
   display: flex;
@@ -14,14 +15,17 @@
     flex-direction: column;
 
     .timeline-group-labels-year-placeholder {
-      height: 0; // Will be dynamically calculated to match year header
+      background: var(--color-bg-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: bold;
+      color: var(--color-main);
     }
 
     .timeline-group-labels-month-placeholder {
-      height: 48px; // Match month label height (8px + 14px font + 8px padding + 2px for borders)
       background: var(--color-bg-sec);
-      border-bottom: 1px solid var(--color-border-main);
-      box-shadow: inset 1px 0 0 0 var(--color-border-main-trans);
       display: flex;
       align-items: center;
       padding: 8px 12px;

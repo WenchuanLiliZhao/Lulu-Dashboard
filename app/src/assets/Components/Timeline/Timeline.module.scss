@@ -1,7 +1,7 @@
 .timeline-container {
   display: flex;
   flex-direction: column;
-
+  
   .timeline-content-wrapper {
     display: flex;
     position: relative;
@@ -10,10 +10,24 @@
   .timeline-ruler-container {
     overflow-x: auto;
     flex: 1;
+    border-top: 1px solid var(--color-border-main-trans);
+    border-bottom: 1px solid var(--color-border-main-trans);
 
     .timeline-ruler-year {
       display: flex;
       flex-direction: column;
+
+      .timeline-ruler-year-label {
+        font-size: 16px;
+        font-weight: bold;
+        padding: 0 8px;
+        background: var(--color-bg-main);
+        box-shadow: inset 1px 0 0 0 var(--color-border-main-trans);
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
       .timeline-ruler-month {
         box-shadow: inset 1px 0 0 0 var(--color-border-main-trans);

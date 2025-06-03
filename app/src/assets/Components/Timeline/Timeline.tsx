@@ -118,6 +118,10 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
           <Column>
             {yearList.map((year, yearIndex) => (
               <div key={year} className={styles["timeline-ruler-year"]}>
+                {/* 年份标签 - 只在每年的第一个月显示 */}
+                <div className={styles["timeline-ruler-year-label"]} style={{ height: `${TimelineConst.yearLabelHight}px` }}>
+                  {year}
+                </div>
                 <Column>
                   {Array.from(
                     { length: yearIndex === 0 ? 12 - startMonth : 12 },
