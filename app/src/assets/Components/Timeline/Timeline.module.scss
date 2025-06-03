@@ -86,4 +86,8 @@
 
 .timeline-group {
   position: relative;
+
+  &:nth-child(odd) {
+    background-color: var(--color-bg-sec-trans);
+  }
 }

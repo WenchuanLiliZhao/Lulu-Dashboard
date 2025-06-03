@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TimelineItemInterval } from "./functions";
 import {
   sortTimelineItemsByStartDate,
-  type IssueSortShape,
+  type SortedIssueShape,
 } from "./Shapes";
 import {
   monthNames,
@@ -16,7 +16,7 @@ import { useCenterBasedZoom } from "./useCenterBasedZoom";
 import styles from "./Timeline.module.scss";
 
 interface TimelineProps {
-  inputData: IssueSortShape;
+  inputData: SortedIssueShape;
 }
 
 export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
