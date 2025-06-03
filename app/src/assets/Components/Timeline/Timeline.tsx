@@ -12,7 +12,7 @@ import {
 } from "./Utils/Utils";
 import { TimelineGroup } from "./Elements/Group";
 import { GroupLabels } from "./Elements/GroupLabels";
-import { DayWidthSlider } from "./Elements/DayWidthSlider";
+import Switch, { type SwitchOption } from "../../../components/Switch/Switch";
 import { useLeftBasedZoom } from "./Utils/useLeftBasedZoom";
 import styles from "./Timeline.module.scss";
 import { TimelineConst } from "./Elements/_constants";
@@ -21,14 +21,54 @@ interface TimelineProps {
   inputData: SortedIssueShape;
 }
 
+// 时间视图配置
+const TIME_VIEW_CONFIG = {
+  year: { dayWidth: 4.5, label: "Year", zoomThreshold: 9 },
+  month: { dayWidth: 9, label: "Month", zoomThreshold: 9 },
+  day: { dayWidth: 24, label: "Day", zoomThreshold: 9 },
+} as const;
+
+type TimeViewType = keyof typeof TIME_VIEW_CONFIG;
+
+// 时间视图选项配置
+const timeViewOptions = {
+  year: TIME_VIEW_CONFIG.year.label,
+  month: TIME_VIEW_CONFIG.month.label,
+  day: TIME_VIEW_CONFIG.day.label,
+} as const;
+
+// 判断指定日期是否为今天的函数
+const isToday = (
+  year: number,
+  monthIndex: number,
+  dayIndex: number
+): boolean => {
+  const today = new Date();
+  const currentYear = today.getFullYear();
+  const currentMonth = today.getMonth(); // 0-based (0 = January)
+  const currentDay = today.getDate(); // 1-based (1-31)
+
+  return (
+    year === currentYear &&
+    monthIndex === currentMonth &&
+    dayIndex + 1 === currentDay
+  );
+};
+
 export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
+  // Time view switch options - 转换为Switch组件需要的格式
+  const switchOptions: SwitchOption[] = Object.entries(timeViewOptions).map(
+    ([value, label]) => ({ value, label })
+  );
+
   // Constants for layout calculations
   const cellHeight = TimelineConst.cellHeight; // Height of each item row in pixels
   const groupGapForTesting = TimelineConst.groupGapForTesting;
-  const [yearZoom, monthZoom] = [TimelineConst.yearZoom, TimelineConst.monthZoom];
 
-  // State for zoom level with initial value
-  const [dayWidth, setDayWidth] = useState(yearZoom);
+  // State for time view mode and corresponding dayWidth
+  const [currentTimeView, setCurrentTimeView] = useState<TimeViewType>("year");
+  const dayWidth = TIME_VIEW_CONFIG[currentTimeView].dayWidth;
+  const zoomThreshold = TIME_VIEW_CONFIG[currentTimeView].zoomThreshold;
 
   // 使用自定义hook实现左侧缩放功能
   const { containerRef } = useLeftBasedZoom(dayWidth);
@@ -52,9 +92,9 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
     inputData: sortedItems,
   });
 
-  // Handler for day width changes
-  const handleDayWidthChange = (newWidth: number) => {
-    setDayWidth(newWidth);
+  // Handler for time view changes
+  const handleTimeViewChange = (value: string) => {
+    setCurrentTimeView(value as TimeViewType);
   };
 
   // Reusable column component for consistent styling
@@ -100,12 +140,33 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
 
   return (
     <div className={styles["timeline-container"]}>
-      <DayWidthSlider
-        dayWidth={dayWidth}
-        onDayWidthChange={handleDayWidthChange}
-        minWidth={1}
-        maxWidth={60}
-      />
+      {/* 时间视图切换器 */}
+      <div
+        style={{
+          marginBottom: "16px",
+          padding: "16px 20px",
+          background: "var(--color-bg-sec)",
+          border: "1px solid var(--color-border-main)",
+          borderRadius: "8px",
+        }}
+      >
+        <div
+          style={{
+            marginBottom: "8px",
+            fontSize: "14px",
+            fontWeight: "500",
+            color: "var(--color-text-main)",
+          }}
+        >
+          时间视图: 当前 dayWidth = {dayWidth}px
+        </div>
+        <Switch
+          options={switchOptions}
+          defaultValue={currentTimeView}
+          onChange={handleTimeViewChange}
+        />
+      </div>
+
       <div className={styles["timeline-content-wrapper"]}>
         {/* 分组标题列组件 */}
         <GroupLabels
@@ -119,7 +180,10 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
             {yearList.map((year, yearIndex) => (
               <div key={year} className={styles["timeline-ruler-year"]}>
                 {/* 年份标签 - 只在每年的第一个月显示 */}
-                <div className={styles["timeline-ruler-year-label"]} style={{ height: `${TimelineConst.yearLabelHight}px` }}>
+                <div
+                  className={styles["timeline-ruler-year-label"]}
+                  style={{ height: `${TimelineConst.yearLabelHight}px` }}
+                >
                   {year}
                 </div>
                 <Column>
@@ -131,7 +195,10 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
                       key={monthIndex}
                       className={styles["timeline-ruler-month"]}
                     >
-                      <div className={styles["timeline-ruler-month-label"]} style={{ height: `${TimelineConst.monthLabelHight}px` }}>
+                      <div
+                        className={styles["timeline-ruler-month-label"]}
+                        style={{ height: `${TimelineConst.monthLabelHight}px` }}
+                      >
                         {monthNames[monthIndex]}
                       </div>
                       <Column className={styles["timeline-ruler-month-grid"]}>
@@ -141,7 +208,7 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
                             <div
                               key={dayIndex}
                               className={`${styles["timeline-ruler-day"]} ${
-                                dayWidth > yearZoom ? styles["zoomed"] : ""
+                                dayWidth > zoomThreshold ? styles["zoomed"] : ""
                               }`}
                               style={{ width: `${dayWidth}px` }}
                             >
@@ -149,26 +216,42 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
                                 className={`${
                                   styles["timeline-ruler-day-label"]
                                 } ${
-                                  dayWidth >= monthZoom ? styles["zoomed"] : ""
+                                  isToday(year, monthIndex, dayIndex)
+                                    ? styles["today"]
+                                    : ""
                                 }`}
-                                style={{ height: `${TimelineConst.dayLabelHight}px` }}
+                                style={{
+                                  height: `${TimelineConst.dayLabelHight}px`,
+                                }}
                               >
-                                {dayIndex + 1}
+                                <div
+                                  className={`${
+                                    styles["timeline-ruler-day-label-text"]
+                                  } ${
+                                    dayWidth > zoomThreshold
+                                      ? styles["zoomed"]
+                                      : ""
+                                  }`}
+                                >
+                                  {dayIndex + 1}
+                                </div>
                               </div>
 
                               <div className={styles["timeline-groups"]}>
-                                {groupPlacements.map((groupData, groupIndex) => (
-                                  <TimelineGroup
-                                    key={groupIndex}
-                                    groupData={groupData}
-                                    year={year}
-                                    monthIndex={monthIndex}
-                                    dayIndex={dayIndex}
-                                    dayWidth={dayWidth}
-                                    cellHeight={cellHeight}
-                                    groupGapForTesting={groupGapForTesting}
-                                  />
-                                ))}
+                                {groupPlacements.map(
+                                  (groupData, groupIndex) => (
+                                    <TimelineGroup
+                                      key={groupIndex}
+                                      groupData={groupData}
+                                      year={year}
+                                      monthIndex={monthIndex}
+                                      dayIndex={dayIndex}
+                                      dayWidth={dayWidth}
+                                      cellHeight={cellHeight}
+                                      groupGapForTesting={groupGapForTesting}
+                                    />
+                                  )
+                                )}
                               </div>
                             </div>
                           )
