@@ -1,0 +1,80 @@
+.resizable-sidebar {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.sidebar-content {
+  flex: 1;
+  overflow: hidden;
+  height: 100%;
+}
+
+.resizer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  cursor: ew-resize;
+  z-index: 11;
+  
+  // 创建一个不可见的更大的拖拽区域
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    left: -2px;
+  }
+
+  // 悬停和拖拽时显示的视觉指示器
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+  }
+
+  &:hover::after,
+  &.resizing::after {
+    background-color: var(--color-primary, #007bff);
+  }
+
+  &.resizing {
+    cursor: ew-resize;
+  }
+}
+
+.resizer-right {
+  right: -2px;
+  
+  &::after {
+    right: 0;
+  }
+}
+
+.resizer-left {
+  left: -2px;
+  
+  &::after {
+    left: 0;
+  }
+}
+
+// 全局样式，防止在调整大小时选中文本
+.resizing {
+  user-select: none;
+}
+
+// 为了更好的视觉反馈，在调整大小时添加一些样式
+.resizable-sidebar:has(.resizer.resizing) {
+  .sidebar-content {
+    pointer-events: none;
+  }
+} 
