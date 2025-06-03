@@ -22,7 +22,7 @@
         font-weight: bold;
         padding: 0 8px;
         background: var(--color-bg-main);
-        box-shadow: inset 1px 0 0 0 var(--color-border-main-trans);
+        box-shadow: inset -1px 0 0 0 var(--color-border-main-trans);
         text-align: center;
         display: flex;
         align-items: center;
@@ -30,13 +30,13 @@
       }
 
       .timeline-ruler-month {
-        box-shadow: inset 1px 0 0 0 var(--color-border-main-trans);
+        box-shadow: inset -1px 0 0 0 var(--color-border-main-trans);
 
         .timeline-ruler-month-label {
           font-size: 14px;
           padding: 0 8px;
           background: var(--color-bg-sec);
-          box-shadow: inset 1px 0 0 0 var(--color-border-main-trans);
+          box-shadow: inset -1px 0 0 0 var(--color-border-main-trans);
           text-align: center;
           display: flex;
           align-items: center;
@@ -49,7 +49,7 @@
           position: relative;
 
           &.zoomed {
-            box-shadow: inset 1px 0 0 0 var(--color-border-main-trans);
+            box-shadow: inset -1px 0 0 0 var(--color-border-main-trans);
           }
 
           .timeline-ruler-day-label {

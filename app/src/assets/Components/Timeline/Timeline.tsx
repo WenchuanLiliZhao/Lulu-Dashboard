@@ -13,7 +13,7 @@ import {
 import { TimelineGroup } from "./Elements/Group";
 import { GroupLabels } from "./Elements/GroupLabels";
 import { DayWidthSlider } from "./Elements/DayWidthSlider";
-import { useCenterBasedZoom } from "./Utils/useCenterBasedZoom";
+import { useLeftBasedZoom } from "./Utils/useLeftBasedZoom";
 import styles from "./Timeline.module.scss";
 import { TimelineConst } from "./Elements/_constants";
 
@@ -30,8 +30,8 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
   // State for zoom level with initial value
   const [dayWidth, setDayWidth] = useState(yearZoom);
 
-  // 使用自定义hook实现居中缩放功能
-  const { containerRef } = useCenterBasedZoom(dayWidth);
+  // 使用自定义hook实现左侧缩放功能
+  const { containerRef } = useLeftBasedZoom(dayWidth);
 
   // Flatten all items from all groups for timeline calculations
   const allItems = inputData.data.flatMap((group) => group.groupItems);
