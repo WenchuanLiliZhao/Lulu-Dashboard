@@ -1,7 +1,8 @@
 import React from "react";
-import { calculateMaxOverlapCardinality, type PlacementResult } from "./Utils";
-import { type IssueShape } from "./Shapes";
-import styles from "./Timeline.module.scss";
+import { calculateMaxOverlapCardinality, type PlacementResult } from "../Utils/Utils";
+import { type IssueShape } from "../Utils/Shapes";
+import styles from "./GroupLabels.module.scss";
+import { TimelineConst } from "./_constants";
 
 interface GroupData {
   groupTitle: string;
@@ -12,27 +13,26 @@ interface GroupData {
 interface GroupLabelsProps {
   groupPlacements: GroupData[];
   cellHeight: number;
-  groupGapForTesting: number;
+  groupGap: number;
 }
 
 export const GroupLabels: React.FC<GroupLabelsProps> = ({
   groupPlacements,
   cellHeight,
-  groupGapForTesting,
+  groupGap
 }) => {
   return (
     <div className={styles["timeline-group-labels"]}>
       <div className={styles["timeline-group-labels-header"]}>
         <div className={styles["timeline-group-labels-year-placeholder"]}></div>
-        <div className={styles["timeline-group-labels-month-placeholder"]}></div>
-        <div className={styles["timeline-group-labels-day-placeholder"]}></div>
+        <div className={styles["timeline-group-labels-month-placeholder"]} style={{ height: `${TimelineConst.monthLabelHight}px` }}></div>
+        <div className={styles["timeline-group-labels-day-placeholder"]} style={{ height: `${TimelineConst.dayLabelHight}px` }}></div>
       </div>
       <div className={styles["timeline-group-labels-content"]}>
         {groupPlacements.map((groupData, groupIndex) => {
           const groupHeight = 
             calculateMaxOverlapCardinality(groupData.groupItems) * cellHeight + 
-            groupGapForTesting;
-          
+            groupGap;
           return (
             <div
               key={groupIndex}

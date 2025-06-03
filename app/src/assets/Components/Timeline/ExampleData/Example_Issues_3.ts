@@ -1,4 +1,4 @@
-import type { IssueShape } from "../Shapes";
+import type { IssueShape } from "../Utils/Shapes";
 
 export const Example_Issues_3: IssueShape[] = [
   {
@@ -20,7 +20,7 @@ export const Example_Issues_3: IssueShape[] = [
     startDate: new Date("2024-02-01"),
     endDate: new Date("2024-02-29"),
     progress: 25,
-    vision: "To protect our planet through sustainable business practices.",
+    vision: "The Consistancy of Axiom of Choice and General Continuum Hypothesis in the Context of Set Theory",
     team: "Product"
   },
   {
@@ -64,7 +64,7 @@ export const Example_Issues_3: IssueShape[] = [
     startDate: new Date("2024-06-01"),
     endDate: new Date("2024-08-31"),
     progress: 80,
-    vision: "To ensure robust protection against evolving cyber threats.",
+    vision: "Evolving Cyber Threats",
     team: "Tech"
   },
   {
@@ -108,7 +108,7 @@ export const Example_Issues_3: IssueShape[] = [
     startDate: new Date("2024-10-01"),
     endDate: new Date("2024-10-31"),
     progress: 45,
-    vision: "To protect our planet through real-time environmental awareness and action.",
+    vision: "Awareness and Action",
     team: "Corporate"
   },
   {
@@ -229,7 +229,7 @@ export const Example_Issues_3: IssueShape[] = [
     startDate: new Date("2025-09-01"),
     endDate: new Date("2025-09-30"),
     progress: 35,
-    vision: "To protect our planet through real-time environmental awareness and action.",
+    vision: "Awareness and Action",
     team: "Corporate"
   },
   {

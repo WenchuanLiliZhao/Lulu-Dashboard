@@ -1,20 +1,21 @@
 import React, { useState } from "react";
-import { TimelineItemInterval } from "./functions";
+import { TimelineItemInterval } from "./Utils/functions";
 import {
   sortTimelineItemsByStartDate,
   type SortedIssueShape,
-} from "./Shapes";
+} from "./Utils/Shapes";
 import {
   monthNames,
   getDaysInMonth,
   findPlacement,
   type PlacementResult,
-} from "./Utils";
-import { TimelineGroup } from "./Group";
-import { GroupLabels } from "./GroupLabels";
-import { DayWidthSlider } from "./DayWidthSlider";
-import { useCenterBasedZoom } from "./useCenterBasedZoom";
+} from "./Utils/Utils";
+import { TimelineGroup } from "./Elements/Group";
+import { GroupLabels } from "./Elements/GroupLabels";
+import { DayWidthSlider } from "./Elements/DayWidthSlider";
+import { useCenterBasedZoom } from "./Utils/useCenterBasedZoom";
 import styles from "./Timeline.module.scss";
+import { TimelineConst } from "./Elements/_constants";
 
 interface TimelineProps {
   inputData: SortedIssueShape;
@@ -22,9 +23,9 @@ interface TimelineProps {
 
 export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
   // Constants for layout calculations
-  const cellHeight = 48; // Height of each item row in pixels
-  const groupGapForTesting = 8;
-  const [yearZoom, monthZoom] = [4.5, 24];
+  const cellHeight = TimelineConst.cellHeight; // Height of each item row in pixels
+  const groupGapForTesting = TimelineConst.groupGapForTesting;
+  const [yearZoom, monthZoom] = [TimelineConst.yearZoom, TimelineConst.monthZoom];
 
   // State for zoom level with initial value
   const [dayWidth, setDayWidth] = useState(yearZoom);
@@ -110,7 +111,7 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
         <GroupLabels
           groupPlacements={groupPlacements}
           cellHeight={cellHeight}
-          groupGapForTesting={groupGapForTesting}
+          groupGap={groupGapForTesting}
         />
 
         {/* 时间线内容 */}
@@ -127,7 +128,7 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
                       key={monthIndex}
                       className={styles["timeline-ruler-month"]}
                     >
-                      <div className={styles["timeline-ruler-month-label"]}>
+                      <div className={styles["timeline-ruler-month-label"]} style={{ height: `${TimelineConst.monthLabelHight}px` }}>
                         {monthNames[monthIndex]}
                       </div>
                       <Column className={styles["timeline-ruler-month-grid"]}>
@@ -147,6 +148,7 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
                                 } ${
                                   dayWidth >= monthZoom ? styles["zoomed"] : ""
                                 }`}
+                                style={{ height: `${TimelineConst.dayLabelHight}px` }}
                               >
                                 {dayIndex + 1}
                               </div>

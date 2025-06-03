@@ -1,4 +1,4 @@
-import type { IssueShape } from "../Shapes";
+import type { IssueShape } from "../Utils/Shapes";
 
 // Example goes here
 
@@ -33,7 +33,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2024-03-01"),
     endDate: new Date("2024-03-31"),
     progress: 100,
-    vision: "To advance artificial intelligence capabilities in visual processing.",
+    vision: "Advance Capabilities",
     team: "Tech"
   },
   {
@@ -66,7 +66,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2024-06-01"),
     endDate: new Date("2024-06-30"),
     progress: 60,
-    vision: "To advance artificial intelligence capabilities in visual processing.",
+    vision: "Advance Capabilities",
     team: "Retail"
   },
   {
@@ -77,7 +77,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2024-07-01"),
     endDate: new Date("2024-08-31"),
     progress: 5,
-    vision: "To ensure robust protection against evolving cyber threats.",
+    vision: "Evolving Cyber Threats",
     team: "Tech"
   },
   {
@@ -88,7 +88,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2024-08-01"),
     endDate: new Date("2024-08-31"),
     progress: 40,
-    vision: "To protect our planet through real-time environmental awareness and action.",
+    vision: "Awareness and Action",
     team: "Tech"
   },
   {
@@ -99,7 +99,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2024-09-01"),
     endDate: new Date("2024-09-30"),
     progress: 100,
-    vision: "To ensure robust protection against evolving cyber threats.",
+    vision: "Evolving Cyber Threats",
     team: "Tech"
   },
   {
@@ -110,7 +110,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2024-10-01"),
     endDate: new Date("2024-10-31"),
     progress: 35,
-    vision: "To advance artificial intelligence capabilities in visual processing.",
+    vision: "Advance Capabilities",
     team: "Function"
   },
   {
@@ -143,7 +143,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2025-01-01"),
     endDate: new Date("2025-01-31"),
     progress: 65,
-    vision: "To ensure robust protection against evolving cyber threats.",
+    vision: "Evolving Cyber Threats",
     team: "Tech"
   },
   {
@@ -154,7 +154,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2025-02-01"),
     endDate: new Date("2025-02-28"),
     progress: 100,
-    vision: "To advance artificial intelligence capabilities in visual processing.",
+    vision: "Advance Capabilities",
     team: "Tech"
   },
   {
@@ -176,7 +176,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2025-05-01"),
     endDate: new Date("2025-05-31"),
     progress: 5,
-    vision: "To advance artificial intelligence capabilities in visual processing.",
+    vision: "Advance Capabilities",
     team: "Tech"
   },
   {
@@ -220,7 +220,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2025-09-01"),
     endDate: new Date("2025-09-30"),
     progress: 8,
-    vision: "To advance artificial intelligence capabilities in visual processing.",
+    vision: "Advance Capabilities",
     team: "Tech"
   },
   {
@@ -231,7 +231,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2025-10-01"),
     endDate: new Date("2025-11-30"),
     progress: 55,
-    vision: "To protect our planet through real-time environmental awareness and action.",
+    vision: "Awareness and Action",
     team: "Corporate"
   },
   {
@@ -242,7 +242,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2025-12-01"),
     endDate: new Date("2025-12-31"),
     progress: 90,
-    vision: "To improve patient outcomes through secure and insightful data analysis.",
+    vision: "Data Analysis",
     team: "Tech"
   },
   {
@@ -253,7 +253,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2024-01-01"),
     endDate: new Date("2024-01-31"),
     progress: 25,
-    vision: "To advance artificial intelligence capabilities in visual processing.",
+    vision: "Advance Capabilities",
     team: "Tech"
   },
   {
@@ -264,7 +264,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2024-02-01"),
     endDate: new Date("2024-02-29"),
     progress: 100,
-    vision: "To advance artificial intelligence capabilities in visual processing.",
+    vision: "Advance Capabilities",
     team: "Tech"
   },
   {
@@ -297,7 +297,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2024-05-01"),
     endDate: new Date("2024-05-31"),
     progress: 40,
-    vision: "To ensure robust protection against evolving cyber threats.",
+    vision: "Evolving Cyber Threats",
     team: "Tech"
   },
   {
@@ -308,7 +308,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2024-06-01"),
     endDate: new Date("2024-06-30"),
     progress: 80,
-    vision: "To advance artificial intelligence capabilities in visual processing.",
+    vision: "Advance Capabilities",
     team: "Tech"
   },
   {
@@ -319,7 +319,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2024-07-01"),
     endDate: new Date("2024-07-31"),
     progress: 3,
-    vision: "To protect our planet through real-time environmental awareness and action.",
+    vision: "Awareness and Action",
     team: "Corporate"
   },
   {
@@ -330,7 +330,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2024-08-01"),
     endDate: new Date("2024-08-31"),
     progress: 60,
-    vision: "To advance artificial intelligence capabilities in visual processing.",
+    vision: "Advance Capabilities",
     team: "Tech"
   },
   {
@@ -341,7 +341,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2024-09-01"),
     endDate: new Date("2024-09-30"),
     progress: 100,
-    vision: "To advance artificial intelligence capabilities in visual processing.",
+    vision: "Advance Capabilities",
     team: "Tech"
   },
   {
@@ -374,7 +374,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2024-12-01"),
     endDate: new Date("2024-12-31"),
     progress: 85,
-    vision: "To ensure robust protection against evolving cyber threats.",
+    vision: "Evolving Cyber Threats",
     team: "Tech"
   },
   {
@@ -385,7 +385,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2025-01-01"),
     endDate: new Date("2025-01-31"),
     progress: 45,
-    vision: "To protect our planet through real-time environmental awareness and action.",
+    vision: "Awareness and Action",
     team: "Corporate"
   },
   {
@@ -396,7 +396,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2025-02-01"),
     endDate: new Date("2025-02-28"),
     progress: 15,
-    vision: "To advance artificial intelligence capabilities in visual processing.",
+    vision: "Advance Capabilities",
     team: "Tech"
   },
   {
@@ -407,7 +407,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2025-03-01"),
     endDate: new Date("2025-03-31"),
     progress: 25,
-    vision: "To protect our planet through real-time environmental awareness and action.",
+    vision: "Awareness and Action",
     team: "Corporate"
   },
   {
@@ -418,7 +418,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2025-04-01"),
     endDate: new Date("2025-04-30"),
     progress: 10,
-    vision: "To ensure robust protection against evolving cyber threats.",
+    vision: "Evolving Cyber Threats",
     team: "Tech"
   },
   {
@@ -429,7 +429,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2025-05-01"),
     endDate: new Date("2025-06-30"),
     progress: 70,
-    vision: "To advance artificial intelligence capabilities in visual processing.",
+    vision: "Advance Capabilities",
     team: "Tech"
   },
   {
@@ -440,7 +440,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2025-07-01"),
     endDate: new Date("2025-07-31"),
     progress: 5,
-    vision: "To advance artificial intelligence capabilities in visual processing.",
+    vision: "Advance Capabilities",
     team: "Tech"
   },
   {
@@ -451,7 +451,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2025-08-01"),
     endDate: new Date("2025-08-31"),
     progress: 55,
-    vision: "To advance artificial intelligence capabilities in visual processing.",
+    vision: "Advance Capabilities",
     team: "Function"
   },
   {
@@ -462,7 +462,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2025-09-01"),
     endDate: new Date("2025-09-30"),
     progress: 90,
-    vision: "To ensure robust protection against evolving cyber threats.",
+    vision: "Evolving Cyber Threats",
     team: "Tech"
   },
   {
@@ -484,7 +484,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2025-11-01"),
     endDate: new Date("2025-11-30"),
     progress: 2,
-    vision: "To improve patient outcomes through secure and insightful data analysis.",
+    vision: "Data Analysis",
     team: "Tech"
   },
   {
@@ -495,7 +495,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2025-12-01"),
     endDate: new Date("2025-12-31"),
     progress: 65,
-    vision: "To protect our planet through real-time environmental awareness and action.",
+    vision: "Awareness and Action",
     team: "Corporate"
   },
   {
@@ -506,7 +506,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2024-01-01"),
     endDate: new Date("2024-01-31"),
     progress: 7,
-    vision: "To advance artificial intelligence capabilities in visual processing.",
+    vision: "Advance Capabilities",
     team: "Tech"
   },
   {
@@ -528,7 +528,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2024-03-01"),
     endDate: new Date("2024-03-31"),
     progress: 40,
-    vision: "To improve patient outcomes through secure and insightful data analysis.",
+    vision: "Data Analysis",
     team: "Tech"
   },
   {
@@ -539,7 +539,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2024-04-01"),
     endDate: new Date("2024-04-30"),
     progress: 75,
-    vision: "To advance artificial intelligence capabilities in visual processing.",
+    vision: "Advance Capabilities",
     team: "Tech"
   },
   {
@@ -550,7 +550,7 @@ export const Example_Issues_1: IssueShape[] = [
     startDate: new Date("2024-05-01"),
     endDate: new Date("2024-05-31"),
     progress: 20,
-    vision: "To protect our planet through real-time environmental awareness and action.",
+    vision: "Awareness and Action",
     team: "Tech"
   },
 ];

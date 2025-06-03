@@ -1,0 +1,78 @@
+.timeline-group-labels {
+  position: sticky;
+  left: 0;
+  z-index: 10;
+  background: var(--color-bg-main);
+  border-right: 1px solid var(--color-border-main);
+  min-width: 200px;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+
+  .timeline-group-labels-header {
+    display: flex;
+    flex-direction: column;
+
+    .timeline-group-labels-year-placeholder {
+      height: 0; // Will be dynamically calculated to match year header
+    }
+
+    .timeline-group-labels-month-placeholder {
+      height: 48px; // Match month label height (8px + 14px font + 8px padding + 2px for borders)
+      background: var(--color-bg-sec);
+      border-bottom: 1px solid var(--color-border-main);
+      box-shadow: inset 1px 0 0 0 var(--color-border-main-trans);
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--color-main);
+
+      &::after {
+        content: "Groups";
+      }
+    }
+
+    .timeline-group-labels-day-placeholder {
+      height: 32px; // Match day label height
+      background: var(--color-bg-main);
+      border-bottom: 1px solid var(--color-border-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--color-sec);
+    }
+  }
+
+  .timeline-group-labels-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .timeline-group-label {
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--color-border-main-trans);
+    background: var(--color-bg-main);
+    position: relative;
+
+    &:nth-child(odd) {
+      background-color: var(--color-bg-sec-trans);
+    }
+
+    .timeline-group-label-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-main);
+      word-break: break-word;
+      line-height: 1.4;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
