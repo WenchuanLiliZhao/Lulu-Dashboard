@@ -1,8 +1,8 @@
 import React from "react";
-import { type IssueShape } from "../Utils/Shapes";
 import styles from "./Item.module.scss";
-import CircularProgress from "../../CircularProgress/CircularProgress";
-import { TimelineConst } from "./_constants";
+import CircularProgress from "../../../CircularProgress/CircularProgress";
+import type { IssueShape } from "../../Utils/Shapes";
+import { TimelineConst } from "../_constants";
 
 interface TimelineItemProps {
   item: IssueShape;

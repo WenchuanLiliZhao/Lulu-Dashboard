@@ -6,12 +6,25 @@
   position: relative;
   cursor: pointer;
   border: none;
-  font-weight: 500;
-  transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
   white-space: nowrap;
   text-decoration: none;
   user-select: none;
   outline: none;
+  background: transparent;
+  overflow: hidden;
+
+  color: var(--color-sec);
+
+  &:hover:not(.disabled) {
+    .hover-box {
+      opacity: 1;
+    }
+  }
+
+  &.active {
+    background-color: var(--color-semantic-active);
+    color: white;
+  }
   
   // 尺寸变量
   &.small {
@@ -46,63 +59,24 @@
 
   // Primary variant (默认)
   &.primary {
-    background-color: var(--color-semantic-active, #4f46e5);
-    color: #ffffff;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 
-    &:hover:not(.disabled) {
-      background-color: #3730a3;
-      transform: translateY(-1px);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-    }
-
-    &:active:not(.disabled) {
-      transform: translateY(0);
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    }
   }
 
   // Secondary variant
   &.secondary {
-    background-color: var(--color-bg-sec, #f8fafc);
-    color: var(--color-text-main, #1f2937);
-    border: 1px solid var(--color-border-main, #e5e7eb);
-
-    &:hover:not(.disabled) {
-      background-color: #f1f5f9;
-      border-color: #d1d5db;
-      transform: translateY(-1px);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    &:active:not(.disabled) {
-      transform: translateY(0);
-      background-color: #e2e8f0;
+    &.active {
+      background-color: red;
     }
   }
 
   // Outline variant
   &.outline {
-    background-color: transparent;
-    color: var(--color-semantic-active, #4f46e5);
-    border: 2px solid var(--color-semantic-active, #4f46e5);
-
-    &:hover:not(.disabled) {
-      background-color: var(--color-semantic-active, #4f46e5);
-      color: #ffffff;
-      transform: translateY(-1px);
-      box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
-    }
-
-    &:active:not(.disabled) {
-      transform: translateY(0);
-    }
+    border: 1px solid var(--color-border-main);
   }
 
   // Focus states
   &:focus-visible {
-    outline: 2px solid var(--color-semantic-active, #4f46e5);
-    outline-offset: 2px;
+    
   }
 
   // 禁用状态
@@ -112,24 +86,6 @@
     pointer-events: none;
     transform: none !important;
     box-shadow: none !important;
-  }
-
-  // Dark mode
-  @media (prefers-color-scheme: dark) {
-    &.secondary {
-      background-color: #374151;
-      color: #f9fafb;
-      border-color: #4b5563;
-
-      &:hover:not(.disabled) {
-        background-color: #4b5563;
-        border-color: #6b7280;
-      }
-
-      &:active:not(.disabled) {
-        background-color: #374151;
-      }
-    }
   }
 }
 
@@ -147,23 +103,6 @@
   svg {
     width: 1em;
     height: 1em;
-  }
-}
-
-// 响应式设计
-@media (max-width: 768px) {
-  .button {
-    &.medium {
-      --button-height: 36px;
-      --button-font-size: 13px;
-      --button-padding-x: 14px;
-    }
-
-    &.large {
-      --button-height: 42px;
-      --button-font-size: 15px;
-      --button-padding-x: 18px;
-    }
   }
 }
 

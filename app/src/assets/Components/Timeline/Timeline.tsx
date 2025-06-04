@@ -10,13 +10,13 @@ import {
   findPlacement,
   type PlacementResult,
 } from "./Utils/Utils";
-import { TimelineGroup } from "./Elements/Group";
-import { GroupLabels } from "./Elements/GroupLabels";
 import { type SwitchOption } from "../Switch/Switch";
-import { TimelineNav } from "./Elements/Nav";
+import { TimelineNav } from "./Elements/OnNav/_Nav";
 import { useLeftBasedZoom } from "./Utils/useLeftBasedZoom";
 import styles from "./Timeline.module.scss";
 import { TimelineConst } from "./Elements/_constants";
+import { TimelineGroup } from "./Elements/OnTimeline/Group";
+import { GroupLabels } from "./Elements/OnTimeline/GroupLabels";
 
 interface TimelineProps {
   inputData: SortedIssueShape;

@@ -1,6 +1,7 @@
 import React from 'react';
-import Button, { type ButtonProps } from '../../Button/Button';
-import { useScrollToToday } from '../Utils/useScrollToToday';
+import Button, { type ButtonProps } from '../../../Button/Button';
+import { useScrollToToday } from '../../Utils/useScrollToToday';
+import { useIsTodayVisible } from '../../Utils/useIsTodayVisible';
 
 interface BackToTodayButtonProps extends Omit<ButtonProps, 'onClick' | 'children' | 'icon'> {
   containerRef: React.RefObject<HTMLDivElement | null>;
@@ -22,9 +23,9 @@ export const BackToTodayButton: React.FC<BackToTodayButtonProps> = ({
   dayWidth,
   yearList,
   startMonth,
-  buttonText = "回到今天",
+  buttonText = "Today",
   showIcon = true,
-  variant = "secondary",
+  variant = "outline",
   size = "medium",
   ...buttonProps
 }) => {
@@ -35,6 +36,9 @@ export const BackToTodayButton: React.FC<BackToTodayButtonProps> = ({
     yearList,
     startMonth
   );
+
+  // 检测今天是否在可视区域内
+  const isTodayVisible = useIsTodayVisible(containerRef, dayWidth, yearList, startMonth);
 
   // 今天图标组件
   const TodayIcon = () => (
@@ -63,6 +67,7 @@ export const BackToTodayButton: React.FC<BackToTodayButtonProps> = ({
       onClick={scrollToToday}
       icon={showIcon ? <TodayIcon /> : undefined}
       iconPosition="left"
+      active={isTodayVisible}
       {...buttonProps}
     >
       {buttonText}

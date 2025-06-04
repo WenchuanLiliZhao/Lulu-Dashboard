@@ -8,16 +8,18 @@ export interface NavProps {
 }
 
 export const Nav: React.FC<NavProps> = ({ left, right }) => {
-  return <div className={styles["nav"]}>
-    <div className={styles["nav-left"]}>
-      {left.map((item, index) => (
-        <div key={index}>{item}</div>
-      ))}
+  return (
+    <div className={styles["nav"]}>
+      <div className={`${styles["nav-left"]} ${styles["nav-item-container"]}`}>
+        {left.map((item, index) => (
+          <div key={index}>{item}</div>
+        ))}
+      </div>
+      <div className={`${styles["nav-right"]} ${styles["nav-item-container"]}`}>
+        {right.map((item, index) => (
+          <div key={index}>{item}</div>
+        ))}
+      </div>
     </div>
-    <div className={styles["nav-right"]}>
-      {right.map((item, index) => (
-        <div key={index}>{item}</div>
-      ))}
-    </div>
-  </div>;
+  );
 };

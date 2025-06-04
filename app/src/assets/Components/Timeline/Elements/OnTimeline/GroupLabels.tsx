@@ -1,9 +1,10 @@
 import React from "react";
-import { calculateMaxOverlapCardinality, type PlacementResult } from "../Utils/Utils";
-import { type IssueShape } from "../Utils/Shapes";
-import { ResizableSidebar } from "./ResizableSidebar";
+
+import { type IssueShape } from "../../Utils/Shapes";
 import styles from "./GroupLabels.module.scss";
-import { TimelineConst } from "./_constants";
+import { TimelineConst } from "../_constants";
+import { ResizableSidebar } from "../OnLayout/ResizableSidebar";
+import { type PlacementResult, calculateMaxOverlapCardinality } from "../../Utils/Utils";
 
 interface GroupData {
   groupTitle: string;

@@ -1,6 +1,6 @@
 import React from "react";
-import { calculateDurationInDays, calculateMaxOverlapCardinality, type PlacementResult } from "../Utils/Utils";
-import { type IssueShape } from "../Utils/Shapes";
+import { calculateDurationInDays, calculateMaxOverlapCardinality, type PlacementResult } from "../../Utils/Utils";
+import { type IssueShape } from "../../Utils/Shapes";
 import { TimelineItem } from "./Item";
 import styles from "./Group.module.scss";
 
