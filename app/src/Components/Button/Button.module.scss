@@ -57,22 +57,22 @@
     background-color: var(--color-bg-sec-2-trans);
 
     &.active {
-      background-color: var(--color-semantic-active);
+      background-color: var(--color-semantic-active-secondary);
       color: white;
     }
 
     &.success {
-      background-color: var(--color-semantic-success);
+      background-color: var(--color-semantic-success-secondary);
       color: white;
     }
 
     &.warning {
-      background-color: var(--color-semantic-warning);
+      background-color: var(--color-semantic-warning-secondary);
       color: white;
     }
 
     &.error {
-      background-color: var(--color-semantic-error);
+      background-color: var(--color-semantic-error-secondary);
       color: white;
     }
   }

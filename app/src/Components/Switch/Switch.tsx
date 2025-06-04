@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Switch.module.scss';
+import HoverBox from '../Button/HoverBox';
 
 export interface SwitchOption {
   value: string;
@@ -51,6 +52,7 @@ const Switch: React.FC<SwitchProps> = ({
             <span className={styles.switchOptionText}>
               {option.label}
             </span>
+            <HoverBox className={styles["hover-box"]} />
           </button>
         ))}
       </div>

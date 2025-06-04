@@ -1,5 +1,5 @@
 export const TimelineConst = {
-  cellHeight: 64,
+  cellHeight: 80,
   groupGap: 0,
   yearZoom: 4.5,
   monthZoom: 24,
@@ -7,4 +7,7 @@ export const TimelineConst = {
   yearLabelHight: 32,
   monthLabelHight: 48,
   dayLabelHight: 20,
+
+  itemVPadding: 2,
+  itemHPadding: 2,
 };

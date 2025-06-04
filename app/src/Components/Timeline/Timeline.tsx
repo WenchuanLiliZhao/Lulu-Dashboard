@@ -67,7 +67,7 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
   const groupGapForTesting = TimelineConst.groupGap;
 
   // State for time view mode and corresponding dayWidth
-  const [currentTimeView, setCurrentTimeView] = useState<TimeViewType>("year");
+  const [currentTimeView, setCurrentTimeView] = useState<TimeViewType>("month");
   const dayWidth = TIME_VIEW_CONFIG[currentTimeView].dayWidth;
   const zoomThreshold = TIME_VIEW_CONFIG[currentTimeView].zoomThreshold;
 

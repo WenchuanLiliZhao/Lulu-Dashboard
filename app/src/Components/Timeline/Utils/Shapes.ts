@@ -9,6 +9,8 @@ export const Team = {
   "Tech": "Tech",
 } as const;
 
+// 类型定义
+export type TeamType = keyof typeof Team;
 
 export interface IssueShape {
   id: string;
