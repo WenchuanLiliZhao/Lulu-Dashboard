@@ -25,7 +25,7 @@ interface TimelineProps {
 // 时间视图配置
 const TIME_VIEW_CONFIG = {
   year: { dayWidth: 4.5, label: "Year", zoomThreshold: 9 },
-  month: { dayWidth: 9, label: "Month", zoomThreshold: 9 },
+  month: { dayWidth: 8, label: "6 Months", zoomThreshold: 8 },
   day: { dayWidth: 24, label: "Day", zoomThreshold: 9 },
 } as const;
 
