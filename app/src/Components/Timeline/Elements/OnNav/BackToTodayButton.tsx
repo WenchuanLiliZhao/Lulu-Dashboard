@@ -25,7 +25,7 @@ export const BackToTodayButton: React.FC<BackToTodayButtonProps> = ({
   startMonth,
   buttonText = "Today",
   showIcon = true,
-  variant = "outline",
+  variant = "primary",
   size = "medium",
   ...buttonProps
 }) => {
@@ -39,6 +39,9 @@ export const BackToTodayButton: React.FC<BackToTodayButtonProps> = ({
 
   // 检测今天是否在可视区域内
   const isTodayVisible = useIsTodayVisible(containerRef, dayWidth, yearList, startMonth);
+
+  // 根据今天是否可见来设置按钮状态
+  const buttonStatus = isTodayVisible ? "success" : "normal";
 
   // 今天图标组件
   const TodayIcon = () => (
@@ -67,7 +70,7 @@ export const BackToTodayButton: React.FC<BackToTodayButtonProps> = ({
       onClick={scrollToToday}
       icon={showIcon ? <TodayIcon /> : undefined}
       iconPosition="left"
-      active={isTodayVisible}
+      status={buttonStatus}
       {...buttonProps}
     >
       {buttonText}

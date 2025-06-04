@@ -6,7 +6,7 @@ export interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
   className?: string;
-  active?: boolean;
+  status?: "normal" | "active" | "success" | "warning" | "error";
   disabled?: boolean;
   size?: 'small' | 'medium' | 'large';
   variant?: 'primary' | 'secondary' | 'outline';
@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({
   children,
   onClick,
   className = '',
-  active = false,
+  status = 'normal',
   disabled = false,
   size = 'medium',
   variant = 'primary',
@@ -32,10 +32,13 @@ const Button: React.FC<ButtonProps> = ({
     onClick?.();
   };
 
+  // Generate status-specific class name
+  const statusClass = status !== 'normal' ? styles[status] || '' : '';
+
   return (
     <button
       type={type}
-      className={`${styles.button} ${styles[size]} ${styles[variant]} ${className} ${disabled ? styles.disabled : ''} ${active ? styles.active : ''}`}
+      className={`${styles.button} ${styles[size]} ${styles[variant]} ${className} ${disabled ? styles.disabled : ''} ${statusClass}`}
       onClick={handleClick}
       disabled={disabled}
     >

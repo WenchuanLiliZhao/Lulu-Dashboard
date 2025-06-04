@@ -21,11 +21,6 @@
     }
   }
 
-  &.active {
-    background-color: var(--color-semantic-active);
-    color: white;
-  }
-  
   // 尺寸变量
   &.small {
     --button-height: 32px;
@@ -59,14 +54,31 @@
 
   // Primary variant (默认)
   &.primary {
+    background-color: var(--color-bg-sec-2-trans);
 
+    &.active {
+      background-color: var(--color-semantic-active);
+      color: white;
+    }
+
+    &.success {
+      background-color: var(--color-semantic-success);
+      color: white;
+    }
+
+    &.warning {
+      background-color: var(--color-semantic-warning);
+      color: white;
+    }
+
+    &.error {
+      background-color: var(--color-semantic-error);
+      color: white;
+    }
   }
 
   // Secondary variant
   &.secondary {
-    &.active {
-      background-color: red;
-    }
   }
 
   // Outline variant
@@ -76,7 +88,6 @@
 
   // Focus states
   &:focus-visible {
-    
   }
 
   // 禁用状态
@@ -99,7 +110,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  
+
   svg {
     width: 1em;
     height: 1em;
@@ -109,4 +120,4 @@
 // 优化动画性能
 .button {
   will-change: transform;
-} 
+}

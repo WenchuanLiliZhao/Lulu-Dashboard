@@ -3,7 +3,18 @@
 :root {
   --brand-color: #FF4646;
 
-  --color-semantic-active: royalblue;
+  // Van Gogh-inspired semantic colors (base values)
+  // Active - Inspired by "The Starry Night" blues
+  --color-semantic-active: #4169E1;
+  
+  // Success - Inspired by "The Cypresses" and olive trees
+  --color-semantic-success: #228B22;
+  
+  // Warning - Inspired by "Sunflowers" yellows
+  --color-semantic-warning: #FFD700;
+  
+  // Error - Inspired by "The Red Vineyard" and sunset reds
+  --color-semantic-error: #DC143C;
 }
 
 @mixin light-theme {
@@ -32,6 +43,27 @@
   
   // Accent color
   --color-accent: var(--brand-color);
+
+  // Van Gogh semantic colors for light mode
+  // Active - "Starry Night" swirling blues, deeper for better contrast
+  --color-semantic-active: #1E40AF;
+  --color-semantic-active-light: #2563EB;
+  --color-semantic-active-bg: #DBEAFE;
+
+  // Success - "Wheatfield with Cypresses" greens
+  --color-semantic-success: #16A34A;
+  --color-semantic-success-light: #22C55E;
+  --color-semantic-success-bg: #DCFCE7;
+
+  // Warning - "Sunflowers" golden yellows
+  --color-semantic-warning: #D97706;
+  --color-semantic-warning-light: #F59E0B;
+  --color-semantic-warning-bg: #FEF3C7;
+
+  // Error - "The Red Vineyard" passionate reds
+  --color-semantic-error: #DC2626;
+  --color-semantic-error-light: #EF4444;
+  --color-semantic-error-bg: #FEE2E2;
 }
 
 @mixin dark-theme {
@@ -61,10 +93,30 @@
   
   // Accent color
   --color-accent: var(--brand-color);
+
+  // Van Gogh semantic colors for dark mode - brighter and more vibrant
+  // Active - "Starry Night" luminous blues
+  --color-semantic-active: #3B82F6;
+  --color-semantic-active-light: #60A5FA;
+  --color-semantic-active-bg: rgba(59, 130, 246, 0.15);
+
+  // Success - "The Mulberry Tree" vibrant greens
+  --color-semantic-success: #16A34A;
+  --color-semantic-success-light: #22C55E;
+  --color-semantic-success-bg: rgba(34, 197, 94, 0.15);
+
+  // Warning - "The Bedroom" warm yellows
+  --color-semantic-warning: #F59E0B;
+  --color-semantic-warning-light: #FBBF24;
+  --color-semantic-warning-bg: rgba(245, 158, 11, 0.15);
+
+  // Error - "Self-Portrait with Bandaged Ear" expressive reds
+  --color-semantic-error: #EF4444;
+  --color-semantic-error-light: #F87171;
+  --color-semantic-error-bg: rgba(239, 68, 68, 0.15);
 }
 
-// 其次，通过 SCSS 的 `@include` 将它们分别引用到 light mode 以及 dark mode 中：
-
+// Apply themes to different modes
 :root {
   @include light-theme;
 }
@@ -73,7 +125,7 @@
   @include dark-theme;
 }
 
-// 为了安全起见，我们增加一组 system theme detection 设置：
+// System theme detection for better user experience
 @media (prefers-color-scheme: light) {
   :root:not([data-theme]) {
     @include light-theme;
@@ -86,10 +138,9 @@
   }
 }
 
-
-
 html,
 body {
   background-color: var(--color-bg-main);
   color: var(--color-main);
 }
+

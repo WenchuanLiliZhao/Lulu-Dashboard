@@ -22,6 +22,89 @@ const Page_Home: PageShape = {
       </div>
       
       <div style={{ margin: '40px 0' }}>
+        <h2>🎨 Van Gogh Color Palette</h2>
+        <p style={{ color: '#666', marginBottom: '20px' }}>✨ A vibrant semantic color system inspired by Vincent van Gogh's masterpieces, featuring active, success, warning, and error states!</p>
+        
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', margin: '20px 0', flexWrap: 'wrap' }}>
+          <div style={{
+            width: '80px',
+            height: '60px',
+            backgroundColor: 'var(--color-semantic-active)',
+            borderRadius: '8px',
+            border: '2px solid var(--color-border-main)',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'white',
+            fontSize: '12px',
+            fontWeight: '600'
+          }}>
+            Active
+          </div>
+          <div style={{
+            width: '80px',
+            height: '60px',
+            backgroundColor: 'var(--color-semantic-success)',
+            borderRadius: '8px',
+            border: '2px solid var(--color-border-main)',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'white',
+            fontSize: '12px',
+            fontWeight: '600'
+          }}>
+            Success
+          </div>
+          <div style={{
+            width: '80px',
+            height: '60px',
+            backgroundColor: 'var(--color-semantic-warning)',
+            borderRadius: '8px',
+            border: '2px solid var(--color-border-main)',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'white',
+            fontSize: '12px',
+            fontWeight: '600'
+          }}>
+            Warning
+          </div>
+          <div style={{
+            width: '80px',
+            height: '60px',
+            backgroundColor: 'var(--color-semantic-error)',
+            borderRadius: '8px',
+            border: '2px solid var(--color-border-main)',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'white',
+            fontSize: '12px',
+            fontWeight: '600'
+          }}>
+            Error
+          </div>
+        </div>
+        
+        <p style={{ marginTop: '20px' }}>
+          <a href="/colors" style={{ color: '#007bff', textDecoration: 'underline' }}>
+            Explore the complete Van Gogh color palette →
+          </a>
+        </p>
+        <p style={{ marginTop: '12px' }}>
+          <a href="/buttons" style={{ color: '#007bff', textDecoration: 'underline' }}>
+            See Button components with Van Gogh colors →
+          </a>
+        </p>
+      </div>
+      
+      <div style={{ margin: '40px 0' }}>
         <h2>圆形进度条组件示例</h2>
         <p style={{ color: '#666', marginBottom: '20px' }}>✨ 支持加载动画效果和延迟控制！刷新页面查看瀑布流动画</p>
         
