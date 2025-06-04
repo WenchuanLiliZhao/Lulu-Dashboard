@@ -1,8 +1,8 @@
+import { Timeline } from "../Components/Timeline/Timeline";
 import { Example_Issues_1 } from "../Components/Timeline/ExampleData/Example_Issues_1";
 import { Example_Issues_2 } from "../Components/Timeline/ExampleData/Example_Issues_2";
 import { Example_Issues_3 } from "../Components/Timeline/ExampleData/Example_Issues_3";
 import { groupIssuesByField } from "../Components/Timeline/Utils/Shapes";
-import { Timeline } from "../Components/Timeline/Timeline";
 import type { PageShape } from "../object-shapes/Page";
 
 

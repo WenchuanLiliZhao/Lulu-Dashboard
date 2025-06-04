@@ -12,8 +12,8 @@ import {
 } from "./Utils/Utils";
 import { TimelineGroup } from "./Elements/Group";
 import { GroupLabels } from "./Elements/GroupLabels";
-import Switch, { type SwitchOption } from "../Switch/Switch";
-import BackToTodayButton from "./Elements/BackToTodayButton";
+import { type SwitchOption } from "../Switch/Switch";
+import { TimelineNav } from "./Elements/Nav";
 import { useLeftBasedZoom } from "./Utils/useLeftBasedZoom";
 import styles from "./Timeline.module.scss";
 import { TimelineConst } from "./Elements/_constants";
@@ -142,49 +142,15 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
   return (
     <div className={styles["timeline-container"]}>
       {/* 时间视图切换器和回到今天按钮 */}
-      <div
-        style={{
-          marginBottom: "16px",
-          padding: "16px 20px",
-          background: "var(--color-bg-sec)",
-          border: "1px solid var(--color-border-main)",
-          borderRadius: "8px",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-            marginBottom: "12px",
-          }}
-        >
-          <div>
-            <div
-              style={{
-                marginBottom: "8px",
-                fontSize: "14px",
-                fontWeight: "500",
-                color: "var(--color-text-main)",
-              }}
-            >
-              时间视图: 当前 dayWidth = {dayWidth}px
-            </div>
-            <Switch
-              options={switchOptions}
-              defaultValue={currentTimeView}
-              onChange={handleTimeViewChange}
-            />
-          </div>
-          
-          <BackToTodayButton
-            containerRef={containerRef}
-            dayWidth={dayWidth}
-            yearList={yearList}
-            startMonth={startMonth}
-          />
-        </div>
-      </div>
+      <TimelineNav
+        switchOptions={switchOptions}
+        currentTimeView={currentTimeView}
+        onTimeViewChange={handleTimeViewChange}
+        dayWidth={dayWidth}
+        containerRef={containerRef}
+        yearList={yearList}
+        startMonth={startMonth}
+      />
 
       <div className={styles["timeline-content-wrapper"]}>
         {/* 分组标题列组件 */}
