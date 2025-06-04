@@ -6,7 +6,8 @@ export * from './TeamColors';
 
 // 重新导出常用的组合
 export type { TeamType } from './Shapes';
-export type { TeamVisual, ColorName } from './TeamColors';
+export type { TeamVisual, TeamColorType, TeamVisualsType } from './TeamColors';
+export type { ColorName } from './ColorName';
 export { 
   // 颜色相关（向后兼容）
   getTeamColor, 

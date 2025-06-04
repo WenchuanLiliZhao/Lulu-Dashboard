@@ -109,6 +109,8 @@
 }
 
 @mixin light-theme {
+  --box-shadow-color: rgba(0, 0, 0, 0.08);
+
   --color-main: #1a1a1a;
   --color-sec: #858585;
   --color-sec-trans: rgba(0, 0, 0, 0.48);
@@ -154,6 +156,8 @@
 }
 
 @mixin dark-theme {
+  --box-shadow-color: rgba(0, 0, 0, 0.48);
+
   --color-main: #eaeaea;
   --color-sec: #b3b3b3;
   --color-sec-trans: rgba(255, 255, 255, 0.48);

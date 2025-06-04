@@ -3,7 +3,13 @@ import styles from "./Item.module.scss";
 import CircularProgress from "../../../CircularProgress/CircularProgress";
 import type { IssueShape } from "../../Utils/Shapes";
 import { TimelineConst } from "../_constants";
-import HoverBox from "../../../Button/HoverBox";
+import HoverBox from "../../../Boxes/HoverBox";
+import {
+  getTeamEmoji,
+  getTeamDisplayName,
+  getTeamColorName,
+} from "../../Utils/TeamColors";
+import TransBgBox from "../../../Boxes/TransBgBox";
 
 interface TimelineItemProps {
   item: IssueShape;
@@ -58,8 +64,16 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
             >
               {item.name}
             </div>
-            <div className={styles["timeline-item-team"]}>
-              {item.team}
+            <div className={styles["timeline-item-tags"]}>
+              <div className={styles["timeline-item-team"]}>
+                <span className={styles["timeline-item-team-emoji"]}>
+                  {getTeamEmoji(item.team)}
+                </span>
+                <span className={styles["timeline-item-team-name"]}>
+                  {getTeamDisplayName(item.team)}
+                </span>
+                <TransBgBox color={getTeamColorName(item.team)} />
+              </div>
             </div>
           </div>
         </div>

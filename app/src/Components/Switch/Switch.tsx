@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Switch.module.scss';
-import HoverBox from '../Button/HoverBox';
+import { HoverBox } from '../Boxes';
+
 
 export interface SwitchOption {
   value: string;

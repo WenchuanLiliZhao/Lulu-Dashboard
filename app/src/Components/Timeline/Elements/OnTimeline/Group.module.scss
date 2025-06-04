@@ -4,4 +4,8 @@
   &:nth-child(odd) {
     background-color: var(--color-bg-sec-trans);
   }
+
+  &:nth-child(even) {
+    background-color: var(--color-bg-sec-2-trans);
+  }
 }

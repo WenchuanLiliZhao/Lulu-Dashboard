@@ -24,7 +24,7 @@ interface TimelineProps {
 // 时间视图配置
 const TIME_VIEW_CONFIG = {
   year: { dayWidth: 4.5, label: "Year", zoomThreshold: 9 },
-  month: { dayWidth: 8, label: "6 Months", zoomThreshold: 8 },
+  month: { dayWidth: 8, label: "Month", zoomThreshold: 8 },
   day: { dayWidth: 24, label: "Day", zoomThreshold: 9 },
 } as const;
 
@@ -129,7 +129,7 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
         />
 
         {/* 时间线内容 - 分为 Ruler 和 Items 两个平级组件 */}
-        <div ref={containerRef} className={styles["timeline-ruler-container"]}>
+        <div ref={containerRef} className={styles["timeline-content-container"]}>
           {/* 时间线尺子组件 */}
           <TimelineRuler
             yearList={yearList}

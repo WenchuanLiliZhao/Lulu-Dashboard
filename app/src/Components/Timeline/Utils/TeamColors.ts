@@ -1,30 +1,6 @@
+import { type ColorName, ColorNameMap } from './ColorName';
 import { Team } from './Shapes';
 import type { TeamType } from './Shapes';
-
-// 颜色名称映射 - 简单的字符串映射，用于 CSS 类名
-const ColorNameMap = {
-  red: "red",
-  blue: "blue", 
-  green: "green",
-  yellow: "yellow",
-  purple: "purple",
-  pink: "pink",
-  indigo: "indigo",
-  cyan: "cyan",
-  orange: "orange",
-  lime: "lime",
-  violet: "violet",
-  sky: "sky",
-  gray: "gray",
-  slate: "slate",
-  emerald: "emerald",
-  teal: "teal",
-  amber: "amber",
-  rose: "rose",
-} as const;
-
-// 颜色名称类型
-export type ColorName = keyof typeof ColorNameMap;
 
 // 团队视觉配置接口
 export interface TeamVisual {
@@ -36,42 +12,42 @@ export interface TeamVisual {
 // 特殊团队的自定义视觉配置（可选）
 const CustomTeamVisual: Partial<Record<TeamType, TeamVisual>> = {
   "Tech": {
-    name: "技术团队",
+    name: Team["Tech"],
     emoji: "💻",
     color: "cyan"
   },
   "Brand Marketing": {
-    name: "品牌营销",
+    name: Team["Brand Marketing"],
     emoji: "🎨",
     color: "pink"
   },
   "Product": {
-    name: "产品团队", 
+    name: Team["Product"], 
     emoji: "🚀",
     color: "green"
   },
   "E-com": {
-    name: "电商团队",
+    name: Team["E-com"],
     emoji: "🛒",
     color: "orange"
   },
   "Retail": {
-    name: "零售团队",
+    name: Team["Retail"],
     emoji: "🏪",
     color: "red"
   },
   "Function": {
-    name: "职能部门",
+    name: Team["Function"],
     emoji: "⚙️",
     color: "indigo"
   },
   "Fulfillment": {
-    name: "履约团队",
+    name: Team["Fulfillment"],
     emoji: "📦",
     color: "purple"
   },
   "Corporate": {
-    name: "企业团队",
+    name: Team["Corporate"],
     emoji: "🏢",
     color: "gray"
   },

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Button.module.scss';
-import HoverBox from './HoverBox';
+import HoverBox from '../Boxes/HoverBox';
 
 export interface ButtonProps {
   children: React.ReactNode;
