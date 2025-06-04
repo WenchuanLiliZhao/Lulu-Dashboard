@@ -2,6 +2,7 @@ import React from "react";
 import Switch, { type SwitchOption } from "../../Switch/Switch";
 import BackToTodayButton from "./BackToTodayButton";
 import styles from "./Nav.module.scss";
+import { Nav } from "../../Nav";
 
 interface TimelineNavProps {
   switchOptions: SwitchOption[];
@@ -23,49 +24,23 @@ export const TimelineNav: React.FC<TimelineNavProps> = ({
   startMonth,
 }) => {
   return (
-    <div
+    <Nav
       className={styles["timeline-nav"]}
-      style={{
-        marginBottom: "16px",
-        padding: "16px 20px",
-        background: "var(--color-bg-sec)",
-        border: "1px solid var(--color-border-main)",
-        borderRadius: "8px",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "flex-start",
-          marginBottom: "12px",
-        }}
-      >
-        <div>
-          <div
-            style={{
-              marginBottom: "8px",
-              fontSize: "14px",
-              fontWeight: "500",
-              color: "var(--color-text-main)",
-            }}
-          >
-            时间视图: 当前 dayWidth = {dayWidth}px
-          </div>
-          <Switch
-            options={switchOptions}
-            defaultValue={currentTimeView}
-            onChange={onTimeViewChange}
-          />
-        </div>
-        
+      left={[
+        <Switch
+          options={switchOptions}
+          defaultValue={currentTimeView}
+          onChange={onTimeViewChange}
+        />,
+      ]}
+      right={[
         <BackToTodayButton
           containerRef={containerRef}
           dayWidth={dayWidth}
           yearList={yearList}
           startMonth={startMonth}
-        />
-      </div>
-    </div>
+        />,
+      ]}
+    />
   );
 };
