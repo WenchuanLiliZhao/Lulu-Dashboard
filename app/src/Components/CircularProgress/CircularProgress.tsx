@@ -72,7 +72,7 @@ interface CircularProgressProps {
 
 const CircularProgress: React.FC<CircularProgressProps> = ({
   progress,
-  size = CircularProgressConst.size,
+  size = CircularProgressConst.defaultSize,
   strokeWidth = CircularProgressConst.strokeWidth,
   className = '',
   animationDuration = CircularProgressConst.animationDuration,
@@ -117,7 +117,7 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
         
         {/* 进度圆环 */}
         <circle
-          className={styles.progress}
+          className={`${styles.progress} ${progress === 100 ? styles.full : ''}`}
           cx={size / 2}
           cy={size / 2}
           r={radius}

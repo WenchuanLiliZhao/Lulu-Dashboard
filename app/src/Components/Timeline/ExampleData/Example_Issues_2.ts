@@ -74,7 +74,7 @@ export const Example_Issues_2: IssueShape[] = [
     description: "Implement digital solutions in physical retail locations",
     startDate: new Date("2024-07-01"),
     endDate: new Date("2024-07-31"),
-    progress: 15,
+    progress: 100,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
     team: "Retail"
   },
@@ -184,7 +184,7 @@ export const Example_Issues_2: IssueShape[] = [
     description: "Redesign physical store layout and customer experience",
     startDate: new Date("2025-05-01"),
     endDate: new Date("2025-05-31"),
-    progress: 15,
+    progress: 100,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
     team: "Retail"
   },

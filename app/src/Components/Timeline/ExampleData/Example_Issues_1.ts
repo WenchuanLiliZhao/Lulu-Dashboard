@@ -21,7 +21,7 @@ export const Example_Issues_1: IssueShape[] = [
     description: "Create a cross-platform mobile application for task management with real-time synchronization",
     startDate: new Date("2024-02-01"),
     endDate: new Date("2024-03-31"),
-    progress: 15,
+    progress: 100,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
     team: "Tech"
   },
@@ -197,7 +197,7 @@ export const Example_Issues_1: IssueShape[] = [
     description: "Decompose monolithic application into scalable microservices",
     startDate: new Date("2025-07-01"),
     endDate: new Date("2025-07-31"),
-    progress: 15,
+    progress: 100,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
     team: "Tech"
   },
@@ -318,7 +318,7 @@ export const Example_Issues_1: IssueShape[] = [
     description: "Design IoT-enabled smart city infrastructure for traffic and utilities",
     startDate: new Date("2024-07-01"),
     endDate: new Date("2024-07-31"),
-    progress: 3,
+    progress: 100,
     vision: "Awareness and Action",
     team: "Corporate"
   },
@@ -395,7 +395,7 @@ export const Example_Issues_1: IssueShape[] = [
     description: "Develop AI system for automated code generation from natural language",
     startDate: new Date("2025-02-01"),
     endDate: new Date("2025-02-28"),
-    progress: 15,
+    progress: 100,
     vision: "Advance Capabilities",
     team: "Tech"
   },
@@ -417,7 +417,7 @@ export const Example_Issues_1: IssueShape[] = [
     description: "Implement biometric-based payment system for enhanced security",
     startDate: new Date("2025-04-01"),
     endDate: new Date("2025-04-30"),
-    progress: 10,
+    progress: 100,
     vision: "Evolving Cyber Threats",
     team: "Tech"
   },
@@ -439,7 +439,7 @@ export const Example_Issues_1: IssueShape[] = [
     description: "Develop autonomous vehicle control system with advanced AI algorithms",
     startDate: new Date("2025-07-01"),
     endDate: new Date("2025-07-31"),
-    progress: 5,
+    progress: 100,
     vision: "Advance Capabilities",
     team: "Tech"
   },

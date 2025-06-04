@@ -26,15 +26,11 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
         height: cellHeight,
         width: `${durationInDays * dayWidth - 1}px`,
         position: "absolute",
-        top: `${column * cellHeight + (TimelineConst.groupGap / 2)}px`,
+        top: `${column * cellHeight + TimelineConst.groupGap / 2}px`,
       }}
     >
-      <div className={styles["timeline-item-name"]}>
-        <CircularProgress
-          progress={item.progress}
-        />
-        {item.name}
-      </div>
+      <CircularProgress progress={item.progress} size={16} />
+      <div className={styles["timeline-item-name"]}>{item.name}</div>
     </div>
   );
-}; 
+};
