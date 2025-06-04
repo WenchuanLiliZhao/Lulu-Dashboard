@@ -11,6 +11,7 @@ interface TimelineRulerProps {
   startMonth: number;
   dayWidth: number;
   zoomThreshold: number;
+  style?: React.CSSProperties;
 }
 
 // 判断指定日期是否为今天的函数
@@ -35,12 +36,14 @@ const isToday = (
 const Column = ({
   className,
   children,
+  style,
 }: {
   className?: string;
   children: React.ReactNode;
+  style?: React.CSSProperties;
 }) => {
   return (
-    <div className={`${styles["timeline-ruler-column"]} ${className || ""}`}>
+    <div className={`${styles["timeline-ruler-column"]} ${className || ""}`} style={style}>
       {children}
     </div>
   );
@@ -51,9 +54,10 @@ export const TimelineRuler: React.FC<TimelineRulerProps> = ({
   startMonth,
   dayWidth,
   zoomThreshold,
+  style
 }) => {
   return (
-    <Column>
+    <Column style={style}>
       {yearList.map((year, yearIndex) => (
         <div key={year} className={styles["timeline-ruler-year"]}>
           {/* 年份标签 - 只在每年的第一个月显示 */}

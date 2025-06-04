@@ -4,7 +4,10 @@ import { type IssueShape } from "../../Utils/Shapes";
 import styles from "./GroupLabels.module.scss";
 import { TimelineConst } from "../_constants";
 import { ResizableSidebar } from "../OnLayout/ResizableSidebar";
-import { type PlacementResult, calculateMaxOverlapCardinality } from "../../Utils/Utils";
+import {
+  type PlacementResult,
+  calculateMaxOverlapCardinality,
+} from "../../Utils/Utils";
 
 interface GroupData {
   groupTitle: string;
@@ -33,16 +36,26 @@ export const GroupLabels: React.FC<GroupLabelsProps> = ({
     >
       <div className={styles["timeline-group-labels"]}>
         <div className={styles["timeline-group-labels-header"]}>
-          <div className={styles["timeline-group-labels-year-placeholder"]} style={{ height: `${TimelineConst.yearLabelHight}px` }}></div>
-          <div className={styles["timeline-group-labels-month-placeholder"]} style={{ height: `${TimelineConst.monthLabelHight}px` }}>
+          <div
+            className={styles["timeline-group-labels-year-placeholder"]}
+            style={{ height: `${TimelineConst.yearLabelHight}px` }}
+          ></div>
+          <div
+            className={styles["timeline-group-labels-month-placeholder"]}
+            style={{ height: `${TimelineConst.monthLabelHight}px` }}
+          >
             {sortedBy}
           </div>
-          <div className={styles["timeline-group-labels-day-placeholder"]} style={{ height: `${TimelineConst.dayLabelHight}px` }}></div>
+          <div
+            className={styles["timeline-group-labels-day-placeholder"]}
+            style={{ height: `${TimelineConst.dayLabelHight}px` }}
+          ></div>
         </div>
         <div className={styles["timeline-group-labels-content"]}>
           {groupPlacements.map((groupData, groupIndex) => {
-            const groupHeight = 
-              calculateMaxOverlapCardinality(groupData.groupItems) * cellHeight + 
+            const groupHeight =
+              calculateMaxOverlapCardinality(groupData.groupItems) *
+                cellHeight +
               TimelineConst.groupGap;
             return (
               <div
@@ -60,4 +73,4 @@ export const GroupLabels: React.FC<GroupLabelsProps> = ({
       </div>
     </ResizableSidebar>
   );
-}; 
+};
