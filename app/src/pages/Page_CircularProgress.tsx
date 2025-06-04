@@ -1,5 +1,5 @@
-import type { PageShape } from "../object-shapes/Page";
 import CircularProgressDemo from "../Components/CircularProgress/CircularProgressDemo";
+import type { PageShape } from "../object-shapes/Page";
 
 const Page_CircularProgress: PageShape = {
   info: {
