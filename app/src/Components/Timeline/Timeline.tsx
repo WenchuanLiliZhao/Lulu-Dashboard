@@ -5,17 +5,16 @@ import {
   type SortedIssueShape,
 } from "./Utils/Shapes";
 import {
-  monthNames,
-  getDaysInMonth,
   findPlacement,
   type PlacementResult,
 } from "./Utils/Utils";
 import { type SwitchOption } from "../Switch/Switch";
 import { TimelineNav } from "./Elements/OnNav/_Nav";
+import { TimelineRuler } from "./Elements/OnLayout/TimelineRuler";
+import { TimelineItems } from "./Elements/OnLayout/TimelineItems";
 import { useLeftBasedZoom } from "./Utils/useLeftBasedZoom";
 import styles from "./Timeline.module.scss";
 import { TimelineConst } from "./Elements/_constants";
-import { TimelineGroup } from "./Elements/OnTimeline/Group";
 import { GroupLabels } from "./Elements/OnTimeline/GroupLabels";
 
 interface TimelineProps {
@@ -38,23 +37,7 @@ const timeViewOptions = {
   day: TIME_VIEW_CONFIG.day.label,
 } as const;
 
-// 判断指定日期是否为今天的函数
-const isToday = (
-  year: number,
-  monthIndex: number,
-  dayIndex: number
-): boolean => {
-  const today = new Date();
-  const currentYear = today.getFullYear();
-  const currentMonth = today.getMonth(); // 0-based (0 = January)
-  const currentDay = today.getDate(); // 1-based (1-31)
 
-  return (
-    year === currentYear &&
-    monthIndex === currentMonth &&
-    dayIndex + 1 === currentDay
-  );
-};
 
 export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
   // Time view switch options - 转换为Switch组件需要的格式
@@ -96,21 +79,6 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
   // Handler for time view changes
   const handleTimeViewChange = (value: string) => {
     setCurrentTimeView(value as TimeViewType);
-  };
-
-  // Reusable column component for consistent styling
-  const Column = ({
-    className,
-    children,
-  }: {
-    className?: string;
-    children: React.ReactNode;
-  }) => {
-    return (
-      <div className={`${styles["timeline-ruler-column"]} ${className}`}>
-        {children}
-      </div>
-    );
   };
 
   // Pre-calculate placements for each group separately
@@ -160,95 +128,26 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
           sortedBy={inputData.meta.sortBy}
         />
 
-        {/* 时间线内容 */}
+        {/* 时间线内容 - 分为 Ruler 和 Items 两个平级组件 */}
         <div ref={containerRef} className={styles["timeline-ruler-container"]}>
-          <Column>
-            {yearList.map((year, yearIndex) => (
-              <div key={year} className={styles["timeline-ruler-year"]}>
-                {/* 年份标签 - 只在每年的第一个月显示 */}
-                <div
-                  className={styles["timeline-ruler-year-label"]}
-                  style={{ height: `${TimelineConst.yearLabelHight}px` }}
-                >
-                  {year}
-                </div>
-                <Column>
-                  {Array.from(
-                    { length: yearIndex === 0 ? 12 - startMonth : 12 },
-                    (_, i) => (yearIndex === 0 ? i + startMonth : i)
-                  ).map((monthIndex) => (
-                    <div
-                      key={monthIndex}
-                      className={styles["timeline-ruler-month"]}
-                    >
-                      <div
-                        className={styles["timeline-ruler-month-label"]}
-                        style={{ height: `${TimelineConst.monthLabelHight}px` }}
-                      >
-                        {monthNames[monthIndex]}
-                      </div>
-                      <Column className={styles["timeline-ruler-month-grid"]}>
-                        {Array.from(
-                          { length: getDaysInMonth(year, monthIndex) },
-                          (_, dayIndex) => (
-                            <div
-                              key={dayIndex}
-                              className={`${styles["timeline-ruler-day"]} ${
-                                dayWidth > zoomThreshold ? styles["zoomed"] : ""
-                              }`}
-                              style={{ width: `${dayWidth}px` }}
-                            >
-                              <div
-                                className={`${
-                                  styles["timeline-ruler-day-label"]
-                                } ${
-                                  isToday(year, monthIndex, dayIndex)
-                                    ? styles["today"]
-                                    : ""
-                                }`}
-                                style={{
-                                  height: `${TimelineConst.dayLabelHight}px`,
-                                }}
-                              >
-                                <div
-                                  className={`${
-                                    styles["timeline-ruler-day-label-text"]
-                                  } ${
-                                    dayWidth > zoomThreshold
-                                      ? styles["zoomed"]
-                                      : ""
-                                  }`}
-                                >
-                                  {dayIndex + 1}
-                                </div>
-                              </div>
-
-                              <div className={styles["timeline-groups"]}>
-                                {groupPlacements.map(
-                                  (groupData, groupIndex) => (
-                                    <TimelineGroup
-                                      key={groupIndex}
-                                      groupData={groupData}
-                                      year={year}
-                                      monthIndex={monthIndex}
-                                      dayIndex={dayIndex}
-                                      dayWidth={dayWidth}
-                                      cellHeight={cellHeight}
-                                      groupGap={groupGapForTesting}
-                                    />
-                                  )
-                                )}
-                              </div>
-                            </div>
-                          )
-                        )}
-                      </Column>
-                    </div>
-                  ))}
-                </Column>
-              </div>
-            ))}
-          </Column>
+          {/* 时间线尺子组件 */}
+          <TimelineRuler
+            yearList={yearList}
+            startMonth={startMonth}
+            dayWidth={dayWidth}
+            zoomThreshold={zoomThreshold}
+          />
+          
+          {/* 时间线项目组件 */}
+          <TimelineItems
+            yearList={yearList}
+            startMonth={startMonth}
+            dayWidth={dayWidth}
+            zoomThreshold={zoomThreshold}
+            cellHeight={cellHeight}
+            groupGap={groupGapForTesting}
+            groupPlacements={groupPlacements}
+          />
         </div>
       </div>
     </div>
