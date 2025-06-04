@@ -1,0 +1,15 @@
+.logo-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .logo-bar-logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo-bar-title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+}

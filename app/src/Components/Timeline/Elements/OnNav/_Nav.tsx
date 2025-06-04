@@ -1,7 +1,8 @@
 import React from "react";
 import Switch, { type SwitchOption } from "../../../Switch/Switch";
 import BackToTodayButton from "./BackToTodayButton";
-import { Nav } from "../../../Nav";
+import { LogoBar, Nav } from "../../../Nav";
+import { Logo } from "../../../../assets/Img/Logo";
 
 interface TimelineNavProps {
   switchOptions: SwitchOption[];
@@ -24,7 +25,9 @@ export const TimelineNav: React.FC<TimelineNavProps> = ({
 }) => {
   return (
     <Nav
-      left={[]}
+      left={[
+        <LogoBar logo={<Logo mode="FullColorNoText" />} title="FY25 China Tech Delivery Timeline" />,
+      ]}
       right={[
         <BackToTodayButton
           containerRef={containerRef}
