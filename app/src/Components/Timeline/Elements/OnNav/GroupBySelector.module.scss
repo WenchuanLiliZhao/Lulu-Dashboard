@@ -1,0 +1,190 @@
+// GroupBySelector 组件的样式
+.groupSelector {
+  position: relative;
+  display: inline-block;
+
+  // 尺寸变量
+  &.small {
+    --selector-height: 32px;
+    --selector-font-size: 12px;
+    --selector-padding-x: 12px;
+    --selector-border-radius: 6px;
+    --dropdown-font-size: 12px;
+  }
+
+  &.medium {
+    --selector-height: 40px;
+    --selector-font-size: 14px;
+    --selector-padding-x: 16px;
+    --selector-border-radius: 8px;
+    --dropdown-font-size: 14px;
+  }
+
+  &.large {
+    --selector-height: 48px;
+    --selector-font-size: 16px;
+    --selector-padding-x: 20px;
+    --selector-border-radius: 10px;
+    --dropdown-font-size: 16px;
+  }
+}
+
+.selectorTrigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: var(--selector-height);
+  padding: 0 var(--selector-padding-x);
+  background: var(--color-bg-sec-2-trans);
+  // border: 1px solid var(--color-border-main-trans);
+  border: none;
+  border-radius: var(--selector-border-radius);
+  font-size: var(--selector-font-size);
+  color: var(--color-text-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  min-width: 180px;
+
+  &:hover:not(:disabled) {
+    .hover-box {
+      opacity: 1;
+    }
+  }
+
+  &:focus {
+    outline: 2px solid var(--color-semantic-active);
+    outline-offset: 2px;
+  }
+
+  .open & {
+    border-color: var(--color-semantic-active);
+    box-shadow: 0 0 0 2px var(--color-semantic-active-secondary);
+  }
+}
+
+.selectorTriggerContent {
+  .selectorLabel {
+    color: var(--color-text-sec);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  
+  .selectorValue {
+    flex: 1;
+    text-align: left;
+    font-weight: 500;
+    color: var(--color-text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.selectorIcon {
+  display: flex;
+  align-items: center;
+  color: var(--color-text-sec);
+  transition: transform 0.2s ease;
+
+  .open & {
+    transform: rotate(180deg);
+  }
+}
+
+.selectorDropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--color-bg-main);
+  border: 1px solid var(--color-border-main);
+  border-radius: var(--selector-border-radius);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  overflow: hidden;
+  animation: dropdownSlideIn 0.15s ease-out;
+}
+
+@keyframes dropdownSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.selectorOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px var(--selector-padding-x);
+  background: transparent;
+  border: none;
+  font-size: var(--dropdown-font-size);
+  color: var(--color-text-main);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  text-align: left;
+
+  &:hover {
+    background: var(--color-bg-sec-trans);
+  }
+
+  &.selected {
+    background: var(--color-semantic-active-secondary);
+    color: white;
+
+    &:hover {
+      background: var(--color-semantic-active);
+    }
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--color-border-main-trans);
+  }
+}
+
+.optionText {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.optionCheck {
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+  color: white;
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+  .groupSelector {
+    &.small {
+      --selector-padding-x: 10px;
+      min-width: 160px;
+    }
+
+    &.medium {
+      --selector-padding-x: 12px;
+    }
+
+    &.large {
+      --selector-padding-x: 16px;
+    }
+  }
+
+  .selectorTrigger {
+    min-width: 160px;
+  }
+} 

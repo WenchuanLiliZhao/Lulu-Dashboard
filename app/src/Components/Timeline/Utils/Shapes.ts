@@ -54,12 +54,12 @@ export interface SortedIssueShape {
 /**
  * 将 IssueShape 数组按指定字段分组，转换为 SortedIssueShape 格式
  * @param issues - 原始的 IssueShape 数组
- * @param sortBy - 分组字段，可以是 "status"、"vision"、"name" 或 "priority"
+ * @param sortBy - 分组字段，可以是 "status"、"vision"、"team" 或 "priority"
  * @returns 分组后的 SortedIssueShape 对象
  */
 export function groupIssuesByField(
   issues: IssueShape[],
-  sortBy: "status" | "vision" | "name" | "priority"
+  sortBy: "status" | "vision" | "team" | "priority"
 ): SortedIssueShape {
   // 使用 Map 来收集每个分组的项目
   const groupMap = new Map<string, IssueShape[]>();

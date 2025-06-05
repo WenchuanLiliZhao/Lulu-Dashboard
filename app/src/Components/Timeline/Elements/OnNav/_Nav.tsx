@@ -3,6 +3,7 @@ import Switch, { type SwitchOption } from "../../../Switch/Switch";
 import BackToTodayButton from "./BackToTodayButton";
 import { LogoBar, Nav } from "../../../Nav";
 import { Logo } from "../../../../assets/Img/Logo";
+import GroupBySelector, { type GroupOption } from "./GroupBySelector";
 
 interface TimelineNavProps {
   switchOptions: SwitchOption[];
@@ -12,6 +13,9 @@ interface TimelineNavProps {
   containerRef: React.RefObject<HTMLDivElement | null>;
   yearList: number[];
   startMonth: number;
+  groupOptions: GroupOption[];
+  currentGroupBy: string;
+  onGroupByChange: (value: string) => void;
 }
 
 export const TimelineNav: React.FC<TimelineNavProps> = ({
@@ -22,6 +26,9 @@ export const TimelineNav: React.FC<TimelineNavProps> = ({
   containerRef,
   yearList,
   startMonth,
+  groupOptions,
+  currentGroupBy,
+  onGroupByChange,
 }) => {
   return (
     <Nav
@@ -29,6 +36,12 @@ export const TimelineNav: React.FC<TimelineNavProps> = ({
         <LogoBar logo={<Logo mode="FullColorNoText" />} title="FY25 China Tech Delivery Timeline" />,
       ]}
       right={[
+        <GroupBySelector
+          options={groupOptions}
+          defaultValue={currentGroupBy}
+          onChange={onGroupByChange}
+          size="small"
+        />,
         <BackToTodayButton
           containerRef={containerRef}
           dayWidth={dayWidth}

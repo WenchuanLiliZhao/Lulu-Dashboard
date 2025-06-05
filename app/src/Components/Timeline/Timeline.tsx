@@ -10,6 +10,7 @@ import {
 } from "./Utils/Utils";
 import { type SwitchOption } from "../Switch/Switch";
 import { TimelineNav } from "./Elements/OnNav/_Nav";
+import { type GroupOption } from "./Elements/OnNav/GroupBySelector";
 import { TimelineRuler } from "./Elements/OnLayout/TimelineRuler";
 import { TimelineItems } from "./Elements/OnLayout/TimelineItems";
 import { TimelineSidebar } from "./Elements/Sidebar/TimelineSidebar";
@@ -19,6 +20,7 @@ import { TimelineConst } from "./Elements/_constants";
 
 interface TimelineProps {
   inputData: SortedIssueShape;
+  onGroupByChange?: (groupBy: "status" | "vision" | "team" | "priority") => void;
 }
 
 // 时间视图配置
@@ -39,11 +41,31 @@ const timeViewOptions = {
 
 
 
-export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
+export const Timeline: React.FC<TimelineProps> = ({ inputData, onGroupByChange }) => {
   // Time view switch options - 转换为Switch组件需要的格式
   const switchOptions: SwitchOption[] = Object.entries(timeViewOptions).map(
     ([value, label]) => ({ value, label })
   );
+
+  // Group by options - 分组选项配置
+  const groupOptions: GroupOption[] = [
+    { value: "vision", label: "Vision" },
+    { value: "status", label: "Status" },
+    { value: "team", label: "Team" },
+    { value: "priority", label: "Priority" },
+  ];
+
+  // State for current group by method
+  const [currentGroupBy, setCurrentGroupBy] = useState<"status" | "vision" | "team" | "priority">(
+    inputData.meta.sortBy as "status" | "vision" | "team" | "priority"
+  );
+
+  // Handler for group by changes
+  const handleGroupByChange = (value: string) => {
+    const groupByValue = value as "status" | "vision" | "team" | "priority";
+    setCurrentGroupBy(groupByValue);
+    onGroupByChange?.(groupByValue);
+  };
 
   // Constants for layout calculations
   const cellHeight = TimelineConst.cellHeight; // Height of each item row in pixels
@@ -139,6 +161,9 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
         containerRef={mainScrollRef}
         yearList={yearList}
         startMonth={startMonth}
+        groupOptions={groupOptions}
+        currentGroupBy={currentGroupBy}
+        onGroupByChange={handleGroupByChange}
       />
 
       {/* 外层包装器 - 处理垂直滚动 */}
