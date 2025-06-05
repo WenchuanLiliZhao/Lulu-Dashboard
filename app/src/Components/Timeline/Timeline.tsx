@@ -12,6 +12,7 @@ import { type SwitchOption } from "../Switch/Switch";
 import { TimelineNav } from "./Elements/OnNav/_Nav";
 import { TimelineRuler } from "./Elements/OnLayout/TimelineRuler";
 import { TimelineItems } from "./Elements/OnLayout/TimelineItems";
+import { TimelineSidebar } from "./Elements/Sidebar/TimelineSidebar";
 import { useLeftBasedZoom } from "./Utils/useLeftBasedZoom";
 import styles from "./Timeline.module.scss";
 import { TimelineConst } from "./Elements/_constants";
@@ -120,6 +121,12 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
       />
 
       <div className={styles["timeline-content-wrapper"]}>
+        {/* 左侧可调整大小的侧边栏 */}
+        <TimelineSidebar
+          groupPlacements={groupPlacements}
+          cellHeight={cellHeight}
+          groupGap={groupGapForTesting}
+        />
 
         {/* 时间线内容 - 分为 Ruler 和 Items 两个组件 */}
         <div ref={containerRef} className={styles["timeline-content-container"]}>
