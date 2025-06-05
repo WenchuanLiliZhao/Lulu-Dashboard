@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Button.module.scss';
 import HoverBox from '../Boxes/HoverBox';
+import Icon from '../Icon/Icon';
 
 export interface ButtonProps {
   children: React.ReactNode;
@@ -11,7 +12,7 @@ export interface ButtonProps {
   size?: 'small' | 'medium' | 'large';
   variant?: 'primary' | 'secondary' | 'outline';
   type?: 'button' | 'submit' | 'reset';
-  icon?: React.ReactNode;
+  icon?: string;
   iconPosition?: 'left' | 'right';
 }
 
@@ -35,6 +36,20 @@ const Button: React.FC<ButtonProps> = ({
   // Generate status-specific class name
   const statusClass = status !== 'normal' ? styles[status] || '' : '';
 
+  // Map button size to icon size
+  const getIconSize = () => {
+    switch (size) {
+      case 'small':
+        return 14;
+      case 'medium':
+        return 18;
+      case 'large':
+        return 24;
+      default:
+        return 20;
+    }
+  };
+
   return (
     <button
       type={type}
@@ -44,7 +59,7 @@ const Button: React.FC<ButtonProps> = ({
     >
       {icon && iconPosition === 'left' && (
         <span className={styles.buttonIcon}>
-          {icon}
+          <Icon name={icon} size={getIconSize()} />
         </span>
       )}
       <span className={styles.buttonText}>
@@ -52,7 +67,7 @@ const Button: React.FC<ButtonProps> = ({
       </span>
       {icon && iconPosition === 'right' && (
         <span className={styles.buttonIcon}>
-          {icon}
+          <Icon name={icon} size={getIconSize()} />
         </span>
       )}
       <HoverBox className={styles["hover-box"]} />
