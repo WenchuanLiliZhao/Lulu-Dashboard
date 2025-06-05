@@ -4,14 +4,12 @@
   border-right: 1px solid var(--color-border-main);
   display: flex;
   flex-direction: column;
-  min-width: 150px;
-  max-width: 400px;
-  overflow: hidden;
+  width: 200px;
+  overflow: visible;
 
   .timeline-sidebar-content {
     flex: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: visible;
     
     .timeline-sidebar-ruler-space {
       background-color: var(--color-bg-main);
@@ -53,56 +51,4 @@
     }
   }
 
-  // 调整大小的拖拽手柄
-  .timeline-sidebar-resizer {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 4px;
-    height: 100%;
-    background-color: transparent;
-    cursor: col-resize;
-    transition: background-color 0.2s ease;
-    z-index: 20;
-
-    &:hover {
-      background-color: var(--color-border-main);
-    }
-
-    &.dragging {
-      background-color: var(--color-primary);
-    }
-
-    // 添加一个更大的拖拽区域以提高可用性
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -2px;
-      right: -2px;
-      bottom: 0;
-    }
-  }
-
-  // 当用户正在拖拽时，禁用文本选择
-  &:has(.timeline-sidebar-resizer.dragging) {
-    user-select: none;
-    
-    * {
-      user-select: none;
-    }
-  }
-}
-
-// 全局样式，当拖拽时禁用页面上的文本选择
-.timeline-sidebar-resizer.dragging {
-  ~ * {
-    user-select: none !important;
-  }
-}
-
-// 当整个页面在拖拽状态时的样式
-body:has(.timeline-sidebar-resizer.dragging) {
-  user-select: none;
-  cursor: col-resize;
 } 

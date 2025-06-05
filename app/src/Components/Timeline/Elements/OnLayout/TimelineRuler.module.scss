@@ -1,0 +1,78 @@
+.timeline-ruler-column {
+  display: flex;
+}
+
+.timeline-ruler-year {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-main);
+
+  .timeline-ruler-year-label {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0 8px;
+    
+    box-shadow: inset -1px 0 0 0 var(--color-border-main);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .timeline-ruler-month {
+    box-shadow: inset -1px 0 0 0 var(--color-border-main);
+
+    .timeline-ruler-month-label {
+      font-size: 14px;
+      padding: 0 8px;
+      background-color: var(--color-bg-sec-trans);
+      // box-shadow: inset -1px 0 0 0 var(--color-border-main-trans);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timeline-ruler-month-grid {
+      display: flex;
+    }
+
+    .timeline-ruler-day {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+
+      &.zoomed {
+        box-shadow: inset -1px 0 0 0 var(--color-border-main);
+      }
+
+      .timeline-ruler-day-label {
+        // padding: 4px;
+        text-align: center;
+        border-bottom: 1px solid var(--color-border-main);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &.today {
+          background-color: var(--color-semantic-success);
+        }
+
+        .timeline-ruler-day-label-text {
+          text-align: center;
+          font-size: 10px;
+
+          display: none;
+
+          
+
+          &.zoomed {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

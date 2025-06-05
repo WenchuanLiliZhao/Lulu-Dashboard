@@ -4,7 +4,7 @@ import {
   getDaysInMonth,
 } from "../../Utils/Utils";
 import { TimelineConst } from "../_constants";
-import styles from "../../Timeline.module.scss";
+import styles from "./TimelineRuler.module.scss";
 
 interface TimelineRulerProps {
   yearList: number[];
