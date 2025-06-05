@@ -92,6 +92,16 @@ export const useScrollToToday = (
       left: finalScrollPosition,
       behavior: 'smooth'
     });
+    
+    // 查找所有需要同步滚动的容器（通过父级查找尺子容器）
+    const timelineContainer = container.closest('[class*="timeline-container"]');
+    if (timelineContainer) {
+      const rulerContainer = timelineContainer.querySelector('[class*="timeline-ruler-content"]');
+      if (rulerContainer) {
+        // 同步滚动尺子容器，但不使用平滑滚动避免冲突
+        rulerContainer.scrollLeft = finalScrollPosition;
+      }
+    }
   }, [containerRef, dayWidth, calculateDaysToToday]);
   
   return {

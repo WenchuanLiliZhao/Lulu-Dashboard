@@ -9,8 +9,15 @@ export const Team = {
   "Tech": "Tech",
 } as const;
 
+export const Priority = {
+  "High": "High",
+  "Medium": "Medium",
+  "Low": "Low",
+} as const;
+
 // 类型定义
 export type TeamType = keyof typeof Team;
+export type PriorityType = keyof typeof Priority;
 
 export interface IssueShape {
   id: string;
@@ -23,6 +30,7 @@ export interface IssueShape {
   children?: IssueShape[];
   vision: string;
   team: keyof typeof Team;
+  priority: keyof typeof Priority;
 }
 
 export const sortTimelineItemsByStartDate = (items: IssueShape[]): IssueShape[] => {
@@ -46,12 +54,12 @@ export interface SortedIssueShape {
 /**
  * 将 IssueShape 数组按指定字段分组，转换为 SortedIssueShape 格式
  * @param issues - 原始的 IssueShape 数组
- * @param sortBy - 分组字段，可以是 "status"、"vision" 或 "name"
+ * @param sortBy - 分组字段，可以是 "status"、"vision"、"name" 或 "priority"
  * @returns 分组后的 SortedIssueShape 对象
  */
 export function groupIssuesByField(
   issues: IssueShape[],
-  sortBy: "status" | "vision" | "name"
+  sortBy: "status" | "vision" | "name" | "priority"
 ): SortedIssueShape {
   // 使用 Map 来收集每个分组的项目
   const groupMap = new Map<string, IssueShape[]>();

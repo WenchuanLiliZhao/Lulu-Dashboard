@@ -12,7 +12,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-01-31"),
     progress: 50,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Function"
+    team: "Function",
+    priority: "High"
   },
   {
     id: "2",
@@ -23,7 +24,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-03-31"),
     progress: 100,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Tech"
+    team: "Tech",
+    priority: "Low"
   },
   {
     id: "3",
@@ -34,7 +36,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-03-31"),
     progress: 100,
     vision: "Advance Capabilities",
-    team: "Tech"
+    team: "Tech",
+    priority: "Low"
   },
   {
     id: "4",
@@ -45,7 +48,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-04-30"),
     progress: 75,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "E-com"
+    team: "E-com",
+    priority: "High"
   },
   {
     id: "5",
@@ -56,7 +60,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-05-31"),
     progress: 25,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "6",
@@ -67,7 +72,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-06-30"),
     progress: 60,
     vision: "Advance Capabilities",
-    team: "Retail"
+    team: "Retail",
+    priority: "High"
   },
   {
     id: "7",
@@ -78,7 +84,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-08-31"),
     progress: 5,
     vision: "Evolving Cyber Threats",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "8",
@@ -89,7 +96,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-08-31"),
     progress: 40,
     vision: "Awareness and Action",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "9",
@@ -100,7 +108,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-09-30"),
     progress: 100,
     vision: "Evolving Cyber Threats",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "10",
@@ -111,7 +120,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-10-31"),
     progress: 35,
     vision: "Advance Capabilities",
-    team: "Function"
+    team: "Function",
+    priority: "High"
   },
   {
     id: "11",
@@ -122,7 +132,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-11-30"),
     progress: 85,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "12",
@@ -133,7 +144,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-12-31"),
     progress: 10,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "13",
@@ -144,7 +156,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-01-31"),
     progress: 65,
     vision: "Evolving Cyber Threats",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "14",
@@ -155,7 +168,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-02-28"),
     progress: 100,
     vision: "Advance Capabilities",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "15",
@@ -166,7 +180,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-04-30"),
     progress: 70,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "16",
@@ -177,7 +192,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-05-31"),
     progress: 5,
     vision: "Advance Capabilities",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "17",
@@ -188,7 +204,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-06-30"),
     progress: 45,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Fulfillment"
+    team: "Fulfillment",
+    priority: "High"
   },
   {
     id: "18",
@@ -199,7 +216,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-07-31"),
     progress: 100,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "19",
@@ -210,7 +228,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-08-31"),
     progress: 30,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "20",
@@ -221,7 +240,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-09-30"),
     progress: 8,
     vision: "Advance Capabilities",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "21",
@@ -232,7 +252,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-11-30"),
     progress: 55,
     vision: "Awareness and Action",
-    team: "Corporate"
+    team: "Corporate",
+    priority: "High"
   },
   {
     id: "22",
@@ -243,7 +264,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-12-31"),
     progress: 90,
     vision: "Data Analysis",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "23",
@@ -254,7 +276,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-01-31"),
     progress: 25,
     vision: "Advance Capabilities",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "24",
@@ -265,7 +288,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-02-29"),
     progress: 100,
     vision: "Advance Capabilities",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "25",
@@ -276,7 +300,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-03-31"),
     progress: 50,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Function"
+    team: "Function",
+    priority: "High"
   },
   {
     id: "26",
@@ -287,7 +312,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-04-30"),
     progress: 12,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "27",
@@ -298,7 +324,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-05-31"),
     progress: 40,
     vision: "Evolving Cyber Threats",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "28",
@@ -309,7 +336,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-06-30"),
     progress: 80,
     vision: "Advance Capabilities",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "29",
@@ -320,7 +348,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-07-31"),
     progress: 100,
     vision: "Awareness and Action",
-    team: "Corporate"
+    team: "Corporate",
+    priority: "High"
   },
   {
     id: "30",
@@ -331,7 +360,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-08-31"),
     progress: 60,
     vision: "Advance Capabilities",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "31",
@@ -342,7 +372,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-09-30"),
     progress: 100,
     vision: "Advance Capabilities",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "32",
@@ -353,7 +384,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-10-31"),
     progress: 35,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "33",
@@ -364,7 +396,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-11-30"),
     progress: 8,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Fulfillment"
+    team: "Fulfillment",
+    priority: "High"
   },
   {
     id: "34",
@@ -375,7 +408,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-12-31"),
     progress: 85,
     vision: "Evolving Cyber Threats",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "35",
@@ -386,7 +420,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-01-31"),
     progress: 45,
     vision: "Awareness and Action",
-    team: "Corporate"
+    team: "Corporate",
+    priority: "High"
   },
   {
     id: "36",
@@ -397,7 +432,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-02-28"),
     progress: 100,
     vision: "Advance Capabilities",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "37",
@@ -408,7 +444,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-03-31"),
     progress: 25,
     vision: "Awareness and Action",
-    team: "Corporate"
+    team: "Corporate",
+    priority: "High"
   },
   {
     id: "38",
@@ -419,7 +456,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-04-30"),
     progress: 100,
     vision: "Evolving Cyber Threats",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "39",
@@ -430,7 +468,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-06-30"),
     progress: 70,
     vision: "Advance Capabilities",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "40",
@@ -441,7 +480,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-07-31"),
     progress: 100,
     vision: "Advance Capabilities",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "41",
@@ -452,7 +492,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-08-31"),
     progress: 55,
     vision: "Advance Capabilities",
-    team: "Function"
+    team: "Function",
+    priority: "High"
   },
   {
     id: "42",
@@ -463,7 +504,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-09-30"),
     progress: 90,
     vision: "Evolving Cyber Threats",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "43",
@@ -474,7 +516,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-10-31"),
     progress: 30,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Product"
+    team: "Product",
+    priority: "High"
   },
   {
     id: "44",
@@ -485,7 +528,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-11-30"),
     progress: 2,
     vision: "Data Analysis",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "45",
@@ -496,7 +540,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2025-12-31"),
     progress: 65,
     vision: "Awareness and Action",
-    team: "Corporate"
+    team: "Corporate",
+    priority: "High"
   },
   {
     id: "46",
@@ -507,7 +552,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-01-31"),
     progress: 7,
     vision: "Advance Capabilities",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "47",
@@ -518,7 +564,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-02-29"),
     progress: 1,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "48",
@@ -529,7 +576,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-03-31"),
     progress: 40,
     vision: "Data Analysis",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "49",
@@ -540,7 +588,8 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-04-30"),
     progress: 75,
     vision: "Advance Capabilities",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "50",
@@ -551,6 +600,7 @@ export const Example_Issues_1: IssueShape[] = [
     endDate: new Date("2024-05-31"),
     progress: 20,
     vision: "Awareness and Action",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
 ];

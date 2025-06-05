@@ -10,7 +10,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-01-31"),
     progress: 65,
     vision: "Revolutionize Customer Experience",
-    team: "Tech"
+    team: "Tech",
+    priority: "High"
   },
   {
     id: "52",
@@ -21,7 +22,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-02-29"),
     progress: 20,
     vision: "The Consistancy of Axiom of Choice and General Continuum Hypothesis in the Context of Set Theory",
-    team: "Product"
+    team: "Product",
+    priority: "High"
   },
   {
     id: "53",
@@ -32,7 +34,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-03-31"),
     progress: 45,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Tech"
+    team: "Tech",
+    priority: "Medium"
   },
   {
     id: "54",
@@ -43,7 +46,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-04-30"),
     progress: 30,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Fulfillment"
+    team: "Fulfillment",
+    priority: "Medium"
   },
   {
     id: "55",
@@ -54,7 +58,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-05-31"),
     progress: 100,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Function"
+    team: "Function",
+    priority: "Low"
   },
   {
     id: "56",
@@ -65,7 +70,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-06-30"),
     progress: 75,
     vision: "Evolving Cyber Threats",
-    team: "Tech"
+    team: "Tech",
+    priority: "Low"
   },
   {
     id: "57",
@@ -76,7 +82,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-07-31"),
     progress: 100,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Retail"
+    team: "Retail",
+    priority: "Low"
   },
   {
     id: "58",
@@ -87,7 +94,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-08-31"),
     progress: 60,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "E-com"
+    team: "E-com",
+    priority: "Medium"
   },
   {
     id: "59",
@@ -98,7 +106,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-09-30"),
     progress: 25,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Brand Marketing"
+    team: "Brand Marketing",
+    priority: "Medium"
   },
   {
     id: "60",
@@ -109,7 +118,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-10-31"),
     progress: 40,
     vision: "Awareness and Action",
-    team: "Corporate"
+    team: "Corporate",
+    priority: "Medium"
   },
   {
     id: "61",
@@ -120,7 +130,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-11-30"),
     progress: 10,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Product"
+    team: "Product",
+    priority: "Medium"
   },
   {
     id: "62",
@@ -131,7 +142,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-12-31"),
     progress: 55,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Tech"
+    team: "Tech",
+    priority: "Medium"
   },
   {
     id: "63",
@@ -142,7 +154,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-01-31"),
     progress: 20,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Corporate"
+    team: "Corporate",
+    priority: "Medium"
   },
   {
     id: "64",
@@ -153,7 +166,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-02-28"),
     progress: 70,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Fulfillment"
+    team: "Fulfillment",
+    priority: "Medium"
   },
   {
     id: "65",
@@ -164,7 +178,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-03-31"),
     progress: 35,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Brand Marketing"
+    team: "Brand Marketing",
+    priority: "Medium"
   },
   {
     id: "66",
@@ -175,7 +190,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-04-30"),
     progress: 45,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Function"
+    team: "Function",
+    priority: "Medium"
   },
   {
     id: "67",
@@ -186,7 +202,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-05-31"),
     progress: 100,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Retail"
+    team: "Retail",
+    priority: "Medium"
   },
   {
     id: "68",
@@ -197,7 +214,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-06-30"),
     progress: 60,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Tech"
+    team: "Tech",
+    priority: "Medium"
   },
   {
     id: "69",
@@ -208,7 +226,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-07-31"),
     progress: 25,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Product"
+    team: "Product",
+    priority: "Medium"
   },
   {
     id: "70",
@@ -219,7 +238,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-08-31"),
     progress: 50,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "E-com"
+    team: "E-com",
+    priority: "Medium"
   },
   {
     id: "71",
@@ -230,7 +250,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-09-30"),
     progress: 30,
     vision: "Awareness and Action",
-    team: "Corporate"
+    team: "Corporate",
+    priority: "Medium"
   },
   {
     id: "72",
@@ -241,7 +262,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-10-31"),
     progress: 40,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Function"
+    team: "Function",
+    priority: "Medium"
   },
   {
     id: "73",
@@ -252,7 +274,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-11-30"),
     progress: 20,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Retail"
+    team: "Retail",
+    priority: "Medium"
   },
   {
     id: "74",
@@ -263,7 +286,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-12-31"),
     progress: 35,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Brand Marketing"
+    team: "Brand Marketing",
+    priority: "Medium"
   },
   {
     id: "75",
@@ -274,7 +298,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-01-31"),
     progress: 25,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Fulfillment"
+    team: "Fulfillment",
+    priority: "Medium"
   },
   {
     id: "76",
@@ -285,7 +310,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-02-29"),
     progress: 55,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Tech"
+    team: "Tech",
+    priority: "Medium"
   },
   {
     id: "77",
@@ -296,7 +322,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-03-31"),
     progress: 30,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Retail"
+    team: "Retail",
+    priority: "Medium"
   },
   {
     id: "78",
@@ -307,7 +334,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-04-30"),
     progress: 65,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "E-com"
+    team: "E-com",
+    priority: "Medium"
   },
   {
     id: "79",
@@ -318,7 +346,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-05-31"),
     progress: 40,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Brand Marketing"
+    team: "Brand Marketing",
+    priority: "Medium"
   },
   {
     id: "80",
@@ -329,7 +358,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-06-30"),
     progress: 45,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Corporate"
+    team: "Corporate",
+    priority: "Medium"
   },
   {
     id: "81",
@@ -340,7 +370,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-07-31"),
     progress: 35,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Product"
+    team: "Product",
+    priority: "Medium"
   },
   {
     id: "82",
@@ -351,7 +382,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-08-31"),
     progress: 60,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Function"
+    team: "Function",
+    priority: "Medium"
   },
   {
     id: "83",
@@ -362,7 +394,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-09-30"),
     progress: 25,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Retail"
+    team: "Retail",
+    priority: "Medium"
   },
   {
     id: "84",
@@ -373,7 +406,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-10-31"),
     progress: 70,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Tech"
+    team: "Tech",
+    priority: "Medium"
   },
   {
     id: "85",
@@ -384,7 +418,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-11-30"),
     progress: 30,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "E-com"
+    team: "E-com",
+    priority: "Medium"
   },
   {
     id: "86",
@@ -395,7 +430,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-12-31"),
     progress: 50,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Brand Marketing"
+    team: "Brand Marketing",
+    priority: "Medium"
   },
   {
     id: "87",
@@ -406,7 +442,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-01-31"),
     progress: 35,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Corporate"
+    team: "Corporate",
+    priority: "Medium"
   },
   {
     id: "88",
@@ -417,7 +454,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-02-28"),
     progress: 55,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Product"
+    team: "Product",
+    priority: "Medium"
   },
   {
     id: "89",
@@ -428,7 +466,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-03-31"),
     progress: 40,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Function"
+    team: "Function",
+    priority: "Medium"
   },
   {
     id: "90",
@@ -439,7 +478,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-04-30"),
     progress: 65,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Retail"
+    team: "Retail",
+    priority: "Medium"
   },
   {
     id: "91",
@@ -450,7 +490,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-05-31"),
     progress: 45,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Tech"
+    team: "Tech",
+    priority: "Medium"
   },
   {
     id: "92",
@@ -461,7 +502,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-06-30"),
     progress: 50,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "E-com"
+    team: "E-com",
+    priority: "Medium"
   },
   {
     id: "93",
@@ -472,7 +514,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-07-31"),
     progress: 30,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Brand Marketing"
+    team: "Brand Marketing",
+    priority: "Medium"
   },
   {
     id: "94",
@@ -483,7 +526,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-08-31"),
     progress: 60,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Corporate"
+    team: "Corporate",
+    priority: "Medium"
   },
   {
     id: "95",
@@ -494,7 +538,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-09-30"),
     progress: 35,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Product"
+    team: "Product",
+    priority: "Medium"
   },
   {
     id: "96",
@@ -505,7 +550,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-10-31"),
     progress: 55,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Function"
+    team: "Function",
+    priority: "Medium"
   },
   {
     id: "97",
@@ -516,7 +562,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-11-30"),
     progress: 40,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Retail"
+    team: "Retail",
+    priority: "Medium"
   },
   {
     id: "98",
@@ -527,7 +574,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2025-12-31"),
     progress: 45,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Tech"
+    team: "Tech",
+    priority: "Medium"
   },
   {
     id: "99",
@@ -538,7 +586,8 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-01-31"),
     progress: 30,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "E-com"
+    team: "E-com",
+    priority: "Medium"
   },
   {
     id: "100",
@@ -549,6 +598,7 @@ export const Example_Issues_2: IssueShape[] = [
     endDate: new Date("2024-02-29"),
     progress: 50,
     vision: "To revolutionize personal productivity through intuitive mobile solutions.",
-    team: "Brand Marketing"
+    team: "Brand Marketing",
+    priority: "Medium"
   }
 ]; 

@@ -54,12 +54,12 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
   const dayWidth = TIME_VIEW_CONFIG[currentTimeView].dayWidth;
   const zoomThreshold = TIME_VIEW_CONFIG[currentTimeView].zoomThreshold;
 
-  // 使用自定义hook实现左侧缩放功能
-  const { containerRef } = useLeftBasedZoom(dayWidth);
-  
   // 添加尺子滚动容器的引用
   const rulerScrollRef = useRef<HTMLDivElement>(null);
   const mainScrollRef = useRef<HTMLDivElement>(null);
+  
+  // 使用自定义hook实现左侧缩放功能，针对主内容容器
+  const { containerRef: zoomContainerRef } = useLeftBasedZoom(dayWidth);
   
   // 同步滚动函数
   const syncScroll = useCallback((sourceRef: React.RefObject<HTMLDivElement | null>, targetRef: React.RefObject<HTMLDivElement | null>) => {
@@ -136,7 +136,7 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
         currentTimeView={currentTimeView}
         onTimeViewChange={handleTimeViewChange}
         dayWidth={dayWidth}
-        containerRef={containerRef}
+        containerRef={mainScrollRef}
         yearList={yearList}
         startMonth={startMonth}
       />
@@ -158,10 +158,7 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
             
             {/* 右侧时间线尺子 - 可水平滚动 */}
             <div 
-              ref={(el) => {
-                containerRef.current = el;
-                rulerScrollRef.current = el;
-              }}
+              ref={rulerScrollRef}
               className={styles["timeline-ruler-content"]}
               onScroll={handleRulerScroll}
             >
@@ -186,7 +183,10 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
 
           {/* 时间线内容 - 只处理水平滚动 */}
           <div 
-            ref={mainScrollRef}
+            ref={(el) => {
+              mainScrollRef.current = el;
+              zoomContainerRef.current = el;
+            }}
             className={styles["timeline-content-container"]}
             onScroll={handleMainScroll}
           >
