@@ -4,6 +4,7 @@ import {
   getDaysInMonth,
 } from "../../Utils/Utils";
 import { TimelineConst } from "../_constants";
+import { Column } from "../Shared/Column";
 import styles from "./TimelineRuler.module.scss";
 
 interface TimelineRulerProps {
@@ -32,22 +33,7 @@ const isToday = (
   );
 };
 
-// 可复用的列组件
-const Column = ({
-  className,
-  children,
-  style,
-}: {
-  className?: string;
-  children: React.ReactNode;
-  style?: React.CSSProperties;
-}) => {
-  return (
-    <div className={`${styles["timeline-ruler-column"]} ${className || ""}`} style={style}>
-      {children}
-    </div>
-  );
-};
+
 
 export const TimelineRuler: React.FC<TimelineRulerProps> = ({
   yearList,
@@ -57,7 +43,7 @@ export const TimelineRuler: React.FC<TimelineRulerProps> = ({
   style
 }) => {
   return (
-    <Column style={style}>
+    <Column className={styles["timeline-ruler-column"]} style={style}>
       {yearList.map((year, yearIndex) => (
         <div key={year} className={styles["timeline-ruler-year"]}>
           {/* 年份标签 - 只在每年的第一个月显示 */}
@@ -67,7 +53,7 @@ export const TimelineRuler: React.FC<TimelineRulerProps> = ({
           >
             {year}
           </div>
-          <Column>
+          <Column className={styles["timeline-ruler-column"]}>
             {Array.from(
               { length: yearIndex === 0 ? 12 - startMonth : 12 },
               (_, i) => (yearIndex === 0 ? i + startMonth : i)
@@ -82,7 +68,7 @@ export const TimelineRuler: React.FC<TimelineRulerProps> = ({
                 >
                   {monthNames[monthIndex]}
                 </div>
-                <Column className={styles["timeline-ruler-month-grid"]}>
+                <Column className={`${styles["timeline-ruler-column"]} ${styles["timeline-ruler-month-grid"]}`}>
                   {Array.from(
                     { length: getDaysInMonth(year, monthIndex) },
                     (_, dayIndex) => (

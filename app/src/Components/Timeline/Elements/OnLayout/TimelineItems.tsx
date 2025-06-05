@@ -5,6 +5,7 @@ import {
 } from "../../Utils/Utils";
 import { type IssueShape } from "../../Utils/Shapes";
 import { TimelineGroup } from "../OnTimeline/Group";
+import { Column } from "../Shared/Column";
 import styles from "../../Timeline.module.scss";
 
 interface TimelineItemsProps {
@@ -21,20 +22,7 @@ interface TimelineItemsProps {
   }>;
 }
 
-// 可复用的列组件
-const Column = ({
-  className,
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) => {
-  return (
-    <div className={`${styles["timeline-ruler-column"]} ${className || ""}`}>
-      {children}
-    </div>
-  );
-};
+
 
 export const TimelineItems: React.FC<TimelineItemsProps> = ({
   yearList,
@@ -46,11 +34,11 @@ export const TimelineItems: React.FC<TimelineItemsProps> = ({
   groupPlacements,
 }) => {
   return (
-    <Column>
+    <Column className={styles["timeline-ruler-column"]}>
       {yearList.map((year, yearIndex) => (
         <React.Fragment key={yearIndex}>
           {/* 占位空间，与年份标签对齐 - 透明占位 */}
-          <Column>
+          <Column className={styles["timeline-ruler-column"]}>
             {Array.from(
               { length: yearIndex === 0 ? 12 - startMonth : 12 },
               (_, i) => (yearIndex === 0 ? i + startMonth : i)
@@ -59,7 +47,7 @@ export const TimelineItems: React.FC<TimelineItemsProps> = ({
                 key={monthIndex}
                 className={styles["timeline-ruler-month"]}
               >
-                <Column className={styles["timeline-ruler-month-grid"]}>
+                <Column className={`${styles["timeline-ruler-column"]} ${styles["timeline-ruler-month-grid"]}`}>
                   {Array.from(
                     { length: getDaysInMonth(year, monthIndex) },
                     (_, dayIndex) => (
