@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Item.module.scss";
 import CircularProgress from "../../../CircularProgress/CircularProgress";
-import type { IssueShape } from "../../Utils/Shapes";
+import type { IssueShape, PriorityType } from "../../Utils/Shapes";
 import { TimelineConst } from "../_constants";
 import HoverBox from "../../../Boxes/HoverBox";
 import {
@@ -10,6 +10,7 @@ import {
   getTeamColorName,
 } from "../../Utils/TeamColors";
 import TransBgBox from "../../../Boxes/TransBgBox";
+import Icon from "../../../Icon/Icon";
 
 interface TimelineItemProps {
   item: IssueShape;
@@ -18,6 +19,27 @@ interface TimelineItemProps {
   cellHeight: number;
   column: number;
 }
+
+function getPriorityIcon(priority: PriorityType) {
+  switch (priority) {
+    case "High":
+      return {
+        icon: "keyboard_double_arrow_up",
+        color: "var(--color-semantic-warning)",
+      };
+    case "Medium":
+      return {
+        icon: "keyboard_capslock",
+        color: "var(--color-semantic-active)",
+      };
+    case "Low":
+      return {
+        icon: "keyboard_double_arrow_down",
+        color: "var(--color-neg)",
+      };
+  }
+}
+
 
 export const TimelineItem: React.FC<TimelineItemProps> = ({
   item,
@@ -30,6 +52,7 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
   const lineHeight = 18;
   const iconSize = 16;
   const iconPadding = (lineHeight - iconSize) / 2;
+  const verticalCap = 4;
 
   return (
     <div className={styles["timeline-item"]}>
@@ -50,7 +73,7 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
         <div className={styles["timeline-property-content"]}>
           <div
             className={styles["timeline-item-progress-svg-container"]}
-            style={{ padding: iconPadding }}
+            style={{ padding: iconPadding, gap: verticalCap }}
           >
             <CircularProgress 
               progress={item.progress} 
@@ -61,10 +84,11 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
                   : item.status === "Risk in control"
                   ? "var(--color-semantic-warning)"
                   : undefined
-              }} 
+              }}
             />
+            <Icon name={getPriorityIcon(item.priority).icon} size={iconSize} style={{ color: getPriorityIcon(item.priority).color }} />
           </div>
-          <div className={styles["timeline-item-property-body"]}>
+          <div className={styles["timeline-item-property-body"]} style={{ gap: verticalCap }}>
             <div
               className={styles["timeline-item-name"]}
               style={{
