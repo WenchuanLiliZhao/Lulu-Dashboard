@@ -4,7 +4,6 @@ import {
   type PlacementResult,
 } from "../../Utils/Utils";
 import { type IssueShape } from "../../Utils/Shapes";
-import { TimelineConst } from "../_constants";
 import { TimelineGroup } from "../OnTimeline/Group";
 import styles from "../../Timeline.module.scss";
 
@@ -49,14 +48,8 @@ export const TimelineItems: React.FC<TimelineItemsProps> = ({
   return (
     <Column>
       {yearList.map((year, yearIndex) => (
-        <div key={year} className={styles["timeline-ruler-year"]}>
+        <React.Fragment key={yearIndex}>
           {/* 占位空间，与年份标签对齐 - 透明占位 */}
-          <div
-            style={{ 
-              height: `${TimelineConst.yearLabelHight}px`,
-              visibility: "hidden",
-            }}
-          />
           <Column>
             {Array.from(
               { length: yearIndex === 0 ? 12 - startMonth : 12 },
@@ -66,13 +59,6 @@ export const TimelineItems: React.FC<TimelineItemsProps> = ({
                 key={monthIndex}
                 className={styles["timeline-ruler-month"]}
               >
-                {/* 占位空间，与月份标签对齐 - 透明占位 */}
-                <div
-                  style={{ 
-                    height: `${TimelineConst.monthLabelHight}px`,
-                    visibility: "hidden",
-                  }}
-                />
                 <Column className={styles["timeline-ruler-month-grid"]}>
                   {Array.from(
                     { length: getDaysInMonth(year, monthIndex) },
@@ -84,13 +70,6 @@ export const TimelineItems: React.FC<TimelineItemsProps> = ({
                         }`}
                         style={{ width: `${dayWidth}px` }}
                       >
-                        {/* 占位空间，与日期标签对齐 - 透明占位 */}
-                        <div
-                          style={{
-                            height: `${TimelineConst.dayLabelHight}px`,
-                            visibility: "hidden",
-                          }}
-                        />
 
                         {/* 时间线项目内容 */}
                         <div className={styles["timeline-groups"]}>
@@ -114,7 +93,7 @@ export const TimelineItems: React.FC<TimelineItemsProps> = ({
               </div>
             ))}
           </Column>
-        </div>
+        </React.Fragment>
       ))}
     </Column>
   );

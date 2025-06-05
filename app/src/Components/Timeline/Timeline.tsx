@@ -15,7 +15,6 @@ import { TimelineItems } from "./Elements/OnLayout/TimelineItems";
 import { useLeftBasedZoom } from "./Utils/useLeftBasedZoom";
 import styles from "./Timeline.module.scss";
 import { TimelineConst } from "./Elements/_constants";
-import { GroupLabels } from "./Elements/OnTimeline/GroupLabels";
 
 interface TimelineProps {
   inputData: SortedIssueShape;
@@ -122,32 +121,36 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
 
       <div className={styles["timeline-content-wrapper"]}>
         {/* 分组标题列组件 */}
-        <GroupLabels
+        {/* <GroupLabels
           groupPlacements={groupPlacements}
           cellHeight={cellHeight}
           sortedBy={inputData.meta.sortBy}
-        />
+        /> */}
 
-        {/* 时间线内容 - 分为 Ruler 和 Items 两个平级组件 */}
+        {/* 时间线内容 - 分为 Ruler 和 Items 两个组件 */}
         <div ref={containerRef} className={styles["timeline-content-container"]}>
-          {/* 时间线尺子组件 */}
-          <TimelineRuler
-            yearList={yearList}
-            startMonth={startMonth}
-            dayWidth={dayWidth}
-            zoomThreshold={zoomThreshold}
-          />
+          {/* 时间线尺子组件 - sticky 定位 */}
+          <div className={styles["timeline-ruler-sticky"]}>
+            <TimelineRuler
+              yearList={yearList}
+              startMonth={startMonth}
+              dayWidth={dayWidth}
+              zoomThreshold={zoomThreshold}
+            />
+          </div>
           
           {/* 时间线项目组件 */}
-          <TimelineItems
-            yearList={yearList}
-            startMonth={startMonth}
-            dayWidth={dayWidth}
-            zoomThreshold={zoomThreshold}
-            cellHeight={cellHeight}
-            groupGap={groupGapForTesting}
-            groupPlacements={groupPlacements}
-          />
+          <div className={styles["timeline-items-container"]}>
+            <TimelineItems
+              yearList={yearList}
+              startMonth={startMonth}
+              dayWidth={dayWidth}
+              zoomThreshold={zoomThreshold}
+              cellHeight={cellHeight}
+              groupGap={groupGapForTesting}
+              groupPlacements={groupPlacements}
+            />
+          </div>
         </div>
       </div>
     </div>
