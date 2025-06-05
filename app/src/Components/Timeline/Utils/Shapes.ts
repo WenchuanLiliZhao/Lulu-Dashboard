@@ -15,20 +15,28 @@ export const Priority = {
   "Low": "Low",
 } as const;
 
+export const Status = {
+  "High Risks": "High Risks",
+  "Manageable Risk": "Manageable Risk", 
+  "On Track": "On Track",
+  "Not Yet Started": "Not Yet Started",
+} as const;
+
 // 类型定义
 export type TeamType = keyof typeof Team;
 export type PriorityType = keyof typeof Priority;
+export type StatusType = keyof typeof Status;
 
 export interface IssueShape {
   id: string;
   name: string;
-  status: string;
+  status: StatusType;
   description: string;
   startDate: Date;
   endDate: Date;
   progress: number; // 0-100
   children?: IssueShape[];
-  vision: string;
+  category: string;
   team: keyof typeof Team;
   priority: keyof typeof Priority;
 }
@@ -59,7 +67,7 @@ export interface SortedIssueShape {
  */
 export function groupIssuesByField(
   issues: IssueShape[],
-  sortBy: "status" | "vision" | "team" | "priority"
+  sortBy: "status" | "category" | "team" | "priority"
 ): SortedIssueShape {
   // 使用 Map 来收集每个分组的项目
   const groupMap = new Map<string, IssueShape[]>();

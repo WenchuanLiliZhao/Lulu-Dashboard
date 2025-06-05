@@ -6,7 +6,7 @@ const GroupBySelectorExample: React.FC = () => {
 
   // 分组选项配置
   const groupOptions: GroupOption[] = [
-    { value: "vision", label: "Vision" },
+    { value: "category", label: "Category" },
     { value: "status", label: "Status" },
     { value: "team", label: "Team" },
     { value: "priority", label: "Priority" },

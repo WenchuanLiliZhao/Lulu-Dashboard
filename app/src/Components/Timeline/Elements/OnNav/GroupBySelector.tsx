@@ -4,7 +4,7 @@ import HoverBox from "../../../Boxes/HoverBox";
 import Icon from "../../../Icon/Icon";
 
 export interface GroupOption {
-  value: "status" | "vision" | "team" | "priority";
+  value: "status" | "category" | "team" | "priority";
   label: string;
 }
 

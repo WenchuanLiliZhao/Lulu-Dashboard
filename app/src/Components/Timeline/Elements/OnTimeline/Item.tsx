@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Item.module.scss";
 import CircularProgress from "../../../CircularProgress/CircularProgress";
-import type { IssueShape, PriorityType } from "../../Utils/Shapes";
+import { Status, type IssueShape, type PriorityType } from "../../Utils/Shapes";
 import { TimelineConst } from "../_constants";
 import HoverBox from "../../../Boxes/HoverBox";
 import {
@@ -79,10 +79,12 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
               progress={item.progress} 
               size={iconSize} 
               style={{
-                stroke: item.status === "Highly risky" 
+                stroke: item.status === Status["High Risks"] 
                   ? "var(--color-semantic-error)" 
-                  : item.status === "Risk in control"
+                  : item.status === Status["Manageable Risk"]
                   ? "var(--color-semantic-warning)"
+                  : item.status === Status["On Track"]
+                  ? "var(--color-semantic-active)"
                   : undefined
               }}
             />

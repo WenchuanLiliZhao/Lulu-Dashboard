@@ -15,9 +15,9 @@ const Example_Issues = [
 
 // 创建时间线内容组件
 const TimelineContent: React.FC = () => {
-  const [groupBy, setGroupBy] = useState<"status" | "vision" | "team" | "priority">("vision");
+  const [groupBy, setGroupBy] = useState<"status" | "category" | "team" | "priority">("category");
 
-  const handleGroupByChange = (newGroupBy: "status" | "vision" | "team" | "priority") => {
+  const handleGroupByChange = (newGroupBy: "status" | "category" | "team" | "priority") => {
     setGroupBy(newGroupBy);
   };
 
