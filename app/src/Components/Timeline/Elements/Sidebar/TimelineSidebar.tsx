@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./TimelineSidebar.module.scss";
-import { TimelineConst } from "../_constants";
+import { TimelineConst, TimelineConstCalc } from "../_constants";
 import { type PlacementResult } from "../../Utils/Utils";
 import { type IssueShape } from "../../Utils/Shapes";
 
@@ -68,10 +68,15 @@ export const TimelineSidebar: React.FC<TimelineSidebarProps> = ({
                 className={styles["timeline-sidebar-group"]}
                 style={{
                   height: groupHeight,
-                  marginBottom: marginBottom
+                  minHeight: TimelineConstCalc.groupMinHeight,
+                  marginBottom: marginBottom,
                 }}
               >
-                <div className={styles["timeline-sidebar-group-title"]}>
+                <div className={styles["timeline-sidebar-group-title"]} style={{
+                  position: "sticky",
+                  top: TimelineConstCalc.rulerHeight,
+                  bottom: 0
+                }}>
                   {group.groupTitle}
                 </div>
               </div>

@@ -11,3 +11,9 @@ export const TimelineConst = {
   itemVPadding: 2,
   itemHPadding: 2,
 };
+
+export const TimelineConstCalc = {
+  groupMinHeight: TimelineConst.cellHeight * 2,
+
+  rulerHeight: TimelineConst.yearLabelHight + TimelineConst.monthLabelHight + TimelineConst.dayLabelHight,
+};

@@ -3,6 +3,7 @@ import { calculateDurationInDays, calculateMaxOverlapCardinality, type Placement
 import { type IssueShape } from "../../Utils/Shapes";
 import { TimelineItem } from "./Item";
 import styles from "./Group.module.scss";
+import { TimelineConstCalc } from "../_constants";
 
 interface TimelineGroupProps {
   groupData: {
@@ -35,6 +36,7 @@ export const TimelineGroup: React.FC<TimelineGroupProps> = ({
           calculateMaxOverlapCardinality(groupData.groupItems) *
           cellHeight + groupGap
         }px`,
+        minHeight: TimelineConstCalc.groupMinHeight,
       }}
     >
       {groupData.placements.map((placement) => {
