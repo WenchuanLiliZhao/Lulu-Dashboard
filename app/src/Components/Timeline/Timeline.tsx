@@ -6,6 +6,7 @@ import {
   IssueShapeKeys,
   GroupableFields,
   type GroupableFieldValue,
+  mapStringToGroupableField,
 } from "./Utils/Shapes";
 import {
   findPlacement,
@@ -42,8 +43,6 @@ const timeViewOptions = {
   day: TIME_VIEW_CONFIG.day.label,
 } as const;
 
-
-
 export const Timeline: React.FC<TimelineProps> = ({ inputData, onGroupByChange }) => {
   // Time view switch options - 转换为Switch组件需要的格式
   const switchOptions: SwitchOption[] = Object.entries(timeViewOptions).map(
@@ -60,7 +59,7 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData, onGroupByChange }
 
   // State for current group by method
   const [currentGroupBy, setCurrentGroupBy] = useState<GroupableFieldValue>(
-    inputData.meta.sortBy as GroupableFieldValue
+    mapStringToGroupableField(inputData.meta.sortBy)
   );
 
   // Handler for group by changes

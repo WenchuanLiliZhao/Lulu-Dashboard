@@ -57,6 +57,31 @@ export type GroupableFieldKey = keyof typeof GroupableFields;
 // 分组字段的值类型（实际的字段名）
 export type GroupableFieldValue = typeof GroupableFields[GroupableFieldKey];
 
+// 字符串映射到 GroupableFieldValue 的兼容函数
+export const mapStringToGroupableField = (value: string): GroupableFieldValue => {
+  // 向后兼容的映射
+  const legacyMapping: Record<string, GroupableFieldValue> = {
+    'status': GroupableFields.STATUS,
+    'category': GroupableFields.CATEGORY,
+    'team': GroupableFields.TEAM,
+    'priority': GroupableFields.PRIORITY,
+  };
+
+  // 首先检查是否已经是有效的 GroupableFieldValue
+  const validValues = Object.values(GroupableFields);
+  if (validValues.includes(value as GroupableFieldValue)) {
+    return value as GroupableFieldValue;
+  }
+
+  // 如果是旧的字符串格式，进行映射
+  if (legacyMapping[value]) {
+    return legacyMapping[value];
+  }
+
+  // 默认返回 CATEGORY
+  return GroupableFields.CATEGORY;
+};
+
 export interface IssueShape {
   [IssueShapeKeys.ID]: string;
   [IssueShapeKeys.NAME]: string;
@@ -83,7 +108,7 @@ export interface IssueGroup {
 
 export interface SortedIssueShape {
   meta: {
-    sortBy: string;
+    sortBy: GroupableFieldValue | string; // 支持向后兼容
   };
 
   data: IssueGroup[];
