@@ -1,10 +1,9 @@
-
 import React, { useState } from "react";
 import { Example_Issues_1 } from "../Components/Timeline/ExampleData/Example_Issues_1";
 import { Example_Issues_2 } from "../Components/Timeline/ExampleData/Example_Issues_2";
 import { Example_Issues_3 } from "../Components/Timeline/ExampleData/Example_Issues_3";
 import { Timeline } from "../Components/Timeline/Timeline";
-import { groupIssuesByField } from "../Components/Timeline/Utils/Shapes";
+import { groupIssuesByField, GroupableFields, type GroupableFieldValue } from "../Components/Timeline/Utils/Shapes";
 import type { PageShape } from "../object-shapes/Page";
 
 const Example_Issues = [
@@ -15,9 +14,9 @@ const Example_Issues = [
 
 // 创建时间线内容组件
 const TimelineContent: React.FC = () => {
-  const [groupBy, setGroupBy] = useState<"status" | "category" | "team" | "priority">("category");
+  const [groupBy, setGroupBy] = useState<GroupableFieldValue>(GroupableFields.CATEGORY);
 
-  const handleGroupByChange = (newGroupBy: "status" | "category" | "team" | "priority") => {
+  const handleGroupByChange = (newGroupBy: GroupableFieldValue) => {
     setGroupBy(newGroupBy);
   };
 

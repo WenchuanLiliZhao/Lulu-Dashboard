@@ -3,6 +3,7 @@
  */
 
 import { type IssueShape } from "./Shapes";
+import { IssueShapeKeys } from "./Shapes";
 
 /**
  * Represents the result of placing a timeline item in a specific column
@@ -166,8 +167,8 @@ export const calculateMaxOverlapCardinality = (items: IssueShape[]): number => {
   const events: TimelineEvent[] = [];
   
   items.forEach((item, index) => {
-    const startDate = new Date(item.startDate);
-    const endDate = new Date(item.endDate);
+    const startDate = new Date(item[IssueShapeKeys.START_DATE]);
+    const endDate = new Date(item[IssueShapeKeys.END_DATE]);
     
     // Add start event
     events.push({

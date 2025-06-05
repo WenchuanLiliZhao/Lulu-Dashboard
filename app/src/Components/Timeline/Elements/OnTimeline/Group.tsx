@@ -1,6 +1,6 @@
 import React from "react";
 import { calculateDurationInDays, calculateMaxOverlapCardinality, type PlacementResult } from "../../Utils/Utils";
-import { type IssueShape } from "../../Utils/Shapes";
+import { type IssueShape, IssueShapeKeys } from "../../Utils/Shapes";
 import { TimelineItem } from "./Item";
 import styles from "./Group.module.scss";
 import { TimelineConstCalc } from "../_constants";
@@ -58,7 +58,7 @@ export const TimelineGroup: React.FC<TimelineGroupProps> = ({
 
           return (
             <TimelineItem
-              key={placement.item.id}
+              key={placement.item[IssueShapeKeys.ID]}
               item={placement.item}
               durationInDays={durationInDays}
               dayWidth={dayWidth}

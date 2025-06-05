@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Item.module.scss";
 import CircularProgress from "../../../CircularProgress/CircularProgress";
-import { Status, type IssueShape, type PriorityType } from "../../Utils/Shapes";
+import { Status, type IssueShape, type PriorityType, IssueShapeKeys } from "../../Utils/Shapes";
 import { TimelineConst } from "../_constants";
 import HoverBox from "../../../Boxes/HoverBox";
 import {
@@ -76,19 +76,19 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
             style={{ padding: iconPadding, gap: verticalCap }}
           >
             <CircularProgress 
-              progress={item.progress} 
+              progress={item[IssueShapeKeys.PROGRESS]} 
               size={iconSize} 
               style={{
-                stroke: item.status === Status["High Risks"] 
+                stroke: item[IssueShapeKeys.STATUS] === Status["High Risks"] 
                   ? "var(--color-semantic-error)" 
-                  : item.status === Status["Manageable Risk"]
+                  : item[IssueShapeKeys.STATUS] === Status["Manageable Risk"]
                   ? "var(--color-semantic-warning)"
-                  : item.status === Status["On Track"]
+                  : item[IssueShapeKeys.STATUS] === Status["On Track"]
                   ? "var(--color-semantic-active)"
                   : undefined
               }}
             />
-            <Icon name={getPriorityIcon(item.priority).icon} size={iconSize} style={{ color: getPriorityIcon(item.priority).color }} />
+            <Icon name={getPriorityIcon(item[IssueShapeKeys.PRIORITY]).icon} size={iconSize} style={{ color: getPriorityIcon(item[IssueShapeKeys.PRIORITY]).color }} />
           </div>
           <div className={styles["timeline-item-property-body"]} style={{ gap: verticalCap }}>
             <div
@@ -98,17 +98,17 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
                 lineHeight: `${lineHeight}px`,
               }}
             >
-              {item.name}
+              {item[IssueShapeKeys.NAME]}
             </div>
             <div className={styles["timeline-item-tags"]}>
               <div className={styles["timeline-item-team"]}>
                 <span className={styles["timeline-item-team-emoji"]}>
-                  {getTeamEmoji(item.team)}
+                  {getTeamEmoji(item[IssueShapeKeys.TEAM])}
                 </span>
                 <span className={styles["timeline-item-team-name"]}>
-                  {getTeamDisplayName(item.team)}
+                  {getTeamDisplayName(item[IssueShapeKeys.TEAM])}
                 </span>
-                <TransBgBox color={getTeamColorName(item.team)} />
+                <TransBgBox color={getTeamColorName(item[IssueShapeKeys.TEAM])} />
               </div>
             </div>
           </div>

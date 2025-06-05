@@ -3,6 +3,9 @@ import { TimelineItemInterval } from "./Utils/functions";
 import {
   sortTimelineItemsByStartDate,
   type SortedIssueShape,
+  IssueShapeKeys,
+  GroupableFields,
+  type GroupableFieldValue,
 } from "./Utils/Shapes";
 import {
   findPlacement,
@@ -20,7 +23,7 @@ import { TimelineConst } from "./Elements/_constants";
 
 interface TimelineProps {
   inputData: SortedIssueShape;
-  onGroupByChange?: (groupBy: "status" | "category" | "team" | "priority") => void;
+  onGroupByChange?: (groupBy: GroupableFieldValue) => void;
 }
 
 // 时间视图配置
@@ -49,20 +52,20 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData, onGroupByChange }
 
   // Group by options - 分组选项配置
   const groupOptions: GroupOption[] = [
-    { value: "category", label: "Category" },
-    { value: "status", label: "Status" },
-    { value: "team", label: "Team" },
-    { value: "priority", label: "Priority" },
+    { value: GroupableFields.CATEGORY, label: "Category" },
+    { value: GroupableFields.STATUS, label: "Status" },
+    { value: GroupableFields.TEAM, label: "Team" },
+    { value: GroupableFields.PRIORITY, label: "Priority" },
   ];
 
   // State for current group by method
-  const [currentGroupBy, setCurrentGroupBy] = useState<"status" | "category" | "team" | "priority">(
-    inputData.meta.sortBy as "status" | "category" | "team" | "priority"
+  const [currentGroupBy, setCurrentGroupBy] = useState<GroupableFieldValue>(
+    inputData.meta.sortBy as GroupableFieldValue
   );
 
   // Handler for group by changes
   const handleGroupByChange = (value: string) => {
-    const groupByValue = value as "status" | "category" | "team" | "priority";
+    const groupByValue = value as GroupableFieldValue;
     setCurrentGroupBy(groupByValue);
     onGroupByChange?.(groupByValue);
   };
@@ -130,8 +133,8 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData, onGroupByChange }
     const placements: PlacementResult[] = [];
 
     sortedGroupItems.forEach((item) => {
-      const startDate = new Date(item.startDate);
-      const endDate = new Date(item.endDate);
+      const startDate = new Date(item[IssueShapeKeys.START_DATE]);
+      const endDate = new Date(item[IssueShapeKeys.END_DATE]);
 
       const column = findPlacement(placements, item, startDate, endDate);
 

@@ -2,9 +2,10 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "./GroupBySelector.module.scss";
 import HoverBox from "../../../Boxes/HoverBox";
 import Icon from "../../../Icon/Icon";
+import { type GroupableFieldValue } from "../../Utils/Shapes";
 
 export interface GroupOption {
-  value: "status" | "category" | "team" | "priority";
+  value: GroupableFieldValue;
   label: string;
 }
 

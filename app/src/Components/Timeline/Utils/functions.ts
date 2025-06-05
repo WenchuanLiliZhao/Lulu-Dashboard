@@ -1,4 +1,5 @@
 import type { IssueShape } from "./Shapes";
+import { IssueShapeKeys } from "./Shapes";
 
 interface TimelineItemIntervalProps {
   inputData: IssueShape[];
@@ -11,12 +12,12 @@ export interface TimelineInterval {
 
 export function TimelineItemInterval({ inputData }: TimelineItemIntervalProps): TimelineInterval {
   const earliestStartDate = inputData.reduce((earliest, item) => {
-    return item.startDate < earliest ? item.startDate : earliest;
-  }, inputData[0].startDate);
+    return item[IssueShapeKeys.START_DATE] < earliest ? item[IssueShapeKeys.START_DATE] : earliest;
+  }, inputData[0][IssueShapeKeys.START_DATE]);
 
   const latestEndDate = inputData.reduce((latest, item) => {
-    return item.endDate > latest ? item.endDate : latest;
-  }, inputData[0].endDate);
+    return item[IssueShapeKeys.END_DATE] > latest ? item[IssueShapeKeys.END_DATE] : latest;
+  }, inputData[0][IssueShapeKeys.END_DATE]);
 
   const earliestYear = earliestStartDate.getFullYear();
   const startMonth = earliestStartDate.getMonth();
