@@ -52,7 +52,17 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
             className={styles["timeline-item-progress-svg-container"]}
             style={{ padding: iconPadding }}
           >
-            <CircularProgress progress={item.progress} size={iconSize} />
+            <CircularProgress 
+              progress={item.progress} 
+              size={iconSize} 
+              style={{
+                stroke: item.status === "Highly risky" 
+                  ? "var(--color-semantic-error)" 
+                  : item.status === "Risk in control"
+                  ? "var(--color-semantic-warning)"
+                  : undefined
+              }} 
+            />
           </div>
           <div className={styles["timeline-item-property-body"]}>
             <div

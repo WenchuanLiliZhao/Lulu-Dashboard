@@ -4,7 +4,7 @@ export const Example_Issues_2: IssueShape[] = [
   {
     id: "51",
     name: "AI-Powered Customer Service",
-    status: "In Progress",
+    status: "Highly risky",
     description: "Implement AI chatbot for 24/7 customer support with natural language processing",
     startDate: new Date("2024-01-01"),
     endDate: new Date("2024-01-31"),
@@ -59,7 +59,7 @@ export const Example_Issues_2: IssueShape[] = [
   {
     id: "56",
     name: "Data Security Enhancement",
-    status: "In Progress",
+    status: "Highly risky",
     description: "Upgrade security infrastructure with advanced encryption and monitoring",
     startDate: new Date("2024-06-01"),
     endDate: new Date("2024-06-30"),
@@ -191,7 +191,7 @@ export const Example_Issues_2: IssueShape[] = [
   {
     id: "68",
     name: "Cloud Infrastructure Migration",
-    status: "In Progress",
+    status: "Highly risky",
     description: "Migrate legacy systems to cloud-based infrastructure",
     startDate: new Date("2025-06-01"),
     endDate: new Date("2025-06-30"),
@@ -367,7 +367,7 @@ export const Example_Issues_2: IssueShape[] = [
   {
     id: "84",
     name: "Cloud Security Framework",
-    status: "In Progress",
+    status: "Highly risky",
     description: "Implement cloud security best practices",
     startDate: new Date("2024-10-01"),
     endDate: new Date("2024-10-31"),
@@ -444,7 +444,7 @@ export const Example_Issues_2: IssueShape[] = [
   {
     id: "91",
     name: "API Security Enhancement",
-    status: "Planning",
+    status: "Highly risky",
     description: "Implement advanced API security measures",
     startDate: new Date("2025-05-01"),
     endDate: new Date("2025-05-31"),

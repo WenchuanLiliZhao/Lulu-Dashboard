@@ -6,7 +6,7 @@ export const Example_Issues_1: IssueShape[] = [
   {
     id: "1",
     name: "Interactive Calculus Workshop",
-    status: "In Progress",
+    status: "Highly risky",
     description: "Develop and implement an interactive workshop series for advanced calculus concepts using real-world applications",
     startDate: new Date("2024-01-01"),
     endDate: new Date("2024-01-31"),
@@ -50,7 +50,7 @@ export const Example_Issues_1: IssueShape[] = [
   {
     id: "5",
     name: "Data Migration Initiative",
-    status: "On Hold",
+    status: "Highly risky",
     description: "Migrate legacy database systems to cloud-based infrastructure with zero downtime",
     startDate: new Date("2024-05-01"),
     endDate: new Date("2024-05-31"),
@@ -72,7 +72,7 @@ export const Example_Issues_1: IssueShape[] = [
   {
     id: "7",
     name: "Blockchain Integration",
-    status: "Planning",
+    status: "Highly risky",
     description: "Integrate blockchain technology for secure transaction processing and data integrity",
     startDate: new Date("2024-07-01"),
     endDate: new Date("2024-08-31"),
@@ -138,7 +138,7 @@ export const Example_Issues_1: IssueShape[] = [
   {
     id: "13",
     name: "User Authentication System",
-    status: "In Progress",
+    status: "Highly risky",
     description: "Implement multi-factor authentication with biometric support",
     startDate: new Date("2025-01-01"),
     endDate: new Date("2025-01-31"),
@@ -292,7 +292,7 @@ export const Example_Issues_1: IssueShape[] = [
   {
     id: "27",
     name: "Digital Identity Platform",
-    status: "In Progress",
+    status: "Highly risky",
     description: "Build decentralized identity management system using blockchain",
     startDate: new Date("2024-05-01"),
     endDate: new Date("2024-05-31"),

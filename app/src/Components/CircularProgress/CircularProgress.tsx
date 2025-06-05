@@ -68,6 +68,7 @@ interface CircularProgressProps {
   animationDuration?: number; // 动画持续时间(毫秒)
   animationDelay?: number; // 动画延迟时间(毫秒)
   enableAnimation?: boolean; // 是否启用动画
+  style?: React.CSSProperties;
 }
 
 const CircularProgress: React.FC<CircularProgressProps> = ({
@@ -78,6 +79,7 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
   animationDuration = CircularProgressConst.animationDuration,
   animationDelay = CircularProgressConst.animationDelay,
   enableAnimation = CircularProgressConst.animationEnable,
+  style
 }) => {
   // 使用动画Hook
   const animatedProgress = useProgressAnimation(progress, animationDuration, enableAnimation, animationDelay);
@@ -126,6 +128,7 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
           strokeLinecap="round"
           strokeDasharray={circumference}
           strokeDashoffset={strokeDashoffset}
+          style={style}
         />
       </svg>
     </div>

@@ -4,7 +4,7 @@ export const Example_Issues_3: IssueShape[] = [
   {
     id: "101",
     name: "Smart Fitting Room Technology",
-    status: "In Progress",
+    status: "Risk in control",
     description: "Implement AI-powered smart mirrors in fitting rooms for enhanced customer experience",
     startDate: new Date("2024-01-01"),
     endDate: new Date("2024-03-31"),
@@ -59,7 +59,7 @@ export const Example_Issues_3: IssueShape[] = [
   {
     id: "106",
     name: "Cybersecurity Framework",
-    status: "In Progress",
+    status: "Risk in control",
     description: "Implement comprehensive cybersecurity framework across all systems",
     startDate: new Date("2024-06-01"),
     endDate: new Date("2024-08-31"),
@@ -125,7 +125,7 @@ export const Example_Issues_3: IssueShape[] = [
   {
     id: "112",
     name: "Customer Journey Analytics",
-    status: "In Progress",
+    status: "Risk in control",
     description: "Implement advanced analytics for customer journey mapping",
     startDate: new Date("2024-12-01"),
     endDate: new Date("2025-02-28"),
@@ -367,7 +367,7 @@ export const Example_Issues_3: IssueShape[] = [
   {
     id: "134",
     name: "Cloud Security Enhancement",
-    status: "In Progress",
+    status: "Risk in control",
     description: "Enhance cloud security infrastructure",
     startDate: new Date("2024-10-01"),
     endDate: new Date("2024-12-31"),
@@ -521,7 +521,7 @@ export const Example_Issues_3: IssueShape[] = [
   {
     id: "148",
     name: "Cloud Infrastructure Upgrade",
-    status: "In Progress",
+    status: "Risk in control",
     description: "Upgrade cloud infrastructure for improved performance",
     startDate: new Date("2025-12-01"),
     endDate: new Date("2026-02-28"),
