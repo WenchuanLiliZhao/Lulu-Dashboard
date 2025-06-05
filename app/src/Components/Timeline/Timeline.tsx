@@ -120,12 +120,6 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData }) => {
       />
 
       <div className={styles["timeline-content-wrapper"]}>
-        {/* 分组标题列组件 */}
-        {/* <GroupLabels
-          groupPlacements={groupPlacements}
-          cellHeight={cellHeight}
-          sortedBy={inputData.meta.sortBy}
-        /> */}
 
         {/* 时间线内容 - 分为 Ruler 和 Items 两个组件 */}
         <div ref={containerRef} className={styles["timeline-content-container"]}>
