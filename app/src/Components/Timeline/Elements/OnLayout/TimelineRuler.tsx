@@ -66,7 +66,7 @@ export const TimelineRuler: React.FC<TimelineRulerProps> = ({
                   className={styles["timeline-ruler-month-label"]}
                   style={{ height: `${TimelineConst.monthLabelHight}px` }}
                 >
-                  {monthNames[monthIndex]}
+                  {monthNames[monthIndex]}<span className={styles["year-for-month"]}>{year}</span>
                 </div>
                 <Column className={`${styles["timeline-ruler-column"]} ${styles["timeline-ruler-month-grid"]}`}>
                   {Array.from(

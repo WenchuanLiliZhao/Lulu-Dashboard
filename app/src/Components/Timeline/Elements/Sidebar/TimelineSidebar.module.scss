@@ -6,6 +6,7 @@
   flex-direction: column;
   width: 200px;
   overflow: visible;
+  z-index: 2;
 
   .timeline-sidebar-content {
     flex: 1;
@@ -46,6 +47,13 @@
             -webkit-line-clamp: 3;
             line-clamp: 3;
             -webkit-box-orient: vertical;
+          }
+
+          .timeline-sidebar-group-properties {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            margin-top: 4px;
           }
         }
       }

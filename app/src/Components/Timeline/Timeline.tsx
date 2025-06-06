@@ -168,6 +168,13 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData, onGroupByChange }
     };
   });
 
+  // 添加一个空的占位分组，确保垂直滚动到底部时有足够的空白区域
+  groupPlacements.push({
+    groupTitle: "", // 空标题
+    groupItems: [], // 空项目列表
+    placements: [], // 空放置结果
+  });
+
   return (
     <div className={styles["timeline-container"]}>
       {/* 时间视图切换器和回到今天按钮 */}

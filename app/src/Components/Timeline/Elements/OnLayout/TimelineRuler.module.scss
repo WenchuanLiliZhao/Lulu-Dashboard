@@ -4,7 +4,7 @@
   background-color: var(--color-bg-main);
 
   .timeline-ruler-year-label {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     padding: 0 8px;
     
@@ -20,6 +20,7 @@
 
     .timeline-ruler-month-label {
       font-size: 14px;
+      font-weight: bold;
       padding: 0 8px;
       background-color: var(--color-bg-sec-trans);
       // box-shadow: inset -1px 0 0 0 var(--color-border-main-trans);
@@ -27,6 +28,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      
+
+      .year-for-month {
+        color: var(--color-neg);
+        margin-left: 4px;
+      }
     }
 
     .timeline-ruler-month-grid {

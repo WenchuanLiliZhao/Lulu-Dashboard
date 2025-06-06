@@ -1,13 +1,12 @@
 .timeline-container {
   display: flex;
   flex-direction: column;
+  height: 100vh;
 
   .timeline-content-wrapper {
-    height: 80vh;
+    flex: 1;
     overflow-y: auto;
     overflow-x: hidden;
-    border-top: 1px solid var(--color-border-main);
-    border-bottom: 1px solid var(--color-border-main);
   }
 
   .timeline-ruler-sticky {
