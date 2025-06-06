@@ -1,23 +1,26 @@
-# Timeline Zoom-Level URL 同步功能
+# Timeline URL 同步功能
 
 ## 概述
 
-Timeline 组件现在支持将 zoom-level (时间视图) 与 URL 地址栏同步，使用户可以分享特定缩放级别的视图链接。
+Timeline 组件现在支持将 zoom-level (时间视图) 和日期位置与 URL 地址栏同步，使用户可以分享特定缩放级别和日期位置的视图链接。
 
 ## 功能特性
 
 ### 🔗 URL 同步
-- **自动同步**：当用户切换 zoom-level 时，URL 会自动更新
+- **自动同步**：当用户切换 zoom-level 或滚动时，URL 会自动更新
 - **历史支持**：支持浏览器前进/后退按钮
 - **分享友好**：生成的 URL 可以直接分享给其他用户
+- **位置记忆**：记住当前视口中心的日期位置
 
 ### 📋 URL 格式
 
-| Zoom Level | URL 示例 | 说明 |
-|------------|---------|------|
+| 功能 | URL 示例 | 说明 |
+|------|---------|------|
 | Month (默认) | `mysite.com/timeline` | 默认视图，无参数 |
 | Year | `mysite.com/timeline?view=year` | 年视图 |
 | Day | `mysite.com/timeline?view=day` | 日视图 |
+| 特定日期 | `mysite.com/timeline?date=2024-03-15` | 滚动到2024年3月15日 |
+| 组合参数 | `mysite.com/timeline?view=day&date=2024-03-15` | 日视图 + 特定日期 |
 
 ### 🎯 使用场景
 

@@ -18,8 +18,9 @@ import { type GroupOption } from "./Elements/OnNav/GroupBySelector";
 import { TimelineRuler } from "./Elements/OnLayout/TimelineRuler";
 import { TimelineItems } from "./Elements/OnLayout/TimelineItems";
 import { TimelineSidebar } from "./Elements/Sidebar/TimelineSidebar";
-import { useLeftBasedZoom } from "./Utils/useLeftBasedZoom";
-import { getTimeViewFromUrl, syncTimeViewToUrl, listenToHistoryChanges, type TimeViewType as UrlTimeViewType } from "./Utils/urlSync";
+import { useCenterBasedZoom } from "./Utils/useCenterBasedZoom";
+import { getTimeViewFromUrl, syncTimeViewToUrl, type TimeViewType as UrlTimeViewType } from "./Utils/urlSync";
+import { useDateUrlSync } from "./Utils/useDateUrlSync";
 import styles from "./Timeline.module.scss";
 import { TimelineConst } from "./Elements/_constants";
 
@@ -84,22 +85,12 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData, onGroupByChange }
     syncTimeViewToUrl(currentTimeView as UrlTimeViewType);
   }, [currentTimeView]);
 
-  // 监听浏览器前进后退按钮
-  useEffect(() => {
-    const cleanup = listenToHistoryChanges(() => {
-      const newTimeView = getTimeViewFromUrl() as TimeViewType;
-      setCurrentTimeView(newTimeView);
-    });
-
-    return cleanup;
-  }, []);
-
   // 添加尺子滚动容器的引用
   const rulerScrollRef = useRef<HTMLDivElement>(null);
   const mainScrollRef = useRef<HTMLDivElement>(null);
   
-  // 使用自定义hook实现左侧缩放功能，针对主内容容器
-  const { containerRef: zoomContainerRef } = useLeftBasedZoom(dayWidth);
+  // 使用自定义hook实现中心缩放功能，针对主内容容器
+  const { containerRef: zoomContainerRef } = useCenterBasedZoom(dayWidth);
   
   // 同步滚动函数
   const syncScroll = useCallback((sourceRef: React.RefObject<HTMLDivElement | null>, targetRef: React.RefObject<HTMLDivElement | null>) => {
@@ -127,6 +118,15 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData, onGroupByChange }
   const { years: yearList, startMonth } = TimelineItemInterval({
     inputData: sortedItems,
   });
+
+  // 使用日期位置URL同步功能
+  useDateUrlSync(
+    mainScrollRef,
+    dayWidth,
+    yearList,
+    startMonth,
+    setCurrentTimeView
+  );
 
   // Early return if no items to display
   if (allItems.length === 0) {

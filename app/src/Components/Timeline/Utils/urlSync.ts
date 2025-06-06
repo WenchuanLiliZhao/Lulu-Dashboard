@@ -1,6 +1,6 @@
 /**
  * URL 同步工具函数
- * 用于在 Timeline 组件中同步 zoom-level 到 URL 参数
+ * 用于在 Timeline 组件中同步 zoom-level 和日期位置到 URL 参数
  */
 
 export type TimeViewType = 'year' | 'month' | 'day';
@@ -62,25 +62,93 @@ export const syncTimeViewToUrl = (timeView: TimeViewType, defaultView: TimeViewT
 };
 
 /**
+ * 从 URL 参数中获取日期位置（YYYY-MM-DD格式）
+ * @returns 日期字符串或 null
+ */
+export const getDateFromUrl = (): string | null => {
+  // 检查是否在浏览器环境中
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const dateParam = urlParams.get('date');
+  
+  // 验证日期格式 YYYY-MM-DD
+  if (dateParam && /^\d{4}-\d{2}-\d{2}$/.test(dateParam)) {
+    const date = new Date(dateParam);
+    // 验证日期是否有效
+    if (!isNaN(date.getTime())) {
+      return dateParam;
+    }
+  }
+  
+  return null;
+};
+
+/**
+ * 将日期位置同步到 URL 参数
+ * @param date 日期字符串（YYYY-MM-DD格式）或 null（移除参数）
+ */
+export const syncDateToUrl = (date: string | null): void => {
+  // 检查是否在浏览器环境中
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const currentDateParam = urlParams.get('date');
+  
+  // 只有当 URL 参数与当前状态不同时才更新
+  if (currentDateParam !== date) {
+    if (date === null) {
+      // 移除日期参数
+      urlParams.delete('date');
+    } else {
+      // 设置日期参数
+      urlParams.set('date', date);
+    }
+    
+    // 构建新的 URL
+    const newUrl = urlParams.toString() 
+      ? `${window.location.pathname}?${urlParams.toString()}`
+      : window.location.pathname;
+    
+    // 更新 URL 但不触发页面刷新
+    window.history.replaceState({}, '', newUrl);
+  }
+};
+
+/**
  * 创建可分享的 URL
  * @param timeView 时间视图类型
+ * @param date 日期字符串（可选）
  * @param baseUrl 基础 URL，默认使用当前页面的 origin + pathname
  * @returns 完整的可分享 URL
  */
-export const createShareableUrl = (timeView: TimeViewType, baseUrl?: string): string => {
+export const createShareableUrl = (timeView: TimeViewType, date?: string | null, baseUrl?: string): string => {
   // 检查是否在浏览器环境中
   if (typeof window === 'undefined') {
     return baseUrl || '';
   }
 
   const base = baseUrl || `${window.location.origin}${window.location.pathname}`;
+  const params = new URLSearchParams();
   
-  if (timeView === 'month') {
-    // 默认视图，不需要参数
-    return base;
+  // 添加视图参数（非默认值）
+  if (timeView !== 'month') {
+    params.set('view', timeView);
+  }
+  
+  // 添加日期参数
+  if (date) {
+    params.set('date', date);
+  }
+  
+  if (params.toString()) {
+    return `${base}?${params.toString()}`;
   } else {
-    // 非默认视图，添加参数
-    return `${base}?view=${timeView}`;
+    return base;
   }
 };
 
