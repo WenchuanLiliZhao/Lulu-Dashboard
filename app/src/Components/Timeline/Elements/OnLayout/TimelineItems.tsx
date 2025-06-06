@@ -6,7 +6,9 @@ import {
 import { type IssueShape } from "../../Utils/Shapes";
 import { TimelineGroup } from "../OnTimeline/Group";
 import { Column } from "../Shared/Column";
-import styles from "../../Timeline.module.scss";
+// import styles from "../../Timeline.module.scss";
+import styles from "./TimelineItems.module.scss"
+import { HoverBox } from "../../../Boxes";
 
 interface TimelineItemsProps {
   yearList: number[];
@@ -34,7 +36,7 @@ export const TimelineItems: React.FC<TimelineItemsProps> = ({
   groupPlacements,
 }) => {
   return (
-    <Column className={styles["timeline-ruler-column"]}>
+    <Column className={styles["timeline-vertical-column-container"]}>
       {yearList.map((year, yearIndex) => (
         <React.Fragment key={yearIndex}>
           {/* 占位空间，与年份标签对齐 - 透明占位 */}
@@ -45,19 +47,21 @@ export const TimelineItems: React.FC<TimelineItemsProps> = ({
             ).map((monthIndex) => (
               <div
                 key={monthIndex}
-                className={styles["timeline-ruler-month"]}
+                className={styles["timeline-ruler-month-column"]}
               >
-                <Column className={`${styles["timeline-ruler-column"]} ${styles["timeline-ruler-month-grid"]}`}>
+                <HoverBox className={styles["hover-box"]} />
+                <Column className={`${styles["timeline-ruler-column"]}`}>
                   {Array.from(
                     { length: getDaysInMonth(year, monthIndex) },
                     (_, dayIndex) => (
                       <div
                         key={dayIndex}
-                        className={`${styles["timeline-ruler-day"]} ${
+                        className={`${styles["timeline-ruler-day-column"]} ${
                           dayWidth > zoomThreshold ? styles["zoomed"] : ""
                         }`}
                         style={{ width: `${dayWidth}px` }}
                       >
+                        
 
                         {/* 时间线项目内容 */}
                         <div className={styles["timeline-groups"]}>

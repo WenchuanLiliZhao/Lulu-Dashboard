@@ -1,8 +1,6 @@
 .timeline-container {
   display: flex;
   flex-direction: column;
-  
-  
 
   .timeline-content-wrapper {
     height: 80vh;
@@ -21,7 +19,9 @@
 
     .timeline-ruler-inner {
       display: flex;
-      
+      position: relative;
+      min-height: 100%;
+
       .timeline-sidebar-ruler-placeholder {
         flex-shrink: 0;
       }
@@ -30,11 +30,11 @@
         flex: 1;
         overflow-x: auto;
         overflow-y: hidden;
-        
+
         /* 隐藏滚动条但保持功能 */
         scrollbar-width: none;
         -ms-overflow-style: none;
-        
+
         &::-webkit-scrollbar {
           display: none;
         }
@@ -44,8 +44,6 @@
 
   .timeline-content-inner {
     display: flex;
-    position: relative;
-    min-height: 100%;
   }
 
   .timeline-content-container {
@@ -59,18 +57,4 @@
       position: relative;
     }
   }
-}
-
-.timeline-ruler-column {
-  display: flex;
-}
-
-.timeline-ruler-day-items {
-  position: relative;
-}
-
-.timeline-groups {
-  position: relative;
-  display: flex;
-  flex-direction: column;
 }

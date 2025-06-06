@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { useState } from "react";
 import { Example_Issues_1 } from "../Components/Timeline/ExampleData/Example_Issues_1";
 import { Example_Issues_2 } from "../Components/Timeline/ExampleData/Example_Issues_2";
