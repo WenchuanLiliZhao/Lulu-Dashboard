@@ -5,7 +5,7 @@ import type { StatusType, TeamType } from "../../Utils/Shapes";
 import { cssVariables, getCssVar, semanticColors } from "../../../../assets/global-style/css-variables";
 // 统计组中 items 的属性分布
 
-export const getPropertyStats = (groupItems: IssueShape[], property: 'status' | 'team'): OutPutTermsType => {
+export const getPropertyStats = (groupItems: IssueShape[], property: 'status' | 'team' ): OutPutTermsType => {
   const propertyCounts: Record<string, number> = {};
 
   // 统计每个属性值的数量
