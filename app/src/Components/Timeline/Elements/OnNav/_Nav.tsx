@@ -33,7 +33,7 @@ export const TimelineNav: React.FC<TimelineNavProps> = ({
   return (
     <Nav
       left={[
-        <LogoBar logo={<Logo mode="FullColorNoText" />} title="FY25 China Tech Delivery Timeline" />,
+        <LogoBar logo={<Logo mode="FullColorNoText" />} title="China Tech Delivery Timeline" />,
       ]}
       right={[
         <GroupBySelector

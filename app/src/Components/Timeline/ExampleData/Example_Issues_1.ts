@@ -11,7 +11,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-01-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-01-31"),
     [IssueShapeKeys.PROGRESS]: 50,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
+    [IssueShapeKeys.CATEGORY]: "Advance Solutions",
     [IssueShapeKeys.TEAM]: "Function",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -23,7 +23,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-02-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-03-31"),
     [IssueShapeKeys.PROGRESS]: 100,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
+    [IssueShapeKeys.CATEGORY]: "Advance Solutions",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "Low"
   },
@@ -47,7 +47,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-04-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-04-30"),
     [IssueShapeKeys.PROGRESS]: 75,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
+    [IssueShapeKeys.CATEGORY]: "Advance Solutions",
     [IssueShapeKeys.TEAM]: "E-com",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -59,7 +59,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-05-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-05-31"),
     [IssueShapeKeys.PROGRESS]: 25,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
+    [IssueShapeKeys.CATEGORY]: "Advance Solutions",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -95,7 +95,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-08-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-08-31"),
     [IssueShapeKeys.PROGRESS]: 40,
-    [IssueShapeKeys.CATEGORY]: "Awareness and Action",
+    [IssueShapeKeys.CATEGORY]: "Advance Capabilities",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -131,7 +131,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-11-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-11-30"),
     [IssueShapeKeys.PROGRESS]: 85,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
+    [IssueShapeKeys.CATEGORY]: "Advance Solutions",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -143,7 +143,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-12-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-12-31"),
     [IssueShapeKeys.PROGRESS]: 10,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
+    [IssueShapeKeys.CATEGORY]: "Advance Solutions",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -179,7 +179,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-03-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-04-30"),
     [IssueShapeKeys.PROGRESS]: 70,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
+    [IssueShapeKeys.CATEGORY]: "Advance Solutions",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -203,7 +203,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-06-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-06-30"),
     [IssueShapeKeys.PROGRESS]: 45,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
+    [IssueShapeKeys.CATEGORY]: "Advance Solutions",
     [IssueShapeKeys.TEAM]: "Fulfillment",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -215,7 +215,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-07-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-07-31"),
     [IssueShapeKeys.PROGRESS]: 100,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
+    [IssueShapeKeys.CATEGORY]: "Advance Solutions",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -227,7 +227,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-08-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-08-31"),
     [IssueShapeKeys.PROGRESS]: 30,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
+    [IssueShapeKeys.CATEGORY]: "Advance Solutions",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -251,7 +251,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-10-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-11-30"),
     [IssueShapeKeys.PROGRESS]: 55,
-    [IssueShapeKeys.CATEGORY]: "Awareness and Action",
+    [IssueShapeKeys.CATEGORY]: "Advance Capabilities",
     [IssueShapeKeys.TEAM]: "Corporate",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -299,7 +299,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-03-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-03-31"),
     [IssueShapeKeys.PROGRESS]: 50,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
+    [IssueShapeKeys.CATEGORY]: "Advance Solutions",
     [IssueShapeKeys.TEAM]: "Function",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -311,7 +311,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-04-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-04-30"),
     [IssueShapeKeys.PROGRESS]: 12,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
+    [IssueShapeKeys.CATEGORY]: "Advance Solutions",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -347,7 +347,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-07-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-07-31"),
     [IssueShapeKeys.PROGRESS]: 100,
-    [IssueShapeKeys.CATEGORY]: "Awareness and Action",
+    [IssueShapeKeys.CATEGORY]: "Advance Capabilities",
     [IssueShapeKeys.TEAM]: "Corporate",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -383,7 +383,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-10-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-10-31"),
     [IssueShapeKeys.PROGRESS]: 35,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
+    [IssueShapeKeys.CATEGORY]: "Advance Solutions",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -395,7 +395,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-11-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-11-30"),
     [IssueShapeKeys.PROGRESS]: 8,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
+    [IssueShapeKeys.CATEGORY]: "Advance Solutions",
     [IssueShapeKeys.TEAM]: "Fulfillment",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -419,7 +419,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-01-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-01-31"),
     [IssueShapeKeys.PROGRESS]: 45,
-    [IssueShapeKeys.CATEGORY]: "Awareness and Action",
+    [IssueShapeKeys.CATEGORY]: "Advance Capabilities",
     [IssueShapeKeys.TEAM]: "Corporate",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -443,7 +443,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-03-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-03-31"),
     [IssueShapeKeys.PROGRESS]: 25,
-    [IssueShapeKeys.CATEGORY]: "Awareness and Action",
+    [IssueShapeKeys.CATEGORY]: "Advance Capabilities",
     [IssueShapeKeys.TEAM]: "Corporate",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -515,7 +515,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-10-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-10-31"),
     [IssueShapeKeys.PROGRESS]: 30,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
+    [IssueShapeKeys.CATEGORY]: "Advance Solutions",
     [IssueShapeKeys.TEAM]: "Product",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -539,7 +539,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-12-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-12-31"),
     [IssueShapeKeys.PROGRESS]: 65,
-    [IssueShapeKeys.CATEGORY]: "Awareness and Action",
+    [IssueShapeKeys.CATEGORY]: "Advance Capabilities",
     [IssueShapeKeys.TEAM]: "Corporate",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -563,7 +563,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-02-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-02-29"),
     [IssueShapeKeys.PROGRESS]: 1,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
+    [IssueShapeKeys.CATEGORY]: "Advance Solutions",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -599,7 +599,7 @@ export const Example_Issues_1: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-05-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-05-31"),
     [IssueShapeKeys.PROGRESS]: 20,
-    [IssueShapeKeys.CATEGORY]: "Awareness and Action",
+    [IssueShapeKeys.CATEGORY]: "Advance Capabilities",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "High"
   },

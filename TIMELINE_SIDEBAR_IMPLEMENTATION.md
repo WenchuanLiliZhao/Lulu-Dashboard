@@ -71,10 +71,10 @@ timeline-container
 ```
 
 侧边栏将显示所有不同的 vision 名称，例如：
-- "To revolutionize personal productivity through intuitive mobile solutions"
+- "Advance Solutions"
 - "Advance Capabilities"
 - "Evolving Cyber Threats"
-- "Awareness and Action"
+- "Advance Capabilities"
 - "Data Analysis"
 - 等等...
 
