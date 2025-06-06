@@ -1,0 +1,15 @@
+.group-progress-bar {
+  margin-top: 8px;
+  .group-progress-bar-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-main);
+
+    .group-progress-bar-display {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+  
+}

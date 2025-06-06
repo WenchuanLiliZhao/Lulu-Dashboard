@@ -9,7 +9,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-01-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-12-31"),
     [IssueShapeKeys.PROGRESS]: 35,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -33,7 +33,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-03-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-12-31"),
     [IssueShapeKeys.PROGRESS]: 30,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Corporate",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -57,7 +57,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-05-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-12-31"),
     [IssueShapeKeys.PROGRESS]: 55,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -81,7 +81,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-07-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-07-31"),
     [IssueShapeKeys.PROGRESS]: 20,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "Retail",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -93,7 +93,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-08-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-10-31"),
     [IssueShapeKeys.PROGRESS]: 65,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "E-com",
     [IssueShapeKeys.PRIORITY]: "High"
   },
@@ -105,7 +105,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-09-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-09-30"),
     [IssueShapeKeys.PROGRESS]: 30,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Brand Marketing",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -129,7 +129,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-11-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-11-30"),
     [IssueShapeKeys.PROGRESS]: 15,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "Product",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -141,7 +141,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-12-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-02-28"),
     [IssueShapeKeys.PROGRESS]: 60,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -153,7 +153,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-01-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-01-31"),
     [IssueShapeKeys.PROGRESS]: 25,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Corporate",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -165,7 +165,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-02-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-04-30"),
     [IssueShapeKeys.PROGRESS]: 75,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "Fulfillment",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -177,7 +177,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-03-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-03-31"),
     [IssueShapeKeys.PROGRESS]: 40,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Brand Marketing",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -189,7 +189,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-04-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-04-30"),
     [IssueShapeKeys.PROGRESS]: 50,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Function",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -201,7 +201,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-05-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-05-31"),
     [IssueShapeKeys.PROGRESS]: 20,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "Retail",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -213,7 +213,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-06-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-08-31"),
     [IssueShapeKeys.PROGRESS]: 65,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -225,7 +225,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-07-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-07-31"),
     [IssueShapeKeys.PROGRESS]: 30,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Product",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -237,7 +237,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-08-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-10-31"),
     [IssueShapeKeys.PROGRESS]: 55,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "E-com",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -261,7 +261,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-10-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-10-31"),
     [IssueShapeKeys.PROGRESS]: 45,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Function",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -273,7 +273,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-11-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-11-30"),
     [IssueShapeKeys.PROGRESS]: 25,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "Retail",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -285,7 +285,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-12-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-12-31"),
     [IssueShapeKeys.PROGRESS]: 40,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Brand Marketing",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -297,7 +297,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-01-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-01-31"),
     [IssueShapeKeys.PROGRESS]: 30,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "Fulfillment",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -309,7 +309,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-02-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-04-30"),
     [IssueShapeKeys.PROGRESS]: 60,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -321,7 +321,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-03-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-03-31"),
     [IssueShapeKeys.PROGRESS]: 35,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "Retail",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -333,7 +333,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-04-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-06-30"),
     [IssueShapeKeys.PROGRESS]: 70,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "E-com",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -345,7 +345,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-05-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-05-31"),
     [IssueShapeKeys.PROGRESS]: 45,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Brand Marketing",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -357,7 +357,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-06-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-06-30"),
     [IssueShapeKeys.PROGRESS]: 50,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Corporate",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -369,7 +369,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-07-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-07-31"),
     [IssueShapeKeys.PROGRESS]: 25,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "Product",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -381,7 +381,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-08-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-08-31"),
     [IssueShapeKeys.PROGRESS]: 55,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Function",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -393,7 +393,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-09-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-09-30"),
     [IssueShapeKeys.PROGRESS]: 40,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "Retail",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -405,7 +405,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-10-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-12-31"),
     [IssueShapeKeys.PROGRESS]: 65,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -417,7 +417,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-11-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-11-30"),
     [IssueShapeKeys.PROGRESS]: 35,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "E-com",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -429,7 +429,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-12-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-12-31"),
     [IssueShapeKeys.PROGRESS]: 45,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Brand Marketing",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -441,7 +441,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-01-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-01-31"),
     [IssueShapeKeys.PROGRESS]: 30,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Corporate",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -453,7 +453,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-02-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-04-30"),
     [IssueShapeKeys.PROGRESS]: 60,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "Product",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -465,7 +465,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-03-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-03-31"),
     [IssueShapeKeys.PROGRESS]: 40,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Function",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -477,7 +477,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-04-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-04-30"),
     [IssueShapeKeys.PROGRESS]: 55,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "Retail",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -489,7 +489,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-05-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-05-31"),
     [IssueShapeKeys.PROGRESS]: 35,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -501,7 +501,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-06-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-08-31"),
     [IssueShapeKeys.PROGRESS]: 50,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "E-com",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -513,7 +513,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-07-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-07-31"),
     [IssueShapeKeys.PROGRESS]: 45,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Brand Marketing",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -525,7 +525,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-08-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-08-31"),
     [IssueShapeKeys.PROGRESS]: 40,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Corporate",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -537,7 +537,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-09-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-09-30"),
     [IssueShapeKeys.PROGRESS]: 35,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "Product",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -549,7 +549,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-10-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-10-31"),
     [IssueShapeKeys.PROGRESS]: 55,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Function",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -561,7 +561,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-11-01"),
     [IssueShapeKeys.END_DATE]: new Date("2025-11-30"),
     [IssueShapeKeys.PROGRESS]: 30,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "Retail",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -573,7 +573,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2025-12-01"),
     [IssueShapeKeys.END_DATE]: new Date("2026-02-28"),
     [IssueShapeKeys.PROGRESS]: 65,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "Tech",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -585,7 +585,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-01-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-01-31"),
     [IssueShapeKeys.PROGRESS]: 40,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize retail experience through innovative technology",
     [IssueShapeKeys.TEAM]: "E-com",
     [IssueShapeKeys.PRIORITY]: "Medium"
   },
@@ -597,7 +597,7 @@ export const Example_Issues_3: IssueShape[] = [
     [IssueShapeKeys.START_DATE]: new Date("2024-02-01"),
     [IssueShapeKeys.END_DATE]: new Date("2024-02-29"),
     [IssueShapeKeys.PROGRESS]: 45,
-    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions.",
+    [IssueShapeKeys.CATEGORY]: "To revolutionize personal productivity through intuitive mobile solutions",
     [IssueShapeKeys.TEAM]: "Brand Marketing",
     [IssueShapeKeys.PRIORITY]: "Medium"
   }

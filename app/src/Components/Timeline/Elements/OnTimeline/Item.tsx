@@ -8,7 +8,7 @@ import {
   getTeamEmoji,
   getTeamDisplayName,
   getTeamColorName,
-} from "../../Utils/TeamColors";
+} from "../../Utils/VisualConfigs";
 import TransBgBox from "../../../Boxes/TransBgBox";
 import Icon from "../../../Icon/Icon";
 
