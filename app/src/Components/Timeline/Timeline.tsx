@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import { TimelineItemInterval } from "./Utils/functions";
 import {
   sortTimelineItemsByStartDate,
@@ -19,6 +19,7 @@ import { TimelineRuler } from "./Elements/OnLayout/TimelineRuler";
 import { TimelineItems } from "./Elements/OnLayout/TimelineItems";
 import { TimelineSidebar } from "./Elements/Sidebar/TimelineSidebar";
 import { useLeftBasedZoom } from "./Utils/useLeftBasedZoom";
+import { getTimeViewFromUrl, syncTimeViewToUrl, listenToHistoryChanges, type TimeViewType as UrlTimeViewType } from "./Utils/urlSync";
 import styles from "./Timeline.module.scss";
 import { TimelineConst } from "./Elements/_constants";
 
@@ -73,10 +74,25 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData, onGroupByChange }
   const cellHeight = TimelineConst.cellHeight; // Height of each item row in pixels
   const groupGapForTesting = TimelineConst.groupGap;
 
-  // State for time view mode and corresponding dayWidth
-  const [currentTimeView, setCurrentTimeView] = useState<TimeViewType>("month");
+  // State for time view mode and corresponding dayWidth - 使用 URL 同步的初始值
+  const [currentTimeView, setCurrentTimeView] = useState<TimeViewType>(getTimeViewFromUrl() as TimeViewType);
   const dayWidth = TIME_VIEW_CONFIG[currentTimeView].dayWidth;
   const zoomThreshold = TIME_VIEW_CONFIG[currentTimeView].zoomThreshold;
+
+  // 同步 timeView 到 URL 参数
+  useEffect(() => {
+    syncTimeViewToUrl(currentTimeView as UrlTimeViewType);
+  }, [currentTimeView]);
+
+  // 监听浏览器前进后退按钮
+  useEffect(() => {
+    const cleanup = listenToHistoryChanges(() => {
+      const newTimeView = getTimeViewFromUrl() as TimeViewType;
+      setCurrentTimeView(newTimeView);
+    });
+
+    return cleanup;
+  }, []);
 
   // 添加尺子滚动容器的引用
   const rulerScrollRef = useRef<HTMLDivElement>(null);
