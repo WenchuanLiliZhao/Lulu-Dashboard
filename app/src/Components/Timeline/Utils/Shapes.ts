@@ -27,6 +27,7 @@ export type TeamType = keyof typeof Team;
 export type PriorityType = keyof typeof Priority;
 export type StatusType = keyof typeof Status;
 
+
 export const IssueShapeKeys = {
   ID: 'id',
   NAME: 'name',

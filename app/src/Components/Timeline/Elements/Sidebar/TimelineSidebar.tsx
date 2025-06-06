@@ -4,7 +4,7 @@ import { TimelineConst, TimelineConstCalc } from "../_constants";
 import { type PlacementResult } from "../../Utils/Utils";
 import { type IssueShape } from "../../Utils/Shapes";
 import { GroupProgressBar } from "./GroupProgressBar";
-import { getStatusStats } from "./sidebarFunctions";
+import { getProgressStats, getPropertyStats } from "./sidebarFunctions";
 
 interface GroupPlacement {
   groupTitle: string;
@@ -83,8 +83,16 @@ export const TimelineSidebar: React.FC<TimelineSidebarProps> = ({
                     {group.groupTitle}
                   </div>
                   <GroupProgressBar 
-                    title="Total Status" 
-                    data={getStatusStats(group.groupItems)} 
+                    title="Status" 
+                    data={getPropertyStats(group.groupItems, 'status')} 
+                  />
+                  <GroupProgressBar 
+                    title="Teams" 
+                    data={getPropertyStats(group.groupItems, 'team')} 
+                  />
+                  <GroupProgressBar 
+                    title="PRG" 
+                    data={getProgressStats(group.groupItems)} 
                   />
                 </div>
               </div>

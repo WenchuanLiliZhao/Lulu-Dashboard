@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./GroupProgressBar.module.scss";
+import MenuBox from "../../../Boxes/MenuBox";
 
 export interface TermType {
   name: string; // eg., retail, marketing, etc.
@@ -18,47 +19,61 @@ interface GroupProgressBarProps {
 }
 
 // 组件用于展示 OutPutTermsType 数据
-export const GroupProgressBar: React.FC<GroupProgressBarProps> = ({ title, data }) => {
+export const GroupProgressBar: React.FC<GroupProgressBarProps> = ({
+  title,
+  data,
+}) => {
+  // 计算总数
+  const totalCount = data.terms.reduce((sum, term) => sum + term.count, 0);
+
 
   return (
     <div className={styles["group-progress-bar"]}>
-      <div className={styles["group-progress-bar-title"]}>
-        {title}
-      </div>
-      <div className={styles["group-progress-bar-display"]}>
+      <div className={styles["group-progress-bar-title"]}>{title}</div>
+      <div
+        className={styles["group-progress-bar-display"]}
+      >
         {data.terms.map((term, index) => (
-          <div key={index} className={styles["group-progress-bar-display-item"]}>
-            <div className={styles["group-progress-bar-display-item-color"]} style={{ backgroundColor: term.color }} />
-            <div className={styles["group-progress-bar-display-item-name"]}>{term.name}</div>
-            <div className={styles["group-progress-bar-display-item-count"]}>{term.count}</div>
-          </div>
+          <div
+            key={index}
+            className={styles["group-progress-bar-display-item"]}
+            style={{
+              backgroundColor: term.color,
+              width: `${(term.count / totalCount) * 100}%`,
+            }}
+          />
         ))}
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+      <MenuBox
+        className={styles["group-progress-bar-display-item-list"]}
+        size="small"
+        tooltipStyle={true}
+        withAnimation={false}
+      >
         {data.terms.map((term, index) => (
-          <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <div 
-              style={{ 
-                width: '8px', 
-                height: '8px', 
+          <div
+            key={index}
+            className={styles["group-progress-bar-display-item-list-item"]}
+          >
+            <div className={styles["group-progress-bar-display-item-list-item-left"]}>
+            <div
+              style={{
+                width: "8px",
+                height: "8px",
                 backgroundColor: term.color,
-                borderRadius: '2px'
+                borderRadius: "2px",
               }}
             />
-            <span style={{ color: '#666', minWidth: '100px' }}>
+            <div className={styles["group-progress-bar-display-item-list-item-name"]}>
               {term.name}
-            </span>
-            <span style={{ color: '#333', fontWeight: 'bold' }}>
+            </div>
+            </div>
+            <div className={styles["group-progress-bar-display-item-list-item-right"]}>
               {term.count}
-            </span>
+            </div>
           </div>
         ))}
-      </div>
+      </MenuBox>
     </div>
   );
 };
-
-
-
-
-
