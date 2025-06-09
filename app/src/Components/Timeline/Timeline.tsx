@@ -27,6 +27,7 @@ import {
   type TimeViewType as UrlTimeViewType,
 } from "./Utils/urlSync";
 import { useDateUrlSync } from "./Utils/useDateUrlSync";
+import { BrowserCompatibility } from "../BrowserCompatibility";
 import styles from "./Timeline.module.scss";
 import { TimelineConst } from "./Elements/_constants";
 
@@ -234,6 +235,9 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   return (
     <div className={styles["timeline-container"]}>
+      {/* 浏览器兼容性检查 */}
+      <BrowserCompatibility />
+      
       {/* 时间视图切换器和回到今天按钮 */}
       <TimelineNav
         switchOptions={switchOptions}

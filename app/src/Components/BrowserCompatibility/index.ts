@@ -1,0 +1,1 @@
+export { BrowserCompatibility } from './BrowserCompatibility'; 
