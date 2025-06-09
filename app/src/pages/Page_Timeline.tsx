@@ -5,6 +5,7 @@ import { Example_Issues_2 } from "../Components/Timeline/ExampleData/Example_Iss
 import { Example_Issues_3 } from "../Components/Timeline/ExampleData/Example_Issues_3";
 import { Timeline } from "../Components/Timeline/Timeline";
 import { groupIssuesByField, GroupableFields, type GroupableFieldValue } from "../Components/Timeline/Utils/Shapes";
+import FullscreenButton from "../Components/FullscreenButton";
 import type { PageShape } from "../object-shapes/Page";
 
 const Example_Issues = [
@@ -42,10 +43,12 @@ const TimelineContent: React.FC = () => {
   };
 
   return (
-    <Timeline 
-      inputData={groupIssuesByField(Example_Issues, groupBy)} 
-      onGroupByChange={handleGroupByChange}
-    />
+    <FullscreenButton>
+      <Timeline 
+        inputData={groupIssuesByField(Example_Issues, groupBy)} 
+        onGroupByChange={handleGroupByChange}
+      />
+    </FullscreenButton>
   );
 };
 
