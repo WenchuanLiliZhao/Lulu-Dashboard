@@ -17,6 +17,7 @@ interface TimelineGroupProps {
   dayWidth: number;
   cellHeight: number;
   groupGap: number;
+  onIssueClick?: (issue: IssueShape) => void;
 }
 
 export const TimelineGroup: React.FC<TimelineGroupProps> = ({
@@ -27,6 +28,7 @@ export const TimelineGroup: React.FC<TimelineGroupProps> = ({
   dayWidth,
   cellHeight,
   groupGap,
+  onIssueClick,
 }) => {
   return (
     <div
@@ -64,6 +66,7 @@ export const TimelineGroup: React.FC<TimelineGroupProps> = ({
               dayWidth={dayWidth}
               cellHeight={cellHeight}
               column={placement.column}
+              onIssueClick={onIssueClick}
             />
           );
         }

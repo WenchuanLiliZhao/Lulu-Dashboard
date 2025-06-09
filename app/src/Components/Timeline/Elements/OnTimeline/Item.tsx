@@ -18,6 +18,7 @@ interface TimelineItemProps {
   dayWidth: number;
   cellHeight: number;
   column: number;
+  onIssueClick?: (issue: IssueShape) => void;
 }
 
 function getPriorityIcon(priority: PriorityType) {
@@ -47,6 +48,7 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
   dayWidth,
   cellHeight,
   column,
+  onIssueClick,
 }) => {
   const fontSize = 12;
   const lineHeight = 18;
@@ -68,7 +70,9 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
             TimelineConst.itemVPadding
           }px`,
           left: `${TimelineConst.itemHPadding}px`,
+          cursor: onIssueClick ? 'pointer' : 'default',
         }}
+        onClick={() => onIssueClick?.(item)}
       >
         <div className={styles["timeline-property-content"]}>
           <div

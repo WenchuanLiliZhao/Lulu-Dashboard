@@ -22,6 +22,7 @@ interface TimelineItemsProps {
     groupItems: IssueShape[];
     placements: PlacementResult[];
   }>;
+  onIssueClick?: (issue: IssueShape) => void;
 }
 
 
@@ -34,6 +35,7 @@ export const TimelineItems: React.FC<TimelineItemsProps> = ({
   cellHeight,
   groupGap,
   groupPlacements,
+  onIssueClick,
 }) => {
   return (
     <Column className={styles["timeline-vertical-column-container"]}>
@@ -75,6 +77,7 @@ export const TimelineItems: React.FC<TimelineItemsProps> = ({
                               dayWidth={dayWidth}
                               cellHeight={cellHeight}
                               groupGap={groupGap}
+                              onIssueClick={onIssueClick}
                             />
                           ))}
                         </div>

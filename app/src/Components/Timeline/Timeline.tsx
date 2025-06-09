@@ -3,23 +3,26 @@ import { TimelineItemInterval } from "./Utils/functions";
 import {
   sortTimelineItemsByStartDate,
   type SortedIssueShape,
+  type IssueShape,
   IssueShapeKeys,
   GroupableFields,
   type GroupableFieldValue,
   mapStringToGroupableField,
 } from "./Utils/Shapes";
-import {
-  findPlacement,
-  type PlacementResult,
-} from "./Utils/Utils";
+import { findPlacement, type PlacementResult } from "./Utils/Utils";
 import { type SwitchOption } from "../Switch/Switch";
 import { TimelineNav } from "./Elements/OnNav/_Nav";
 import { type GroupOption } from "./Elements/OnNav/GroupBySelector";
 import { TimelineRuler } from "./Elements/OnLayout/TimelineRuler";
 import { TimelineItems } from "./Elements/OnLayout/TimelineItems";
 import { TimelineSidebar } from "./Elements/Sidebar/TimelineSidebar";
+import { IssueDetail } from "./Elements/IssueDetail/IssueDetail";
 import { useCenterBasedZoom } from "./Utils/useCenterBasedZoom";
-import { getTimeViewFromUrl, syncTimeViewToUrl, type TimeViewType as UrlTimeViewType } from "./Utils/urlSync";
+import {
+  getTimeViewFromUrl,
+  syncTimeViewToUrl,
+  type TimeViewType as UrlTimeViewType,
+} from "./Utils/urlSync";
 import { useDateUrlSync } from "./Utils/useDateUrlSync";
 import styles from "./Timeline.module.scss";
 import { TimelineConst } from "./Elements/_constants";
@@ -45,7 +48,16 @@ const timeViewOptions = {
   day: TIME_VIEW_CONFIG.day.label,
 } as const;
 
-export const Timeline: React.FC<TimelineProps> = ({ inputData, onGroupByChange }) => {
+export const Timeline: React.FC<TimelineProps> = ({
+  inputData,
+  onGroupByChange,
+}) => {
+  // State for selected issue in detail panel
+  const [selectedIssue, setSelectedIssue] = useState<IssueShape | null>(null);
+  
+  // State for right sidebar visibility
+  const [isRightSidebarVisible, setIsRightSidebarVisible] = useState<boolean>(false);
+
   // Time view switch options - 转换为Switch组件需要的格式
   const switchOptions: SwitchOption[] = Object.entries(timeViewOptions).map(
     ([value, label]) => ({ value, label })
@@ -76,7 +88,9 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData, onGroupByChange }
   const groupGapForTesting = TimelineConst.groupGap;
 
   // State for time view mode and corresponding dayWidth - 使用 URL 同步的初始值
-  const [currentTimeView, setCurrentTimeView] = useState<TimeViewType>(getTimeViewFromUrl() as TimeViewType);
+  const [currentTimeView, setCurrentTimeView] = useState<TimeViewType>(
+    getTimeViewFromUrl() as TimeViewType
+  );
   const dayWidth = TIME_VIEW_CONFIG[currentTimeView].dayWidth;
   const zoomThreshold = TIME_VIEW_CONFIG[currentTimeView].zoomThreshold;
 
@@ -88,16 +102,22 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData, onGroupByChange }
   // 添加尺子滚动容器的引用
   const rulerScrollRef = useRef<HTMLDivElement>(null);
   const mainScrollRef = useRef<HTMLDivElement>(null);
-  
+
   // 使用自定义hook实现中心缩放功能，针对主内容容器
   const { containerRef: zoomContainerRef } = useCenterBasedZoom(dayWidth);
-  
+
   // 同步滚动函数
-  const syncScroll = useCallback((sourceRef: React.RefObject<HTMLDivElement | null>, targetRef: React.RefObject<HTMLDivElement | null>) => {
-    if (sourceRef.current && targetRef.current) {
-      targetRef.current.scrollLeft = sourceRef.current.scrollLeft;
-    }
-  }, []);
+  const syncScroll = useCallback(
+    (
+      sourceRef: React.RefObject<HTMLDivElement | null>,
+      targetRef: React.RefObject<HTMLDivElement | null>
+    ) => {
+      if (sourceRef.current && targetRef.current) {
+        targetRef.current.scrollLeft = sourceRef.current.scrollLeft;
+      }
+    },
+    []
+  );
 
   // 处理尺子滚动
   const handleRulerScroll = useCallback(() => {
@@ -191,69 +211,89 @@ export const Timeline: React.FC<TimelineProps> = ({ inputData, onGroupByChange }
         onGroupByChange={handleGroupByChange}
       />
 
-      {/* 外层包装器 - 处理垂直滚动 */}
-      <div className={styles["timeline-content-wrapper"]}>
-        {/* 时间线尺子组件 - sticky 定位在垂直滚动容器中 */}
-        <div className={styles["timeline-ruler-sticky"]}>
-          <div className={styles["timeline-ruler-inner"]}>
-            {/* 左侧边栏的尺子占位区域 */}
-            <div className={styles["timeline-sidebar-ruler-placeholder"]}>
-              <TimelineSidebar
-                groupPlacements={groupPlacements}
-                cellHeight={cellHeight}
-                groupGap={groupGapForTesting}
-                isRulerMode={true}
-              />
+      <div className={styles["timeline-body"]}>
+
+        {/* 外层包装器 - 处理垂直滚动 */}
+        <div className={styles["timeline-content-wrapper"]}>
+          {/* 时间线尺子组件 - sticky 定位在垂直滚动容器中 */}
+          <div className={styles["timeline-ruler-sticky"]}>
+            <div className={styles["timeline-ruler-inner"]}>
+              {/* 左侧边栏的尺子占位区域 */}
+              <div className={styles["timeline-sidebar-ruler-placeholder"]}>
+                <TimelineSidebar
+                  groupPlacements={groupPlacements}
+                  cellHeight={cellHeight}
+                  groupGap={groupGapForTesting}
+                  isRulerMode={true}
+                />
+              </div>
+
+              {/* 右侧时间线尺子 - 可水平滚动 */}
+              <div
+                ref={rulerScrollRef}
+                className={styles["timeline-ruler-content"]}
+                onScroll={handleRulerScroll}
+              >
+                <TimelineRuler
+                  yearList={yearList}
+                  startMonth={startMonth}
+                  dayWidth={dayWidth}
+                  zoomThreshold={zoomThreshold}
+                />
+              </div>
             </div>
-            
-            {/* 右侧时间线尺子 - 可水平滚动 */}
-            <div 
-              ref={rulerScrollRef}
-              className={styles["timeline-ruler-content"]}
-              onScroll={handleRulerScroll}
+          </div>
+
+          {/* 内层容器 - 处理水平布局 */}
+          <div className={styles["timeline-content-inner"]}>
+            {/* 左侧可调整大小的侧边栏 - 固定在左侧但参与垂直滚动 */}
+            <TimelineSidebar
+              groupPlacements={groupPlacements}
+              cellHeight={cellHeight}
+              groupGap={groupGapForTesting}
+            />
+
+            {/* 时间线内容 - 只处理水平滚动 */}
+            <div
+              ref={(el) => {
+                mainScrollRef.current = el;
+                zoomContainerRef.current = el;
+              }}
+              className={styles["timeline-content-container"]}
+              onScroll={handleMainScroll}
             >
-              <TimelineRuler
-                yearList={yearList}
-                startMonth={startMonth}
-                dayWidth={dayWidth}
-                zoomThreshold={zoomThreshold}
-              />
+              {/* 时间线项目组件 */}
+              <div className={styles["timeline-items-container"]}>
+                <TimelineItems
+                  yearList={yearList}
+                  startMonth={startMonth}
+                  dayWidth={dayWidth}
+                  zoomThreshold={zoomThreshold}
+                  cellHeight={cellHeight}
+                  groupGap={groupGapForTesting}
+                  groupPlacements={groupPlacements}
+                  onIssueClick={(issue) => {
+                    setSelectedIssue(issue);
+                    setIsRightSidebarVisible(true);
+                  }}
+                />
+              </div>
             </div>
           </div>
         </div>
 
-        {/* 内层容器 - 处理水平布局 */}
-        <div className={styles["timeline-content-inner"]}>
-          {/* 左侧可调整大小的侧边栏 - 固定在左侧但参与垂直滚动 */}
-          <TimelineSidebar
-            groupPlacements={groupPlacements}
-            cellHeight={cellHeight}
-            groupGap={groupGapForTesting}
-          />
-
-          {/* 时间线内容 - 只处理水平滚动 */}
-          <div 
-            ref={(el) => {
-              mainScrollRef.current = el;
-              zoomContainerRef.current = el;
-            }}
-            className={styles["timeline-content-container"]}
-            onScroll={handleMainScroll}
-          >
-            {/* 时间线项目组件 */}
-            <div className={styles["timeline-items-container"]}>
-              <TimelineItems
-                yearList={yearList}
-                startMonth={startMonth}
-                dayWidth={dayWidth}
-                zoomThreshold={zoomThreshold}
-                cellHeight={cellHeight}
-                groupGap={groupGapForTesting}
-                groupPlacements={groupPlacements}
-              />
-            </div>
+        {/* 右侧信息栏 */}
+        {isRightSidebarVisible && (
+          <div className={styles["timeline-right-sidebar"]}>
+            <IssueDetail 
+              selectedIssue={selectedIssue} 
+              onClose={() => {
+                setSelectedIssue(null);
+                setIsRightSidebarVisible(false);
+              }}
+            />
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
