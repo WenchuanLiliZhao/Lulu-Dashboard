@@ -123,10 +123,11 @@ export const syncDateToUrl = (date: string | null): void => {
  * 创建可分享的 URL
  * @param timeView 时间视图类型
  * @param date 日期字符串（可选）
+ * @param issueId issue ID（可选）
  * @param baseUrl 基础 URL，默认使用当前页面的 origin + pathname
  * @returns 完整的可分享 URL
  */
-export const createShareableUrl = (timeView: TimeViewType, date?: string | null, baseUrl?: string): string => {
+export const createShareableUrl = (timeView: TimeViewType, date?: string | null, issueId?: string | null, baseUrl?: string): string => {
   // 检查是否在浏览器环境中
   if (typeof window === 'undefined') {
     return baseUrl || '';
@@ -145,10 +146,69 @@ export const createShareableUrl = (timeView: TimeViewType, date?: string | null,
     params.set('date', date);
   }
   
+  // 添加issue参数
+  if (issueId) {
+    params.set('issue', issueId);
+  }
+  
   if (params.toString()) {
     return `${base}?${params.toString()}`;
   } else {
     return base;
+  }
+};
+
+/**
+ * 从 URL 参数中获取 issue ID
+ * @returns issue ID 字符串或 null
+ */
+export const getIssueIdFromUrl = (): string | null => {
+  // 检查是否在浏览器环境中
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const issueParam = urlParams.get('issue');
+  
+  // 验证 issue ID 不为空
+  if (issueParam && issueParam.trim() !== '') {
+    return issueParam;
+  }
+  
+  return null;
+};
+
+/**
+ * 将 issue ID 同步到 URL 参数
+ * @param issueId issue ID 字符串或 null（移除参数）
+ */
+export const syncIssueIdToUrl = (issueId: string | null): void => {
+  // 检查是否在浏览器环境中
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const currentIssueParam = urlParams.get('issue');
+  
+  // 只有当 URL 参数与当前状态不同时才更新
+  if (currentIssueParam !== issueId) {
+    if (issueId === null || issueId.trim() === '') {
+      // 移除 issue 参数
+      urlParams.delete('issue');
+    } else {
+      // 设置 issue 参数
+      urlParams.set('issue', issueId);
+    }
+    
+    // 构建新的 URL
+    const newUrl = urlParams.toString() 
+      ? `${window.location.pathname}?${urlParams.toString()}`
+      : window.location.pathname;
+    
+    // 更新 URL 但不触发页面刷新
+    window.history.replaceState({}, '', newUrl);
   }
 };
 

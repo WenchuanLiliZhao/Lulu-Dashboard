@@ -21,6 +21,9 @@ import { useCenterBasedZoom } from "./Utils/useCenterBasedZoom";
 import {
   getTimeViewFromUrl,
   syncTimeViewToUrl,
+  getIssueIdFromUrl,
+  syncIssueIdToUrl,
+  listenToHistoryChanges,
   type TimeViewType as UrlTimeViewType,
 } from "./Utils/urlSync";
 import { useDateUrlSync } from "./Utils/useDateUrlSync";
@@ -98,6 +101,40 @@ export const Timeline: React.FC<TimelineProps> = ({
   useEffect(() => {
     syncTimeViewToUrl(currentTimeView as UrlTimeViewType);
   }, [currentTimeView]);
+
+  // 初始化时从URL读取issue ID并设置选中的issue
+  useEffect(() => {
+    const issueIdFromUrl = getIssueIdFromUrl();
+    if (issueIdFromUrl) {
+      // 在所有items中查找对应的issue
+      const allItems = inputData.data.flatMap((group) => group.groupItems);
+      const targetIssue = allItems.find(item => item[IssueShapeKeys.ID] === issueIdFromUrl);
+      if (targetIssue) {
+        setSelectedIssue(targetIssue);
+        setIsRightSidebarVisible(true);
+      }
+    }
+  }, [inputData]);
+
+  // 监听浏览器历史变化（前进/后退按钮）
+  useEffect(() => {
+    const cleanup = listenToHistoryChanges(() => {
+      const issueIdFromUrl = getIssueIdFromUrl();
+      if (issueIdFromUrl) {
+        const allItems = inputData.data.flatMap((group) => group.groupItems);
+        const targetIssue = allItems.find(item => item[IssueShapeKeys.ID] === issueIdFromUrl);
+        if (targetIssue) {
+          setSelectedIssue(targetIssue);
+          setIsRightSidebarVisible(true);
+        }
+      } else {
+        setSelectedIssue(null);
+        setIsRightSidebarVisible(false);
+      }
+    });
+
+    return cleanup;
+  }, [inputData]);
 
   // 添加尺子滚动容器的引用
   const rulerScrollRef = useRef<HTMLDivElement>(null);
@@ -275,6 +312,7 @@ export const Timeline: React.FC<TimelineProps> = ({
                   onIssueClick={(issue) => {
                     setSelectedIssue(issue);
                     setIsRightSidebarVisible(true);
+                    syncIssueIdToUrl(issue[IssueShapeKeys.ID]);
                   }}
                 />
               </div>
@@ -290,6 +328,7 @@ export const Timeline: React.FC<TimelineProps> = ({
               onClose={() => {
                 setSelectedIssue(null);
                 setIsRightSidebarVisible(false);
+                syncIssueIdToUrl(null);
               }}
             />
           </div>
