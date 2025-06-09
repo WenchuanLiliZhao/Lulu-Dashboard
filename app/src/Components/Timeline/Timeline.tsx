@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { TimelineItemInterval } from "./Utils/functions";
 import {
   sortTimelineItemsByStartDate,
@@ -15,7 +15,7 @@ import { TimelineNav } from "./Elements/OnNav/_Nav";
 import { type GroupOption } from "./Elements/OnNav/GroupBySelector";
 import { TimelineRuler } from "./Elements/OnLayout/TimelineRuler";
 import { TimelineItems } from "./Elements/OnLayout/TimelineItems";
-import { TimelineSidebar } from "./Elements/Sidebar/TimelineSidebar";
+import { TimelineSidebar, SIDEBAR_WIDTH } from "./Elements/Sidebar/TimelineSidebar";
 import { IssueDetail } from "./Elements/IssueDetail/IssueDetail";
 import { useCenterBasedZoom } from "./Utils/useCenterBasedZoom";
 import {
@@ -27,7 +27,6 @@ import {
   type TimeViewType as UrlTimeViewType,
 } from "./Utils/urlSync";
 import { useDateUrlSync } from "./Utils/useDateUrlSync";
-import { BrowserCompatibility } from "../BrowserCompatibility";
 import styles from "./Timeline.module.scss";
 import { TimelineConst } from "./Elements/_constants";
 
@@ -137,35 +136,11 @@ export const Timeline: React.FC<TimelineProps> = ({
     return cleanup;
   }, [inputData]);
 
-  // 添加尺子滚动容器的引用
-  const rulerScrollRef = useRef<HTMLDivElement>(null);
+  // 添加主滚动容器的引用 - 现在只需要一个
   const mainScrollRef = useRef<HTMLDivElement>(null);
 
   // 使用自定义hook实现中心缩放功能，针对主内容容器
   const { containerRef: zoomContainerRef } = useCenterBasedZoom(dayWidth);
-
-  // 同步滚动函数
-  const syncScroll = useCallback(
-    (
-      sourceRef: React.RefObject<HTMLDivElement | null>,
-      targetRef: React.RefObject<HTMLDivElement | null>
-    ) => {
-      if (sourceRef.current && targetRef.current) {
-        targetRef.current.scrollLeft = sourceRef.current.scrollLeft;
-      }
-    },
-    []
-  );
-
-  // 处理尺子滚动
-  const handleRulerScroll = useCallback(() => {
-    syncScroll(rulerScrollRef, mainScrollRef);
-  }, [syncScroll]);
-
-  // 处理主内容滚动
-  const handleMainScroll = useCallback(() => {
-    syncScroll(mainScrollRef, rulerScrollRef);
-  }, [syncScroll]);
 
   // Flatten all items from all groups for timeline calculations
   const allItems = inputData.data.flatMap((group) => group.groupItems);
@@ -185,6 +160,29 @@ export const Timeline: React.FC<TimelineProps> = ({
     startMonth,
     setCurrentTimeView
   );
+
+  // 计算 Timeline 的总宽度
+  const calculateTimelineWidth = useCallback(() => {
+    let totalDays = 0;
+    
+    yearList.forEach((year, yearIndex) => {
+      // 第一年从 startMonth 开始，其他年份从1月开始
+      const monthStart = yearIndex === 0 ? startMonth : 0;
+      const monthEnd = 11; // 12月结束
+      
+      for (let month = monthStart; month <= monthEnd; month++) {
+        // 计算当前月份的天数
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        totalDays += daysInMonth;
+      }
+    });
+    
+    // 加上左侧边栏的宽度
+    return totalDays * dayWidth + SIDEBAR_WIDTH;
+  }, [yearList, startMonth, dayWidth]);
+
+  // 获取计算出的 Timeline 总宽度
+  const timelineWidth = calculateTimelineWidth();
 
   // Early return if no items to display
   if (allItems.length === 0) {
@@ -236,7 +234,7 @@ export const Timeline: React.FC<TimelineProps> = ({
   return (
     <div className={styles["timeline-container"]}>
       {/* 浏览器兼容性检查 */}
-      <BrowserCompatibility />
+      {/* <BrowserCompatibility /> */}
       
       {/* 时间视图切换器和回到今天按钮 */}
       <TimelineNav
@@ -253,73 +251,70 @@ export const Timeline: React.FC<TimelineProps> = ({
       />
 
       <div className={styles["timeline-body"]}>
+        {/* 主滚动容器 - 处理横向滚动，ruler 和 content 都在其中 */}
+        <div
+          ref={(el) => {
+            mainScrollRef.current = el;
+            zoomContainerRef.current = el;
+          }}
+          className={styles["timeline-main-scroll"]}
+        >
+          {/* 时间线尺子组件 - sticky 定位在顶部 */}
+          <div 
+            className={styles["timeline-ruler-sticky"]}
+            style={{ width: `${timelineWidth}px` }}
+          >
+            {/* 左侧边栏的尺子占位区域 */}
+            <div className={styles["timeline-sidebar-ruler-placeholder"]}>
+              <TimelineSidebar
+                groupPlacements={groupPlacements}
+                cellHeight={cellHeight}
+                groupGap={groupGapForTesting}
+                isRulerMode={true}
+              />
+            </div>
 
-        {/* 外层包装器 - 处理垂直滚动 */}
-        <div className={styles["timeline-content-wrapper"]}>
-          {/* 时间线尺子组件 - sticky 定位在垂直滚动容器中 */}
-          <div className={styles["timeline-ruler-sticky"]}>
-            <div className={styles["timeline-ruler-inner"]}>
-              {/* 左侧边栏的尺子占位区域 */}
-              <div className={styles["timeline-sidebar-ruler-placeholder"]}>
-                <TimelineSidebar
-                  groupPlacements={groupPlacements}
-                  cellHeight={cellHeight}
-                  groupGap={groupGapForTesting}
-                  isRulerMode={true}
-                />
-              </div>
-
-              {/* 右侧时间线尺子 - 可水平滚动 */}
-              <div
-                ref={rulerScrollRef}
-                className={styles["timeline-ruler-content"]}
-                onScroll={handleRulerScroll}
-              >
-                <TimelineRuler
-                  yearList={yearList}
-                  startMonth={startMonth}
-                  dayWidth={dayWidth}
-                  zoomThreshold={zoomThreshold}
-                />
-              </div>
+            {/* 右侧时间线尺子 */}
+            <div className={styles["timeline-ruler-content"]}>
+              <TimelineRuler
+                yearList={yearList}
+                startMonth={startMonth}
+                dayWidth={dayWidth}
+                zoomThreshold={zoomThreshold}
+              />
             </div>
           </div>
 
-          {/* 内层容器 - 处理水平布局 */}
-          <div className={styles["timeline-content-inner"]}>
-            {/* 左侧可调整大小的侧边栏 - 固定在左侧但参与垂直滚动 */}
-            <TimelineSidebar
-              groupPlacements={groupPlacements}
-              cellHeight={cellHeight}
-              groupGap={groupGapForTesting}
-            />
+          {/* 时间线内容区域 */}
+          <div 
+            className={styles["timeline-content-inner"]}
+            style={{ width: `${timelineWidth}px` }}
+          >
+            {/* 左侧可调整大小的侧边栏 */}
+            <div className={styles["timeline-sidebar"]}>
+              <TimelineSidebar
+                groupPlacements={groupPlacements}
+                cellHeight={cellHeight}
+                groupGap={groupGapForTesting}
+              />
+            </div>
 
-            {/* 时间线内容 - 只处理水平滚动 */}
-            <div
-              ref={(el) => {
-                mainScrollRef.current = el;
-                zoomContainerRef.current = el;
-              }}
-              className={styles["timeline-content-container"]}
-              onScroll={handleMainScroll}
-            >
-              {/* 时间线项目组件 */}
-              <div className={styles["timeline-items-container"]}>
-                <TimelineItems
-                  yearList={yearList}
-                  startMonth={startMonth}
-                  dayWidth={dayWidth}
-                  zoomThreshold={zoomThreshold}
-                  cellHeight={cellHeight}
-                  groupGap={groupGapForTesting}
-                  groupPlacements={groupPlacements}
-                  onIssueClick={(issue) => {
-                    setSelectedIssue(issue);
-                    setIsRightSidebarVisible(true);
-                    syncIssueIdToUrl(issue[IssueShapeKeys.ID]);
-                  }}
-                />
-              </div>
+            {/* 时间线项目容器 */}
+            <div className={styles["timeline-items-container"]}>
+              <TimelineItems
+                yearList={yearList}
+                startMonth={startMonth}
+                dayWidth={dayWidth}
+                zoomThreshold={zoomThreshold}
+                cellHeight={cellHeight}
+                groupGap={groupGapForTesting}
+                groupPlacements={groupPlacements}
+                onIssueClick={(issue) => {
+                  setSelectedIssue(issue);
+                  setIsRightSidebarVisible(true);
+                  syncIssueIdToUrl(issue[IssueShapeKeys.ID]);
+                }}
+              />
             </div>
           </div>
         </div>

@@ -19,7 +19,7 @@ interface TimelineSidebarProps {
   isRulerMode?: boolean;
 }
 
-const SIDEBAR_WIDTH = 200;
+export const SIDEBAR_WIDTH = 200;
 
 export const TimelineSidebar: React.FC<TimelineSidebarProps> = ({
   groupPlacements,

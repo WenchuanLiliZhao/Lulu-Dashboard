@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
+import { SIDEBAR_WIDTH } from '../Elements/Sidebar/TimelineSidebar';
 
 /**
  * 自定义Hook：检测今天的日期是否在可视区域内
@@ -67,15 +68,17 @@ export const useIsTodayVisible = (
     
     const scrollLeft = container.scrollLeft;
     const containerWidth = container.clientWidth;
-    const visibleStart = scrollLeft;
+    
+    // 考虑左侧 sidebar 的宽度，实际内容的可视区域应该从 sidebar 之后开始
+    const visibleStart = scrollLeft + SIDEBAR_WIDTH;
     const visibleEnd = scrollLeft + containerWidth;
     
-    // 今天的格子范围
-    const todayStart = todayPosition;
-    const todayEnd = todayPosition + dayWidth;
+    // 今天的格子范围（相对于时间线内容区域）
+    const todayStart = todayPosition + SIDEBAR_WIDTH;
+    const todayEnd = todayPosition + dayWidth + SIDEBAR_WIDTH;
     
-    // 检查今天的格子是否与可视区域有重叠
-    return todayStart < visibleEnd && todayEnd > visibleStart;
+    // 检查今天的格子是否完全在可视区域内（完全进入画面才亮起）
+    return todayStart >= visibleStart && todayEnd <= visibleEnd;
   }, [containerRef, dayWidth, calculateDaysToToday]);
 
   /**

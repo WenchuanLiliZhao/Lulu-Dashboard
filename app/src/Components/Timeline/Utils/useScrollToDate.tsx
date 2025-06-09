@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { SIDEBAR_WIDTH } from '../Elements/Sidebar/TimelineSidebar';
 
 /**
  * 自定义Hook：处理滚动位置与日期的转换
@@ -105,8 +106,11 @@ export const useScrollToDate = (
     const containerWidth = container.clientWidth;
     const centerScrollPosition = scrollLeft + containerWidth / 2;
     
+    // 考虑左侧 sidebar 的宽度，实际内容区域的中心位置需要减去 sidebar 宽度
+    const contentCenterPosition = centerScrollPosition - SIDEBAR_WIDTH;
+    
     // 转换为天数偏移
-    const daysFromStart = centerScrollPosition / dayWidth;
+    const daysFromStart = contentCenterPosition / dayWidth;
     
     // 计算对应的日期
     return calculateDateFromDays(daysFromStart);
@@ -139,15 +143,18 @@ export const useScrollToDate = (
     
     const daysToTarget = calculateDaysToDate(targetDate);
     
-    // 计算目标日期在Timeline中的像素位置
+    // 计算目标日期在Timeline内容中的像素位置（相对于时间线内容开始）
     const targetPosition = daysToTarget * dayWidth;
+    
+    // 目标日期在实际DOM中的位置（包含sidebar偏移）
+    const targetDOMPosition = targetPosition + SIDEBAR_WIDTH;
     
     // 计算容器中心位置
     const containerWidth = container.clientWidth;
     const centerOffset = containerWidth / 2;
     
-    // 计算滚动位置，使目标日期居中显示
-    const scrollPosition = targetPosition - centerOffset;
+    // 计算滚动位置，使目标日期在整个容器中心显示
+    const scrollPosition = targetDOMPosition - centerOffset;
     
     // 获取最大可滚动距离
     const maxScrollLeft = container.scrollWidth - container.clientWidth;

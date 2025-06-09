@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { SIDEBAR_WIDTH } from '../Elements/Sidebar/TimelineSidebar';
 
 /**
  * 自定义Hook：实现滚动到今天的功能
@@ -71,15 +72,18 @@ export const useScrollToToday = (
     
     const daysToToday = calculateDaysToToday();
     
-    // 计算今天在Timeline中的像素位置
+    // 计算今天在Timeline内容中的像素位置（相对于时间线内容开始）
     const todayPosition = daysToToday * dayWidth;
+    
+    // 今天在实际DOM中的位置（包含sidebar偏移）
+    const todayDOMPosition = todayPosition + SIDEBAR_WIDTH;
     
     // 计算容器中心位置
     const containerWidth = container.clientWidth;
     const centerOffset = containerWidth / 2;
     
-    // 计算滚动位置，使今天居中显示
-    const scrollPosition = todayPosition - centerOffset;
+    // 计算滚动位置，使今天在整个容器中心显示
+    const scrollPosition = todayDOMPosition - centerOffset;
     
     // 获取最大可滚动距离
     const maxScrollLeft = container.scrollWidth - container.clientWidth;
