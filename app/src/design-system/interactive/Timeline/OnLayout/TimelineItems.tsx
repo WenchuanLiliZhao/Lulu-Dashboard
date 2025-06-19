@@ -8,7 +8,6 @@ import { TimelineGroup } from "../OnTimeline/Group";
 import { Column } from "../Shared/Column";
 // import styles from "../../Timeline.module.scss";
 import styles from "./TimelineItems.module.scss"
-import { HoverBox } from "../../../ui";
 
 interface TimelineItemsProps {
   yearList: number[];
@@ -51,7 +50,6 @@ export const TimelineItems: React.FC<TimelineItemsProps> = ({
                 key={monthIndex}
                 className={styles["timeline-ruler-month-column"]}
               >
-                <HoverBox className={styles["hover-box"]} />
                 <Column className={`${styles["timeline-ruler-column"]}`}>
                   {Array.from(
                     { length: getDaysInMonth(year, monthIndex) },

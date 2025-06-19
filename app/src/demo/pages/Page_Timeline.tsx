@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 // 使用新的示例数据入口
 import { AllExampleIssues } from "../../example-data";
 // 使用新的设计系统组件
-import { Timeline, FullscreenButton } from "../../design-system";
+import { Timeline } from "../../design-system";
 // 使用新的数据层
 import { groupIssuesByField, GroupableFields, type GroupableFieldValue } from "../../data-layer";
 import type { PageShape } from "../object-shapes/Page";
@@ -40,12 +40,10 @@ const TimelineContent: React.FC = () => {
   };
 
   return (
-    <FullscreenButton>
-      <Timeline 
-        inputData={groupIssuesByField(Example_Issues, groupBy)} 
-        onGroupByChange={handleGroupByChange}
-      />
-    </FullscreenButton>
+    <Timeline 
+      inputData={groupIssuesByField(Example_Issues, groupBy)} 
+      onGroupByChange={handleGroupByChange}
+    />
   );
 };
 

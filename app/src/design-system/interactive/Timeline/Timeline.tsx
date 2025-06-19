@@ -1,32 +1,16 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import { TimelineItemInterval } from "../../../data-layer/utils/functions";
 import {
   sortTimelineItemsByStartDate,
   type SortedIssueShape,
-  type IssueShape,
   IssueShapeKeys,
-  GroupableFields,
   type GroupableFieldValue,
-  mapStringToGroupableField,
 } from "../../../data-layer";
 import { findPlacement, type PlacementResult } from "../../../data-layer/utils/Utils";
-import { type SwitchOption } from "../../ui/Switch/Switch";
-import { TimelineNav } from "./OnNav/_Nav";
-import { type GroupOption } from "./OnNav/GroupBySelector";
 import { TimelineRuler } from "./OnLayout/TimelineRuler";
 import { TimelineItems } from "./OnLayout/TimelineItems";
 import { TimelineSidebar, SIDEBAR_WIDTH } from "./Sidebar/TimelineSidebar";
-import { IssueDetail } from "./IssueDetail/IssueDetail";
 import { useCenterBasedZoom } from "../../../data-layer/utils/useCenterBasedZoom";
-import {
-  getTimeViewFromUrl,
-  syncTimeViewToUrl,
-  getIssueIdFromUrl,
-  syncIssueIdToUrl,
-  listenToHistoryChanges,
-  type TimeViewType as UrlTimeViewType,
-} from "../../../data-layer/utils/urlSync";
-import { useDateUrlSync } from "../../../data-layer/utils/useDateUrlSync";
 import styles from "./Timeline.module.scss";
 import { TimelineConst } from "./_constants";
 
@@ -44,97 +28,17 @@ const TIME_VIEW_CONFIG = {
 
 type TimeViewType = keyof typeof TIME_VIEW_CONFIG;
 
-// 时间视图选项配置
-const timeViewOptions = {
-  year: TIME_VIEW_CONFIG.year.label,
-  month: TIME_VIEW_CONFIG.month.label,
-  day: TIME_VIEW_CONFIG.day.label,
-} as const;
-
 export const Timeline: React.FC<TimelineProps> = ({
-  inputData,
-  onGroupByChange,
+  inputData
 }) => {
-  // State for selected issue in detail panel
-  const [selectedIssue, setSelectedIssue] = useState<IssueShape | null>(null);
-  
-  // State for right sidebar visibility
-  const [isRightSidebarVisible, setIsRightSidebarVisible] = useState<boolean>(false);
-
-  // Time view switch options - 转换为Switch组件需要的格式
-  const switchOptions: SwitchOption[] = Object.entries(timeViewOptions).map(
-    ([value, label]) => ({ value, label })
-  );
-
-  // Group by options - 分组选项配置
-  const groupOptions: GroupOption[] = [
-    { value: GroupableFields.CATEGORY, label: "Category" },
-    { value: GroupableFields.STATUS, label: "Status" },
-    { value: GroupableFields.TEAM, label: "Team" },
-    { value: GroupableFields.PRIORITY, label: "Priority" },
-  ];
-
-  // State for current group by method
-  const [currentGroupBy, setCurrentGroupBy] = useState<GroupableFieldValue>(
-    mapStringToGroupableField(inputData.meta.sortBy)
-  );
-
-  // Handler for group by changes
-  const handleGroupByChange = (value: string) => {
-    const groupByValue = value as GroupableFieldValue;
-    setCurrentGroupBy(groupByValue);
-    onGroupByChange?.(groupByValue);
-  };
-
   // Constants for layout calculations
   const cellHeight = TimelineConst.cellHeight; // Height of each item row in pixels
   const groupGapForTesting = TimelineConst.groupGap;
 
-  // State for time view mode and corresponding dayWidth - 使用 URL 同步的初始值
-  const [currentTimeView, setCurrentTimeView] = useState<TimeViewType>(
-    getTimeViewFromUrl() as TimeViewType
-  );
+  // State for time view mode and corresponding dayWidth - 使用默认值
+  const [currentTimeView] = useState<TimeViewType>("month");
   const dayWidth = TIME_VIEW_CONFIG[currentTimeView].dayWidth;
   const zoomThreshold = TIME_VIEW_CONFIG[currentTimeView].zoomThreshold;
-
-  // 同步 timeView 到 URL 参数
-  useEffect(() => {
-    syncTimeViewToUrl(currentTimeView as UrlTimeViewType);
-  }, [currentTimeView]);
-
-  // 初始化时从URL读取issue ID并设置选中的issue
-  useEffect(() => {
-    const issueIdFromUrl = getIssueIdFromUrl();
-    if (issueIdFromUrl) {
-      // 在所有items中查找对应的issue
-      const allItems = inputData.data.flatMap((group) => group.groupItems);
-      const targetIssue = allItems.find(item => item[IssueShapeKeys.ID] === issueIdFromUrl);
-      if (targetIssue) {
-        setSelectedIssue(targetIssue);
-        setIsRightSidebarVisible(true);
-      }
-    }
-  }, [inputData]);
-
-  // 监听浏览器历史变化（前进/后退按钮）
-  useEffect(() => {
-    const cleanup = listenToHistoryChanges(() => {
-      const issueIdFromUrl = getIssueIdFromUrl();
-      if (issueIdFromUrl) {
-        const allItems = inputData.data.flatMap((group) => group.groupItems);
-        const targetIssue = allItems.find(item => item[IssueShapeKeys.ID] === issueIdFromUrl);
-        if (targetIssue) {
-          setSelectedIssue(targetIssue);
-          setIsRightSidebarVisible(true);
-        }
-      } else {
-        setSelectedIssue(null);
-        setIsRightSidebarVisible(false);
-      }
-    });
-
-    return cleanup;
-  }, [inputData]);
 
   // 添加主滚动容器的引用 - 现在只需要一个
   const mainScrollRef = useRef<HTMLDivElement>(null);
@@ -151,15 +55,6 @@ export const Timeline: React.FC<TimelineProps> = ({
   const { years: yearList, startMonth } = TimelineItemInterval({
     inputData: sortedItems,
   });
-
-  // 使用日期位置URL同步功能
-  useDateUrlSync(
-    mainScrollRef,
-    dayWidth,
-    yearList,
-    startMonth,
-    setCurrentTimeView
-  );
 
   // 计算 Timeline 的总宽度
   const calculateTimelineWidth = useCallback(() => {
@@ -192,11 +87,6 @@ export const Timeline: React.FC<TimelineProps> = ({
       </div>
     );
   }
-
-  // Handler for time view changes
-  const handleTimeViewChange = (value: string) => {
-    setCurrentTimeView(value as TimeViewType);
-  };
 
   // Pre-calculate placements for each group separately
   const groupPlacements = inputData.data.map((group) => {
@@ -235,20 +125,6 @@ export const Timeline: React.FC<TimelineProps> = ({
     <div className={styles["timeline-container"]}>
       {/* 浏览器兼容性检查 */}
       {/* <BrowserCompatibility /> */}
-      
-      {/* 时间视图切换器和回到今天按钮 */}
-      <TimelineNav
-        switchOptions={switchOptions}
-        currentTimeView={currentTimeView}
-        onTimeViewChange={handleTimeViewChange}
-        dayWidth={dayWidth}
-        containerRef={mainScrollRef}
-        yearList={yearList}
-        startMonth={startMonth}
-        groupOptions={groupOptions}
-        currentGroupBy={currentGroupBy}
-        onGroupByChange={handleGroupByChange}
-      />
 
       <div className={styles["timeline-body"]}>
         {/* 主滚动容器 - 处理横向滚动，ruler 和 content 都在其中 */}
@@ -309,29 +185,13 @@ export const Timeline: React.FC<TimelineProps> = ({
                 cellHeight={cellHeight}
                 groupGap={groupGapForTesting}
                 groupPlacements={groupPlacements}
-                onIssueClick={(issue) => {
-                  setSelectedIssue(issue);
-                  setIsRightSidebarVisible(true);
-                  syncIssueIdToUrl(issue[IssueShapeKeys.ID]);
+                onIssueClick={() => {
+                  // Issue 点击事件，不再同步到URL
                 }}
               />
             </div>
           </div>
         </div>
-
-        {/* 右侧信息栏 */}
-        {isRightSidebarVisible && (
-          <div className={styles["timeline-right-sidebar"]}>
-            <IssueDetail 
-              selectedIssue={selectedIssue} 
-              onClose={() => {
-                setSelectedIssue(null);
-                setIsRightSidebarVisible(false);
-                syncIssueIdToUrl(null);
-              }}
-            />
-          </div>
-        )}
       </div>
     </div>
   );

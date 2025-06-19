@@ -3,8 +3,6 @@ import styles from "./TimelineSidebar.module.scss";
 import { TimelineConst, TimelineConstCalc } from "../_constants";
 import { type PlacementResult } from "../../../../data-layer/utils/Utils";
 import { type IssueShape } from "../../../../data-layer/types/timeline";
-import { GroupProgressBar } from "./GroupProgressBar";
-import { getProgressStats, getPropertyStats } from "./sidebarFunctions";
 
 interface GroupPlacement {
   groupTitle: string;
@@ -89,24 +87,6 @@ export const TimelineSidebar: React.FC<TimelineSidebarProps> = ({
                 >
                   <div className={styles["timeline-sidebar-group-title"]}>
                     {group.groupTitle}
-                  </div>
-                  <div className={styles["timeline-sidebar-group-properties"]}>
-                    {group.groupItems.length !== 0 && (
-                      <>
-                        <GroupProgressBar
-                          title="Status"
-                          data={getPropertyStats(group.groupItems, "status")}
-                        />
-                        <GroupProgressBar
-                          title="Teams"
-                          data={getPropertyStats(group.groupItems, "team")}
-                        />
-                        <GroupProgressBar
-                          title="PRG"
-                          data={getProgressStats(group.groupItems)}
-                        />
-                      </>
-                    )}
                   </div>
                 </div>
               </div>

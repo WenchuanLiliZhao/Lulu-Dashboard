@@ -105,6 +105,55 @@ const Page_Home: PageShape = {
       </div>
       
       <div style={{ margin: '40px 0' }}>
+        <h2>📊 Timeline 时间线组件</h2>
+        <p style={{ color: '#666', marginBottom: '20px' }}>✨ 支持多种数据源的时间线展示，包括静态数据和 Jira API 集成！</p>
+        
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', margin: '20px 0', flexWrap: 'wrap' }}>
+          <div style={{
+            padding: '20px',
+            backgroundColor: '#f8f9fa',
+            borderRadius: '8px',
+            border: '2px solid #e9ecef',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+            maxWidth: '200px',
+            textAlign: 'center'
+          }}>
+            <h4 style={{ margin: '0 0 10px 0', color: '#495057' }}>📊 静态数据</h4>
+            <p style={{ fontSize: '14px', color: '#6c757d', margin: '0 0 15px 0' }}>使用示例数据的时间线演示</p>
+            <a href="/timeline" style={{ 
+              color: '#007bff', 
+              textDecoration: 'underline',
+              fontSize: '14px',
+              fontWeight: '500'
+            }}>
+              查看演示 →
+            </a>
+          </div>
+          
+          <div style={{
+            padding: '20px',
+            backgroundColor: '#e8f5e8',
+            borderRadius: '8px',
+            border: '2px solid #28a745',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+            maxWidth: '200px',
+            textAlign: 'center'
+          }}>
+            <h4 style={{ margin: '0 0 10px 0', color: '#155724' }}>🔌 Jira API</h4>
+            <p style={{ fontSize: '14px', color: '#155724', margin: '0 0 15px 0' }}>连接到公开 Jira 测试实例</p>
+            <a href="/timeline-jira" style={{ 
+              color: '#155724', 
+              textDecoration: 'underline',
+              fontSize: '14px',
+              fontWeight: '500'
+            }}>
+              查看演示 →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ margin: '40px 0' }}>
         <h2>圆形进度条组件示例</h2>
         <p style={{ color: '#666', marginBottom: '20px' }}>✨ 支持加载动画效果和延迟控制！刷新页面查看瀑布流动画</p>
         
