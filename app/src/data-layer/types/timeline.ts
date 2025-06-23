@@ -46,7 +46,68 @@ export interface TimelineProps<T = Record<string, unknown>> {
   onGroupByChange?: (groupBy: keyof (BaseTimelineItem & T)) => void;
 }
 
+// ====== UNIVERSAL TIMELINE DESIGN NOTE ======
+// The Timeline component is designed to work with ANY data structure as long as it contains
+// the four required BaseTimelineItem fields (id, name, startDate, endDate). 
+// 
+// ✅ Your data can have completely different additional fields
+// ✅ No errors will occur as long as the base fields exist
+// ✅ The component only relies on base fields for core functionality
+// ✅ Grouping works with any field present in your data structure
+//
+// Example: Your custom data with fields like {budget, manager, technologies, riskLevel}
+// will work perfectly with Timeline<YourCustomType> - no modifications needed!
+
+// ====== 通用Timeline设计说明 ======
+// Timeline组件设计为通用组件，只要数据包含四个必需的BaseTimelineItem字段
+// (id, name, startDate, endDate)，就能处理任意数据结构。
+//
+// ✅ 你的数据可以包含完全不同的额外字段
+// ✅ 只要基础字段存在就不会出错
+// ✅ 组件核心功能只依赖基础字段
+// ✅ 分组功能适用于数据中存在的任意字段
+//
+// 示例：包含{budget, manager, technologies, riskLevel}等字段的自定义数据
+// 可以完美配合Timeline<你的自定义类型>使用 - 无需任何修改！
+
 // ====== 以下是为了向后兼容而保留的旧类型定义 ======
+//
+// BACKWARD COMPATIBILITY NOTICE:
+// The following legacy types are preserved to ensure existing code continues to work.
+// 
+// ✅ WHAT THEY AFFECT:
+// - Existing example pages (Page_Timeline.tsx, Page_Timeline_Jira.tsx)
+// - Current demo data structures (Example_Issues_1, Example_Issues_2, etc.)
+// - Legacy components that use IssueShape, SortedIssueShape interfaces
+// - Existing grouping logic with GroupableFields
+//
+// ❌ WHAT THEY DON'T AFFECT:
+// - New Timeline<T> generic functionality - works independently
+// - Your custom data types - no need to follow IssueShape structure
+// - New users can completely ignore these legacy types
+// - Performance or core Timeline component behavior
+//
+// 📝 RECOMMENDATION FOR NEW PROJECTS:
+// Use BaseTimelineItem + your custom fields instead of IssueShape
+
+// ====== 向后兼容说明 ======
+//
+// 以下旧类型定义被保留以确保现有代码继续正常工作。
+//
+// ✅ 它们会影响：
+// - 现有示例页面 (Page_Timeline.tsx, Page_Timeline_Jira.tsx)
+// - 当前演示数据结构 (Example_Issues_1, Example_Issues_2 等)
+// - 使用 IssueShape, SortedIssueShape 接口的旧组件
+// - 使用 GroupableFields 的现有分组逻辑
+//
+// ❌ 它们不会影响：
+// - 新的 Timeline<T> 泛型功能 - 独立工作
+// - 你的自定义数据类型 - 无需遵循 IssueShape 结构  
+// - 新用户可以完全忽略这些旧类型
+// - 性能或核心 Timeline 组件行为
+//
+// 📝 新项目建议：
+// 使用 BaseTimelineItem + 你的自定义字段，而不是 IssueShape
 
 export const Team = {
   "Function": "Function",
