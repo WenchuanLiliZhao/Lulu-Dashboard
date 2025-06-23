@@ -6,6 +6,7 @@ import Page_CircularProgress from "./Page_CircularProgress";
 import Page_Switch from "./Page_Switch";
 import Page_ColorShowcase from "./Page_ColorShowcase";
 import Page_ButtonDemo from "./Page_ButtonDemo";
+import Page_CustomProjectTimeline from "./Page_CustomProjectTimeline";
 
 export const Pages = {
   Home: Page_Home,
@@ -16,4 +17,5 @@ export const Pages = {
   ColorShowcase: Page_ColorShowcase,
   ButtonDemo: Page_ButtonDemo,
   NotFound: Page_NotFound,
+  CustomProjectTimeline: Page_CustomProjectTimeline,
 };
