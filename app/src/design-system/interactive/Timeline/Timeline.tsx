@@ -1,10 +1,12 @@
-import React, { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback } from "react";
 import { TimelineItemInterval } from "../../../data-layer/utils/functions";
 import {
   sortTimelineItemsByStartDate,
-  type SortedIssueShape,
   IssueShapeKeys,
-  type GroupableFieldValue,
+  // 新的通用类型
+  type TimelineProps,
+  type TimelineItem,
+  BaseTimelineItemKeys
 } from "../../../data-layer";
 import { findPlacement, type PlacementResult } from "../../../data-layer/utils/Utils";
 import { TimelineRuler } from "./OnLayout/TimelineRuler";
@@ -13,11 +15,6 @@ import { TimelineSidebar, SIDEBAR_WIDTH } from "./Sidebar/TimelineSidebar";
 import { useCenterBasedZoom } from "../../../data-layer/utils/useCenterBasedZoom";
 import styles from "./Timeline.module.scss";
 import { TimelineConst } from "./_constants";
-
-interface TimelineProps {
-  inputData: SortedIssueShape;
-  onGroupByChange?: (groupBy: GroupableFieldValue) => void;
-}
 
 // 时间视图配置
 const TIME_VIEW_CONFIG = {
@@ -28,9 +25,11 @@ const TIME_VIEW_CONFIG = {
 
 type TimeViewType = keyof typeof TIME_VIEW_CONFIG;
 
-export const Timeline: React.FC<TimelineProps> = ({
-  inputData
-}) => {
+// 通用的Timeline组件 - 支持泛型，现在作为主要接口
+export function Timeline<T = Record<string, unknown>>({
+  // init 参数为未来扩展保留，暂时不使用
+  inputData,
+}: TimelineProps<T>) {
   // Constants for layout calculations
   const cellHeight = TimelineConst.cellHeight; // Height of each item row in pixels
   const groupGapForTesting = TimelineConst.groupGap;
@@ -50,10 +49,25 @@ export const Timeline: React.FC<TimelineProps> = ({
   const allItems = inputData.data.flatMap((group) => group.groupItems);
 
   // Sort items by start date to ensure consistent placement
-  const sortedItems = sortTimelineItemsByStartDate(allItems);
+  const sortedItems = sortTimelineItemsByStartDate(allItems as TimelineItem<T>[]);
+  
+  // 构建用于计算时间间隔的数据，使用基础字段键
+  const timelineIntervalData = sortedItems.map(item => ({
+    [IssueShapeKeys.ID]: item.id || '',
+    [IssueShapeKeys.NAME]: item.name || '',
+    [IssueShapeKeys.STATUS]: 'On Track' as const,
+    [IssueShapeKeys.DESCRIPTION]: '',
+    [IssueShapeKeys.START_DATE]: item.startDate || item[BaseTimelineItemKeys.START_DATE as keyof typeof item],
+    [IssueShapeKeys.END_DATE]: item.endDate || item[BaseTimelineItemKeys.END_DATE as keyof typeof item],
+    [IssueShapeKeys.PROGRESS]: 0,
+    [IssueShapeKeys.CATEGORY]: '',
+    [IssueShapeKeys.TEAM]: 'Tech' as const,
+    [IssueShapeKeys.PRIORITY]: 'Medium' as const,
+  }));
+
   // Get list of years and start month that need to be displayed
   const { years: yearList, startMonth } = TimelineItemInterval({
-    inputData: sortedItems,
+    inputData: timelineIntervalData,
   });
 
   // 计算 Timeline 的总宽度
@@ -90,18 +104,20 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   // Pre-calculate placements for each group separately
   const groupPlacements = inputData.data.map((group) => {
-    const sortedGroupItems = sortTimelineItemsByStartDate(group.groupItems);
+    const sortedGroupItems = sortTimelineItemsByStartDate(group.groupItems as TimelineItem<T>[]);
     const placements: PlacementResult[] = [];
 
     sortedGroupItems.forEach((item) => {
-      const startDate = new Date(item[IssueShapeKeys.START_DATE]);
-      const endDate = new Date(item[IssueShapeKeys.END_DATE]);
+      const startDate = new Date(item.startDate || item[BaseTimelineItemKeys.START_DATE as keyof typeof item]);
+      const endDate = new Date(item.endDate || item[BaseTimelineItemKeys.END_DATE as keyof typeof item]);
 
-      const column = findPlacement(placements, item, startDate, endDate);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const column = findPlacement(placements, item as any, startDate, endDate);
 
       placements.push({
         column,
-        item,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        item: item as any,
         startDate,
         endDate,
       });
@@ -109,7 +125,8 @@ export const Timeline: React.FC<TimelineProps> = ({
 
     return {
       groupTitle: group.groupTitle,
-      groupItems: group.groupItems,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      groupItems: group.groupItems as any,
       placements,
     };
   });
@@ -195,4 +212,10 @@ export const Timeline: React.FC<TimelineProps> = ({
       </div>
     </div>
   );
-};
+}
+
+// 为了向后兼容，提供一个别名
+export const GenericTimeline = Timeline;
+
+// 默认导出Timeline组件
+export { Timeline as default };

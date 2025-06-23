@@ -1,5 +1,6 @@
 // 交互组件入口
 
+// Timeline 组件 - 现在默认就是通用版本
 export { Timeline } from './Timeline/Timeline';
 export { default as FullscreenButton } from './FullscreenButton';
 

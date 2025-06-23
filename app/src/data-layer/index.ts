@@ -3,9 +3,21 @@
 // 数据层提供了数据类型定义、处理器和适配器
 // 支持多种数据源：静态数据、Notion API、Jira API等
 
-// 主要入口 - 分别从子模块导入
+// 通用Timeline类型定义
 export { 
-  // 类型定义
+  // 新的通用类型
+  type BaseTimelineItem,
+  type TimelineItem,
+  type TimelineConfig,
+  type TimelineGroup,
+  type SortedTimelineData,
+  type TimelineProps,
+  BaseTimelineItemKeys,
+  
+  // 示例扩展数据类型
+  type ExampleExtendedData,
+  
+  // 向后兼容的旧类型
   type IssueShape,
   type SortedIssueShape, 
   type GroupableFieldValue,
@@ -14,10 +26,13 @@ export {
 } from './types/timeline';
 
 export {
-  // 数据处理器
+  // 新的通用数据处理器
+  groupTimelineItemsByField,
+  sortTimelineItemsByStartDate,
+  
+  // 向后兼容的旧处理器
   groupIssuesByField,
-  mapStringToGroupableField,
-  sortTimelineItemsByStartDate
+  mapStringToGroupableField
 } from './processors/groupingProcessor';
 
 export {
@@ -29,4 +44,4 @@ export {
 } from './adapters';
 
 // 版本信息
-export const DATA_LAYER_VERSION = '1.0.0'; 
+export const DATA_LAYER_VERSION = '2.0.0'; // 升级版本号以反映通用化重构 

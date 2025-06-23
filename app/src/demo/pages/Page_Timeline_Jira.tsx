@@ -5,7 +5,14 @@ import { Timeline } from "../../design-system";
 // 使用新的数据层 - Jira 适配器
 import { createJiraAdapter } from "../../data-layer/adapters/jiraAdapter";
 // import { createCustomJiraAdapter } from "../../data-layer/adapters/jiraAdapter"; // 连接自己的Jira时取消注释
-import { groupIssuesByField, GroupableFields, type GroupableFieldValue } from "../../data-layer";
+import { 
+  GroupableFields, 
+  type GroupableFieldValue,
+  // 新的通用类型和函数
+  groupTimelineItemsByField,
+  type TimelineItem,
+  type ExampleExtendedData
+} from "../../data-layer";
 import type { PageShape } from "../object-shapes/Page";
 import type { IssueShape } from "../../data-layer/types/timeline";
 
@@ -37,6 +44,24 @@ const jiraAdapter = createJiraAdapter({
   jqlQuery: 'project = DEMO OR project = STR ORDER BY created DESC',
   maxResults: 30
 });
+
+// 转换Jira数据为通用TimelineItem格式
+const convertJiraToTimelineItems = (issues: IssueShape[]): TimelineItem<ExampleExtendedData>[] => {
+  return issues.map(issue => ({
+    // 基础必需字段
+    id: issue.id,
+    name: issue.name,
+    startDate: issue.startDate,
+    endDate: issue.endDate,
+    // 扩展字段
+    status: issue.status,
+    description: issue.description,
+    progress: issue.progress,
+    category: issue.category,
+    team: issue.team,
+    priority: issue.priority,
+  }));
+};
 
 // 创建时间线内容组件
 const TimelineJiraContent: React.FC = () => {
@@ -172,10 +197,25 @@ const TimelineJiraContent: React.FC = () => {
     );
   }
 
+  // 准备通用Timeline数据
+  const timelineItems = convertJiraToTimelineItems(issuesData);
+  const timelineData = groupTimelineItemsByField(timelineItems, groupBy as keyof (TimelineItem<ExampleExtendedData>));
+
   return (
-    <Timeline 
-      inputData={groupIssuesByField(issuesData, groupBy)} 
-      onGroupByChange={handleGroupByChange}
+    <Timeline<ExampleExtendedData>
+      init={{
+        dataType: {
+          status: 'On Track' as const,
+          description: '',
+          progress: 0,
+          category: '',
+          team: 'Tech' as const,
+          priority: 'Medium' as const,
+        },
+        groupBy: 'status'
+      }}
+      inputData={timelineData}
+      onGroupByChange={handleGroupByChange as (groupBy: keyof (TimelineItem<ExampleExtendedData>)) => void}
     />
   );
 };
