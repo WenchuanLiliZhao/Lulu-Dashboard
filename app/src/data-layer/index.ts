@@ -1,7 +1,7 @@
-// Lulu Dashboard Data Layer
+// Lulu Dashboard Data Layer - 精简版
 //
-// 数据层提供了数据类型定义、处理器和适配器
-// 支持多种数据源：静态数据、Notion API、Jira API等
+// 数据层提供了基本的数据类型定义和处理器
+// 专注于Timeline基本布局功能
 
 // 通用Timeline类型定义
 export { 
@@ -35,13 +35,8 @@ export {
   mapStringToGroupableField
 } from './processors/groupingProcessor';
 
-export {
-  // 适配器
-  StaticDataAdapter,
-  createAdapter,
-  type AdapterFactoryConfig,
-  type AdapterType
-} from './adapters';
+// 工具函数
+export * from './utils';
 
 // 版本信息
-export const DATA_LAYER_VERSION = '2.0.0'; // 升级版本号以反映通用化重构 
+export const DATA_LAYER_VERSION = '2.1.0'; // 精简版本，移除适配器 

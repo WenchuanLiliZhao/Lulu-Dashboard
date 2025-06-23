@@ -1,13 +1,14 @@
 import { useState, useRef, useCallback } from "react";
-import { TimelineItemInterval } from "../../../data-layer/utils/functions";
 import {
+  TimelineItemInterval,
   sortTimelineItemsByStartDate,
   IssueShapeKeys,
   type TimelineProps,
   type TimelineItem,
-  BaseTimelineItemKeys
-} from "../../../data-layer";
-import { findPlacement, type PlacementResult } from "../../../data-layer/utils/Utils";
+  BaseTimelineItemKeys,
+  findPlacement,
+  type PlacementResult
+} from "../../data";
 import { TimelineRuler } from "./OnLayout/TimelineRuler";
 import { TimelineItems } from "./OnLayout/TimelineItems";
 import { TimelineSidebar, SIDEBAR_WIDTH } from "./Sidebar/TimelineSidebar";
