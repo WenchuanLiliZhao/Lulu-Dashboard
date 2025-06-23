@@ -3,7 +3,6 @@ import { TimelineItemInterval } from "../../../data-layer/utils/functions";
 import {
   sortTimelineItemsByStartDate,
   IssueShapeKeys,
-  // 新的通用类型
   type TimelineProps,
   type TimelineItem,
   BaseTimelineItemKeys
@@ -12,7 +11,7 @@ import { findPlacement, type PlacementResult } from "../../../data-layer/utils/U
 import { TimelineRuler } from "./OnLayout/TimelineRuler";
 import { TimelineItems } from "./OnLayout/TimelineItems";
 import { TimelineSidebar, SIDEBAR_WIDTH } from "./Sidebar/TimelineSidebar";
-import { useCenterBasedZoom } from "../../../data-layer/utils/useCenterBasedZoom";
+import { useCenterBasedZoom } from "../../data/hooks";
 import styles from "./Timeline.module.scss";
 import { TimelineConst } from "./_constants";
 
