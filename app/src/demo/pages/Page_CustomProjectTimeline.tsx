@@ -63,6 +63,7 @@ interface CustomProjectData {
 }
 
 // 创建自定义项目时间线内容组件
+// eslint-disable-next-line react-refresh/only-export-components
 const CustomProjectTimelineContent: React.FC = () => {
   // 可分组的字段类型
   type GroupableField = keyof TimelineItem<CustomProjectData>;
