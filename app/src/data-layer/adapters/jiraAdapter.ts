@@ -130,6 +130,7 @@ export class JiraAdapter extends BaseAdapter {
   async getRawData(): Promise<IssueShape[]> {
     try {
       console.log('🔍 正在从 Jira 获取数据...');
+      console.log(`📝 JQL 查询: ${this._jqlQuery}`);
       
       const searchParams = new URLSearchParams({
         jql: this._jqlQuery,
@@ -145,11 +146,14 @@ export class JiraAdapter extends BaseAdapter {
       
       return response.issues.map(jiraIssue => this.transformJiraIssueToIssue(jiraIssue));
     } catch (error) {
-      console.error('❌ 获取 Jira 数据时出错:', error);
+      console.warn('⚠️ 无法从 Jira 获取真实数据:', error instanceof Error ? error.message : String(error));
       
       // 如果 API 调用失败，返回模拟数据作为后备
-      console.log('🔄 使用模拟数据作为后备...');
-      return this.getMockData();
+      console.log('🎭 使用模拟数据进行演示...');
+      const mockData = this.getMockData();
+      console.log(`📊 模拟数据包含 ${mockData.length} 个示例项目`);
+      
+      return mockData;
     }
   }
 
@@ -280,8 +284,8 @@ export class JiraAdapter extends BaseAdapter {
     return [
       {
         id: 'DEMO-001',
-        name: '🔌 Jira API 集成测试',
-        description: '这是从 Jira 测试实例获取的模拟数据',
+        name: '🔌 Jira API 集成 (演示数据)',
+        description: '由于 CORS 限制，这是模拟的 Jira 数据用于演示。在生产环境中，这将从真实的 Jira 实例获取。',
         status: 'On Track',
         priority: 'High',
         category: 'Feature',
@@ -292,8 +296,8 @@ export class JiraAdapter extends BaseAdapter {
       },
       {
         id: 'DEMO-002',
-        name: '🧪 测试环境数据验证',
-        description: '验证从 Jira 获取的数据格式和完整性',
+        name: '🧪 数据验证测试 (演示数据)',
+        description: '在真实环境中，您可以通过配置 API Token 和项目键来连接您的 Jira 实例。',
         status: 'Not Yet Started',
         priority: 'Medium',
         category: 'Task',
@@ -304,8 +308,8 @@ export class JiraAdapter extends BaseAdapter {
       },
       {
         id: 'DEMO-003',
-        name: '📊 时间线数据展示优化',
-        description: '优化从 Jira 获取数据在时间线上的展示效果',
+        name: '📊 时间线展示优化 (演示数据)',
+        description: '这个时间线组件支持各种 Jira 字段：状态、优先级、分配人、标签等。',
         status: 'On Track',
         priority: 'Low',
         category: 'Improvement',
@@ -313,6 +317,30 @@ export class JiraAdapter extends BaseAdapter {
         startDate: new Date(now.getTime() - 10 * 24 * 60 * 60 * 1000),
         endDate: new Date(now.getTime() - 2 * 24 * 60 * 60 * 1000),
         progress: 100
+      },
+      {
+        id: 'DEMO-004',
+        name: '🚀 生产环境部署 (演示数据)',
+        description: '要连接真实的 Jira，请参考代码中的 createCustomJiraAdapter 示例。',
+        status: 'On Track',
+        priority: 'High',
+        category: 'Epic',
+        team: 'Tech',
+        startDate: new Date(now.getTime() - 3 * 24 * 60 * 60 * 1000),
+        endDate: new Date(now.getTime() + 5 * 24 * 60 * 60 * 1000),
+        progress: 75
+      },
+      {
+        id: 'DEMO-005',
+        name: '📋 项目管理流程 (演示数据)',
+        description: 'Jira 集成支持自定义字段映射和 JQL 查询过滤。',
+        status: 'Not Yet Started',
+        priority: 'Medium',
+        category: 'Process',
+        team: 'Function',
+        startDate: new Date(now.getTime() + 1 * 24 * 60 * 60 * 1000),
+        endDate: new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000),
+        progress: 0
       }
     ];
   }
@@ -328,6 +356,8 @@ export class JiraAdapter extends BaseAdapter {
     const url = `${this.config.baseUrl}${endpoint}`;
     
     try {
+      console.log(`🌐 尝试连接到 Jira: ${url}`);
+      
       const response = await fetch(url, {
         mode: 'cors', // 处理跨域
         // 尽量减少 headers 以避免 CORS preflight 问题
@@ -335,16 +365,35 @@ export class JiraAdapter extends BaseAdapter {
       });
 
       if (!response.ok) {
-        throw new Error(`API request failed: ${response.status} ${response.statusText}`);
+        console.warn(`⚠️ Jira API 响应错误: ${response.status} ${response.statusText}`);
+        
+        if (response.status === 401) {
+          throw new Error('Jira 认证失败：请检查您的 API Token 或用户凭据');
+        } else if (response.status === 403) {
+          throw new Error('Jira 访问被拒绝：请检查您的权限设置');
+        } else if (response.status === 400) {
+          throw new Error('Jira 请求参数错误：可能是 JQL 查询语法问题或项目不存在');
+        } else if (response.status >= 500) {
+          throw new Error('Jira 服务器内部错误：请稍后重试');
+        } else {
+          throw new Error(`Jira API 请求失败: ${response.status} ${response.statusText}`);
+        }
       }
 
       return response.json();
     } catch (error) {
       // 如果是 CORS 错误或网络错误，抛出特定错误
       if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
-        throw new Error('无法连接到 Jira 实例，可能是 CORS 限制或网络问题');
+        console.warn('🚫 CORS 或网络连接问题，这在演示环境中是正常的');
+        throw new Error('无法连接到 Jira 实例，可能是 CORS 限制或网络问题。正在使用模拟数据作为演示。');
       }
-      throw error;
+      
+      // 重新抛出已经格式化的错误
+      if (error instanceof Error) {
+        throw error;
+      }
+      
+      throw new Error('连接 Jira 时发生未知错误');
     }
   }
 

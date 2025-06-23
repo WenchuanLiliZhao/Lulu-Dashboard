@@ -147,54 +147,10 @@ const TimelineJiraContent: React.FC = () => {
     );
   }
 
-  // 如果有错误，显示错误状态
+  // 如果有错误，显示信息状态（但继续显示模拟数据）
   if (error) {
-    return (
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        height: '100vh',
-        flexDirection: 'column',
-        gap: '20px',
-        padding: '20px'
-      }}>
-        <div style={{
-          background: '#fee',
-          border: '1px solid #fcc',
-          borderRadius: '8px',
-          padding: '20px',
-          maxWidth: '600px',
-          textAlign: 'center'
-        }}>
-          <h3 style={{ color: '#c33', margin: '0 0 10px 0' }}>🚫 连接 Jira 失败</h3>
-          <p style={{ margin: '0 0 15px 0' }}>{error}</p>
-          <p style={{ 
-            fontSize: '14px', 
-            color: '#666', 
-            margin: '15px 0 0 0',
-            lineHeight: '1.5'
-          }}>
-            这通常是由于 CORS 限制导致的。正在显示模拟数据作为演示。<br/>
-            在生产环境中，您需要配置适当的 CORS 策略或使用服务端代理。
-          </p>
-          <button 
-            onClick={() => window.location.reload()} 
-            style={{
-              background: '#3498db',
-              color: 'white',
-              border: 'none',
-              padding: '10px 20px',
-              borderRadius: '5px',
-              cursor: 'pointer',
-              marginTop: '15px'
-            }}
-          >
-            重新尝试
-          </button>
-        </div>
-      </div>
-    );
+    console.info('📋 Jira 连接信息:', error);
+    // 不显示错误页面，让组件继续使用模拟数据
   }
 
   // 准备通用Timeline数据
