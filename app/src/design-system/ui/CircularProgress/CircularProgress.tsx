@@ -1,3 +1,37 @@
+/**
+ * ⭕ CircularProgress圆形进度条组件
+ * 
+ * 用于显示任务完成进度的圆形进度条，支持动画效果。
+ * 常用于数据加载、任务进度、完成度展示等场景。
+ * 
+ * 🎯 主要特性：
+ * - 平滑动画：支持缓动动画，进度变化更自然
+ * - 高度可定制：尺寸、颜色、动画时长都可配置
+ * - 性能优化：使用requestAnimationFrame确保流畅动画
+ * - 数学精确：基于SVG的精确圆形绘制
+ * 
+ * 🎨 外观配置：
+ * - size：圆形的直径大小
+ * - strokeWidth：进度条的粗细
+ * - progressColor：进度条颜色
+ * - backgroundColor：背景圆环颜色
+ * 
+ * ⏱️ 动画配置：
+ * - animationDuration：动画持续时间
+ * - animationDelay：动画延迟时间
+ * - enableAnimation：是否启用动画效果
+ * 
+ * 💡 使用示例：
+ * <CircularProgress 
+ *   progress={75} 
+ *   size={120} 
+ *   animationDuration={1500}
+ *   enableAnimation={true}
+ * />
+ * 
+ * 📊 进度值：0-100之间的数字，表示完成百分比
+ */
+
 import React, { useState, useEffect } from 'react';
 import { CircularProgressConst } from './_constant';
 import styles from './CircularProgress.module.scss';

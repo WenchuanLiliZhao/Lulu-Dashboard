@@ -1,9 +1,49 @@
 /**
- * CSS Variables Collection
+ * 🎨 CSS变量集合 - 设计系统的核心配置
  * 
- * This file contains all CSS variables defined in the global style SCSS files.
- * Keys are camelCase variants of the CSS variable names.
- * Values are the actual CSS variable name strings for use in JavaScript/TypeScript.
+ * 这个文件包含了设计系统中所有CSS变量的TypeScript定义。
+ * 它是连接SCSS样式文件和JavaScript/TypeScript代码的桥梁。
+ * 
+ * 🎯 主要作用：
+ * - 提供类型安全的CSS变量访问
+ * - 统一管理设计token（颜色、间距、字体等）
+ * - 支持主题切换和动态样式
+ * - 确保设计的一致性
+ * 
+ * 🌈 颜色系统：
+ * - 团队颜色：基于梵高画作灵感的艺术色彩
+ * - 语义颜色：成功、警告、错误等状态颜色
+ * - 主题颜色：主色、辅助色、背景色、边框色
+ * 
+ * 📏 设计token类型：
+ * - 颜色：品牌色、团队色、语义色、主题色
+ * - 字体：无衬线、衬线、等宽字体
+ * - 间距：导航、内容区域的标准间距
+ * - 阴影：弹出层阴影效果
+ * - 层级：z-index层级管理
+ * 
+ * 💡 使用示例：
+ * import { getCssVar, teamColors } from './css-variables';
+ * 
+ * // 在React组件中使用
+ * const style = {
+ *   color: getCssVar(teamColors.blue.base),
+ *   backgroundColor: getCssVar(cssVariables.colorBgMain)
+ * };
+ * 
+ * // 在SCSS中使用
+ * .my-component {
+ *   color: var(--color-team-blue);
+ *   background-color: var(--color-bg-main);
+ * }
+ * 
+ * 🎨 团队颜色灵感：
+ * - Red: "The Red Vineyard" 红色葡萄园
+ * - Blue: "The Starry Night" 星夜
+ * - Green: "The Cypresses" 柏树
+ * - Yellow: "Sunflowers" 向日葵
+ * - Purple: "Irises" 鸢尾花
+ * - 更多梵高画作主题色彩...
  */
 
 export const cssVariables = {

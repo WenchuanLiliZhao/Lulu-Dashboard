@@ -1,5 +1,21 @@
 /**
- * Timeline utility functions for time formatting and calculations
+ * 🔧 Timeline组件的工具函数库
+ * 
+ * 这个文件包含了Timeline组件用到的各种实用函数，主要用于：
+ * - 时间和日期处理
+ * - 数据排序和布局计算
+ * - 项目定位和重叠检测
+ * 
+ * 🎯 主要功能：
+ * - findPlacement：智能布局算法，避免时间线项目重叠
+ * - sortTimelineItemsByStartDate：按开始时间排序项目
+ * - TimelineItemInterval：计算时间线显示的时间范围
+ * - doDateRangesOverlap：检测两个时间段是否重叠
+ * 
+ * 💡 使用示例：
+ * const sortedItems = sortTimelineItemsByStartDate(items);
+ * const column = findPlacement(placements, item, startDate, endDate);
+ * const { years, startMonth } = TimelineItemInterval({ inputData });
  */
 
 import { type IssueShape, IssueShapeKeys, type TimelineItem, BaseTimelineItemKeys } from "./types";

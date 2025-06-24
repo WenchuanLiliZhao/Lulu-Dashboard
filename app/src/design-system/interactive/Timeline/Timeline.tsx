@@ -1,3 +1,33 @@
+/**
+ * 📅 Timeline时间线主组件
+ * 
+ * 这是设计系统中最重要的组件之一，用于展示项目或任务的时间线。
+ * Timeline可以显示多个项目在时间轴上的分布，支持分组、缩放和响应式布局。
+ * 
+ * 🎯 主要特性：
+ * - 智能布局：自动避免项目重叠，垂直分层显示
+ * - 分组显示：可以按团队、状态等字段分组
+ * - 时间缩放：支持年、月、日三种时间视图
+ * - 响应式：自适应不同屏幕尺寸
+ * 
+ * 📊 数据要求：
+ * 每个时间线项目必须包含：id（唯一标识）、name（名称）、startDate（开始日期）、endDate（结束日期）
+ * 
+ * 💡 使用示例：
+ * const data = {
+ *   meta: { sortBy: 'team' },
+ *   data: [{
+ *     groupTitle: "开发团队",
+ *     groupItems: [{
+ *       id: "1", name: "项目A", 
+ *       startDate: new Date("2024-01-01"), 
+ *       endDate: new Date("2024-02-01")
+ *     }]
+ *   }]
+ * };
+ * <Timeline inputData={data} />
+ */
+
 import { useState, useRef, useCallback } from "react";
 import {
   TimelineItemInterval,
